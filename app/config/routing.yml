@@ -1,3 +1,4 @@
-app:
-    resource: "@AppBundle/Controller/"
+tim_cheat_sheet:
+    resource: "@TimCheatSheetBundle/Controller/"
     type:     annotation
+    prefix:   /
