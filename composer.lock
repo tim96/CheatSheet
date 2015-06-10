@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2a89fbf1f61bee7dc05ba585fc0deb72",
+    "hash": "6e512a56003d0157cb2f35d959a6d2da",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1389,12 +1389,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle.git",
-                "reference": "ae14e153346409cd2bb1a20bffc039feb63340e1"
+                "reference": "72a9abea31279bd8a61d7280bf951d1c76d2595a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/ae14e153346409cd2bb1a20bffc039feb63340e1",
-                "reference": "ae14e153346409cd2bb1a20bffc039feb63340e1",
+                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/72a9abea31279bd8a61d7280bf951d1c76d2595a",
+                "reference": "72a9abea31279bd8a61d7280bf951d1c76d2595a",
                 "shasum": ""
             },
             "require": {
@@ -1440,7 +1440,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-06-01 14:18:27"
+            "time": "2015-06-10 16:27:29"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -1505,12 +1505,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "53d900361695562229f8e345be1c9608d6ddb7df"
+                "reference": "e7e48c8b012700243ebb67b098ddbeb018356a63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/53d900361695562229f8e345be1c9608d6ddb7df",
-                "reference": "53d900361695562229f8e345be1c9608d6ddb7df",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/e7e48c8b012700243ebb67b098ddbeb018356a63",
+                "reference": "e7e48c8b012700243ebb67b098ddbeb018356a63",
                 "shasum": ""
             },
             "require": {
@@ -1619,7 +1619,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-06-07 16:44:21"
+            "time": "2015-06-10 15:30:22"
         },
         {
             "name": "twig/twig",
