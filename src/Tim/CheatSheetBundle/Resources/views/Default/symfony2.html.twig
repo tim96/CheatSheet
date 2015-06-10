@@ -5,11 +5,114 @@ Symfony 2 Page
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <script>hljs.initHighlightingOnLoad();</script>
 
-        <div class="jumbotron">
-            <!-- <h1>Navbar example</h1> -->
-            <p></p>
+    <div class="container">
+        <div class="page-header">
+            <h1>Controller</h1>
+        </div>
+
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-6">
+<h1>Request</h1>
+<pre><code class="php">// First variant
+public function action(Request $request)
+{
+    $qet = $request->query->all(); to get all GET params
+    $post = $request->request->all(); to get all POST params.
+    $cookies = $request->cookies->all(); to get all cookies params.
+    $files = $request->files->all(); to get all files params.
+    $session = $request->getSession();
+    $session->set('foo', 'bar');
+    $filters = $session->get('filters', array());
+
+    // $_GET parameters
+    $request->query->get('name');
+    $request->query->get('name', 'default value');
+    // $_POST parameters
+    $request->request->get('name');
+
+    $params = $request->request->all();
+    $params['value1'];
+}
+
+// Second variant
+public function dataAction(Request $request, $foo, $bar)
+{
+    echo $foo;
+    echo $bar;
+}
+// which, then assumes that you defined {foo} and {bar} as part of your URL pattern in your routing.yml file:
+myurl:
+    pattern:  /{foo}/{bar}
+    defaults: { _controller: NameBundle:Default:getdata }
+
+// $this->addFlash is equivalent to $this->get('session')->getFlashBag()->add
+$this->addFlash('notice', 'Your changes were saved!');
+{% verbatim %}
+{% for flashMessage in app.session.flashbag.get('notice') %}{% endverbatim %}
+        {{ '<div class="flash-notice">'|escape }}
+            {% verbatim %}{{ flashMessage }}{% endverbatim %}
+        {{ '</div>'|escape }}
+{% verbatim %}{% endfor %}{% endverbatim %}</code></pre>
+            </div>
+            <div class="col-md-6">
+                <h1>Simple controller</h1>
+                <pre><code class="php">/**
+* @Route("/hello/{name}", name="hello")
+*/
+public function indexAction($name)
+{
+    return new Response('{{ '<html><body>'|escape }}Hello '.$name.'!{{ '</body></html>'|escape }}');
+}
+
+return $this->redirectToRoute('homepage', array(), 301);
+return $this->redirectToRoute('homepage'); // equivalent redirect()
+// return $this->redirect($this->generateUrl('homepage'), 301);
+
+return $this->redirect('http://symfony.com/doc');
+
+return $this->forward('AppBundle:Something:fancy', array(
+    'name'  => $name,
+    'color' => 'green',
+));
+
+// create a JSON-response with a 200 status code
+$response = new Response(json_encode(array('name' => $name)));
+$response->headers->set('Content-Type', 'application/json');
+
+// 404 error
+throw $this->createNotFoundException('The product does not exist');
+// The createNotFoundException() method is just a shortcut to create a special NotFoundHttpException object, which ultimately triggers a 404 HTTP response inside Symfony.
+
+throw new \Exception('Something went wrong!'); // 500 error
+
+// renders app/Resources/views/hello/greetings/index.html.twig
+return $this->render('hello/greetings/index.html.twig', array(
+    'name' => $name
+));
+
+// Access any Symfony service via the get()
+$templating = $this->get('templating');
+$router = $this->get('router');
+// get traslator for translated data
+$translated = $this->get('translator');
+$message = $translated->trans('submit', array(''), 'NameBundle');</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Controller</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-6">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
         </div>
 
     </div> <!-- /container -->
