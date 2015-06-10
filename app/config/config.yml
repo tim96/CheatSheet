@@ -41,6 +41,22 @@ assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ TimCheatSheetBundle ]
+    assets:
+#          font-awesome-otf:
+#        inputs: '%kernel.root_dir%/Resources/public/fonts/FontAwesome.otf'
+#        output: 'fonts/FontAwesome.otf'
+#          font-awesome-eot:
+#        inputs: '%kernel.root_dir%/Resources/public/fonts/fontawesome-webfont.eot'
+#        output: 'fonts/fontawesome-webfont.eot'
+#          font-awesome-svg:
+#        inputs: '%kernel.root_dir%/Resources/public/fonts/fontawesome-webfont.svg'
+#        output: 'fonts/fontawesome-webfont.svg'
+      font-awesome-ttf:
+        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
+        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
+#          font-awesome-woff:
+#        inputs: '%kernel.root_dir%/Resources/public/fonts/fontawesome-webfont.woff'
+#        output: 'fonts/fontawesome-webfont.woff'
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

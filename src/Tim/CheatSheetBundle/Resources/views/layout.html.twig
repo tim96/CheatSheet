@@ -21,6 +21,9 @@
         {% stylesheets '@TimCheatSheetBundle/Resources/public/css/site.css' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
+        {% stylesheets '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
+            output="" %}
+        {% endstylesheets %}
     {% endblock %}
 
     {% block javascripts %}
