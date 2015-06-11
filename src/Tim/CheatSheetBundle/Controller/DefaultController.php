@@ -28,17 +28,20 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/symfony2", name="Symfony2")
+     * @Route("/symfony2/{tab}", name="Symfony2")
      * @Template()
+     * @param Request $request
+     * @param $tab
+     * @return array
      */
-    public function symfony2Action(Request $request)
+    public function symfony2Action(Request $request, $tab = 'controller')
     {
         $qet = $request->query->all(); // to get all GET params
         $post = $request->request->all(); // to get all POST params.
         $cookies = $request->cookies->all(); // to get all cookies params.
         $files = $request->files->all(); // to get all files params.
 
-        return array();
+        return array('tab' => $tab);
     }
 
     /**

@@ -15,10 +15,7 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
-        {% stylesheets '@TimCheatSheetBundle/Resources/public/css/bootstrap-theme.min.css' filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-        {% stylesheets '@TimCheatSheetBundle/Resources/public/css/bootstrap.min.css' filter='cssrewrite' %}
+        {% stylesheets '@TimCheatSheetBundle/Resources/public/css/simplex/bootstrap.min.css' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
         {% stylesheets '@TimCheatSheetBundle/Resources/public/css/site.css' filter='cssrewrite' %}
@@ -28,6 +25,9 @@
 
     {% block javascripts %}
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js"></script>
+
         {% javascripts '@TimCheatSheetBundle/Resources/public/js/bootstrap.min.js' %}
             <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
