@@ -697,12 +697,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "900b55d16afdcdeb5100d435a7166d3a425b9873"
+                "reference": "14ff7f50cfea67d8a4dca37b8ca364d2a83b9864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/900b55d16afdcdeb5100d435a7166d3a425b9873",
-                "reference": "900b55d16afdcdeb5100d435a7166d3a425b9873",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/14ff7f50cfea67d8a4dca37b8ca364d2a83b9864",
+                "reference": "14ff7f50cfea67d8a4dca37b8ca364d2a83b9864",
                 "shasum": ""
             },
             "require": {
@@ -766,7 +766,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2015-05-07 12:36:20"
+            "time": "2015-06-11 13:08:34"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1389,12 +1389,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle.git",
-                "reference": "72a9abea31279bd8a61d7280bf951d1c76d2595a"
+                "reference": "388d89a3685ff4d5bc6bde319cae22c1c3741afa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/72a9abea31279bd8a61d7280bf951d1c76d2595a",
-                "reference": "72a9abea31279bd8a61d7280bf951d1c76d2595a",
+                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/388d89a3685ff4d5bc6bde319cae22c1c3741afa",
+                "reference": "388d89a3685ff4d5bc6bde319cae22c1c3741afa",
                 "shasum": ""
             },
             "require": {
@@ -1440,7 +1440,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-06-10 16:27:29"
+            "time": "2015-06-10 16:46:09"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -1505,12 +1505,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e7e48c8b012700243ebb67b098ddbeb018356a63"
+                "reference": "17387fdc8e19b15638734067b4c0710a0b434baa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e7e48c8b012700243ebb67b098ddbeb018356a63",
-                "reference": "e7e48c8b012700243ebb67b098ddbeb018356a63",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/17387fdc8e19b15638734067b4c0710a0b434baa",
+                "reference": "17387fdc8e19b15638734067b4c0710a0b434baa",
                 "shasum": ""
             },
             "require": {
@@ -1619,7 +1619,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-06-10 15:30:22"
+            "time": "2015-06-11 14:45:09"
         },
         {
             "name": "twig/twig",
