@@ -1070,7 +1070,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
+                "php": ">=5.3.9",
                 "sensiolabs/security-checker": "~2.0",
                 "symfony/class-loader": "~2.2",
                 "symfony/framework-bundle": "~2.3",
@@ -1505,12 +1505,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "17387fdc8e19b15638734067b4c0710a0b434baa"
+                "reference": "58f1420722977ca0028894a1fd8a7024142866fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/17387fdc8e19b15638734067b4c0710a0b434baa",
-                "reference": "17387fdc8e19b15638734067b4c0710a0b434baa",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/58f1420722977ca0028894a1fd8a7024142866fb",
+                "reference": "58f1420722977ca0028894a1fd8a7024142866fb",
                 "shasum": ""
             },
             "require": {
@@ -1619,7 +1619,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-06-11 14:45:09"
+            "time": "2015-06-11 22:37:12"
         },
         {
             "name": "twig/twig",

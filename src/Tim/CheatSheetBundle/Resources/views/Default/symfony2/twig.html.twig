@@ -40,12 +40,88 @@ is [not]  - test operator;                 {% if online == false %}
     {{ '<h1>{{ value }}</h1>'|escape }}{% verbatim %}
 {% endraw %}
 
+
+Popular filters
+date        {{ post.createdAt|date("d.m.Y") }}
+format      {{ "My text %s with %s|format('block', 'samples') }}
+replace     {{ "Text %block%|replace({'%block%': 'menu'}) }}
+url_encode  URL encodes a string
+json_encode Get JSON of a string
+upper       Get uppercase of a value
+lower       Get lowercase of a value
+join
+reverse     Reverses an array
+length      Count items
+sort        Sort an array
+default     Set default value {{ var|default('is not defined') }}
+keys        {% for key in items|keys %}   {% endfor %}
+escape      HTML - safe
+raw         Without escaped
+merge       Merge array]
+abs         Abs
+trim        Trim of string
+
+constant    {% if var is constant('FOO::BAR') %}    {% endif %}
+even        {% if var is even %}    {% endif %}
+odd         {% if var is odd %}    {% endif %}
+defined     {% if var is defined %}    {% endif %}
+empty       {% if var is empty %}    {% endif %}
+
+constant    {{ date.createdAt|date(constant('MY_DATE_FORMAT')) }}
 {% endverbatim %}</code></pre>
         <a class="btn btn-primary" href="http://twig.sensiolabs.org/documentation" role="button">View more about twig</a>
     </div>
 
     <div class="col-md-6">
         <h1>Control structures</h1>
-        <pre><code class="php"></code></pre>
+        <pre><code class="php">{% verbatim %}{% for item in collection %} {{ item }} {% endfor %}
+{% for i in 0..20 %} {{ i }} {% endfor %}
+{% for key, item in items %} {{ key }} : {{ item }} {% endfor %}
+
+{% for item in collection %}
+    {{ loop.index }} {# Current iteration of the loop #}
+    {{ loop.first }} {# Is first iteration #}
+    {{ loop.last }} {# Is last iteration #}
+    {{ loop.length }} {# Count items #}
+{% endfor %}
+
+{% if (condition) %} {% elseif %} {% else %} {% endif %}
+
+{% block menu %}{% endverbatim %} {{ '<div class="menu"></div>'|escape }} {% verbatim %} {% endblock %}
+
+{% extends "parent.html.twig" %} - Extends a template
+
+{% include "layout.html.twig" %} - Include a template
+{% include "layout.html.twig" with { 'foo' : 'bar' } %}
+
+{% use "my_block.html.twig" %} - Import block from a template
+{% use "my_block.html.twig" with menu as block_menu %}
+
+{{ block('block_menu') }} - Call a block
+
+{% autoescape %} This text will be escaped {% endautoescape %}
+{% autoescape 'html' %} This text will be escaped using HTML strategy {% endautoescape %}
+{% autoescape false %} This text will not be escaped {% endautoescape %}
+
+
+# Generate URL
+{{ path('route_name', {'param': 'value'}) }}
+{{ url('route_name') - absolute URL
+{% endverbatim %} {{ '<img src="{{ asset("images/favicon.png") }}" />'|escape }}{% verbatim %}
+
+# Debug
+{{ dump(object) }}
+
+Global TWIG variables
+app.security
+app.user
+app.request
+app.request.get('foo') // get
+app.request.request.get('bar') // post
+app.session
+app.environment
+app.debug
+{% endverbatim %}</code></pre>
+        <a class="btn btn-primary" href="#" role="button">How to write a TWIG Extension</a>
     </div>
 </div>
