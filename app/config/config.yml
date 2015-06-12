@@ -52,10 +52,10 @@ assetic:
         inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
         output: '/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
       font-awesome-woff:
-        inputs: '%kernel.root_dir%/Resources/public/fonts/fontawesome-webfont.woff'
+        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.woff'
         output: '/Resources/public/css/fonts/glyphicons-halflings-regular.woff'
       font-awesome-woff2:
-        inputs: '%kernel.root_dir%/Resources/public/fonts/fontawesome-webfont.woff2'
+        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.woff2'
         output: '/Resources/public/css/fonts/glyphicons-halflings-regular.woff2'
     #java: /usr/bin/java
     filters:

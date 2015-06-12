@@ -16,19 +16,19 @@ Symfony 2 Page
             <li class="{% if tab == 'routing' %}active{% endif %}"><a href="#routing" data-toggle="tab"><span class="glyphicon glyphicon-sort"></span> Routing</a></li>
         </ul>
         <div id="my-tab-content" class="tab-content">
-            <div class="tab-pane active" id="controller">
+            <div class="tab-pane {% if tab == 'controller' %}active{% endif %}" id="controller">
                 {% include 'TimCheatSheetBundle:Default/symfony2:controller.html.twig' %}
             </div>
 
-            <div class="tab-pane" id="twig">
+            <div class="tab-pane {% if tab == 'twig' %}active{% endif %}" id="twig">
                 {% include 'TimCheatSheetBundle:Default/symfony2:twig.html.twig' %}
             </div>
 
-            <div class="tab-pane" id="console-commands">
+            <div class="tab-pane {% if tab == 'console-commands' %}active{% endif %}" id="console-commands">
                 {% include 'TimCheatSheetBundle:Default/symfony2:consoleCommands.html.twig' %}
             </div>
 
-            <div class="tab-pane" id="routing">
+            <div class="tab-pane {% if tab == 'routing' %}active{% endif %}" id="routing">
                 {% include 'TimCheatSheetBundle:Default/symfony2:routing.html.twig' %}
             </div>
         </div>
