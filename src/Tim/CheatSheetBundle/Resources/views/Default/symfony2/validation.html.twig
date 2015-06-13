@@ -1,0 +1,83 @@
+
+<div class="page-header">
+    <h1>Validation</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <pre>
+{% verbatim %}
+Basic
+NotBlank 	@Assert\NotBlank()
+Blank 	@Assert\Blank()
+NotNull 	@Assert\NotNull()
+Null 	@Assert\Null()
+True 	@Assert\True(message = "The token is invalid")
+False 	@Assert\False()
+Type 	@Assert\Type(type="integer", message="The value {{ value }} is not a valid {{ type }}.")
+
+String
+Email 	@Assert\Email(message = "The email '{{ value }}' is not a valid email.", checkMX = true, checkHost = true)
+MinLength 	Assert\MinLength(limit=3, message="Your name must have at least {{ limit }} characters.")
+MaxLength 	@Assert\MaxLength(100)
+Length 	@Assert\Length( min = "2",max = "50", minMessage = "msg", maxMessage = "msg" )
+Url 	@Assert\Url(message="msg1", protocolos=array('http','https')
+Regex 	@Assert\Regex("/^\w+/") => options (pattern, match, message)
+Ip 	@Assert\Ip
+
+Number
+Max 	@Assert\Max(limit=5, message="msg1")
+Min 	@Assert\Min(limit=5, message="msg1")
+Range 	@Assert\Range(min = "120", max = "180",minMessage = "msg",maxMessage = "msg")
+
+Date
+Date 	@Assert\Date()
+DateTime 	@Assert\DateTime()
+Time 	@Assert\Time()
+
+Collection
+Choice 	@Assert\Choice(choices = {"male", "female"}, message = "Choose a valid gender.")
+Collection 	http://symfony.com/doc/current/reference/constraints/Collection.html
+Count 	@Assert\Count(min = "1", max = "5", minMessage = "msg", maxMessage = "msg" )
+UniqueEntity 	@ORM\Column(name="email", type="string", length=255, unique=true) (Suppose you have an AcmeUserBundle bundle with a User entity that has an email field. You can use the UniqueEntity constraint to guarantee that the email field remains unique between all of the constraints in your user table)
+Language 	@Assert\Language (Validates that it is a valid language code)
+Locale 	@Assert\Locale (Validates a valid Locale code (ej : ISO639-1)
+Country 	@Assert\Country (Valid two letter country code)
+
+File
+File 	Assert\File(maxSize = "1024k",mimeTypes = {"application/pdf", "application/x-pdf"},mimeeTypesMessage = "msg") http://symfony.com/doc/current/reference/constraints/File.html
+Image 	@Assert\Image(minWidth = 200, maxWidth = 400, minHeight = 200, maxHeight = 400) http://symfony.com/doc/current/reference/constraints/Image.html
+
+Other
+Callback 	@Assert\Callback(methods={"isAuthorValid"})
+All 	@Assert\All({ @Assert\NotBlank @Assert\MinLength(5),}) (Aplies all constraints to each element of the Transversable object)
+UserPassword 	@SecurityAssert\UserPassword(message = "Wrong password") (This validates that an input value is equal to the current authenticated user's password.)
+Valid 	This constraint is used to enable validation on objects that are embedded as properties on an object being validated. This allows you to validate an object and all sub-objects associated with it. http://symfony.com/doc/current/reference/constraints/Valid.html
+
+// src/Acme/BlogBundle/Entity/Author.php
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+* @Assert\Callback(methods={"isAuthorValid"})
+* or more complex example:
+* @Assert\Callback(methods={"Acme\BlogBundle\MyStaticValidatorClass", "isAuthorValid"})
+*/
+class Author
+{
+    private $firstName;
+
+    public function isAuthorValid(ExecutionContext $context)
+    {
+        // somehow you have an array of "fake names"
+        $fakeNames = array();
+
+        // check if the name is actually a fake name
+        if (in_array($this->getFirstName(), $fakeNames)) {
+            $context->addViolationAtSubPath('firstname', 'This name sounds totally fake!', array(), null);
+        }
+    }
+}
+{% endverbatim %}
+        </pre>
+    </div>
+</div>

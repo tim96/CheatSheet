@@ -57,7 +57,7 @@
                 <ul class="nav navbar-nav">
                     {% set currentRoute = app.request.attributes.get('_route') %}
                     <li class="{% if currentRoute == ('Home') %}active{% endif %}"><a href="{{ path('Home') }}">Home</a></li>
-                    <li class="{% if currentRoute == ('Symfony2') %}active{% endif %}"><a href="{{ path('Symfony2') }}">Symfony 2</a></li>
+                    <li class="{% if currentRoute == ('Symfony2') %}active{% endif %}"><a href="{{ path('Symfony2') }}">Symfony 2.7</a></li>
                     <li class="{% if currentRoute == ('Doctrine2') %}active{% endif %}"><a href="{{ path('Doctrine2') }}">Doctrine 2</a></li>
                     <li class="{% if currentRoute == ('SonataAdmin') %}active{% endif %}"><a href="{{ path('SonataAdmin') }}">SonataAdminBundle</a></li>
                     <li class="{% if currentRoute == ('Contact') %}active{% endif %}"><a href="{{ path('Contact') }}">Contact</a></li>
