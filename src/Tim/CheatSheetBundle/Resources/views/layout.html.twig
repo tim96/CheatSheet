@@ -15,7 +15,7 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
-        {% stylesheets '@TimCheatSheetBundle/Resources/public/css/simplex/bootstrap.min.css' filter='cssrewrite' %}
+        {% stylesheets '@TimCheatSheetBundle/Resources/public/css/cosmo/bootstrap.min.css' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
         {% stylesheets '@TimCheatSheetBundle/Resources/public/css/site.css' filter='cssrewrite' %}
@@ -56,12 +56,12 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     {% set currentRoute = app.request.attributes.get('_route') %}
-                    <li class="{% if currentRoute == ('Home') %}active{% endif %}"><a href="{{ path('Home') }}">Home</a></li>
+                    {#<li class="{% if currentRoute == ('Home') %}active{% endif %}"><a href="{{ path('Home') }}">Home</a></li>#}
                     <li class="{% if currentRoute == ('Symfony2') %}active{% endif %}"><a href="{{ path('Symfony2') }}">Symfony 2.7</a></li>
                     <li class="{% if currentRoute == ('Doctrine2') %}active{% endif %}"><a href="{{ path('Doctrine2') }}">Doctrine 2</a></li>
                     <li class="{% if currentRoute == ('SonataAdmin') %}active{% endif %}"><a href="{{ path('SonataAdmin') }}">SonataAdminBundle</a></li>
                     <li class="{% if currentRoute == ('Contact') %}active{% endif %}"><a href="{{ path('Contact') }}">Contact</a></li>
-                    <li class="{% if currentRoute == ('About') %}active{% endif %}"><a href="{{ path('About') }}">About</a></li>
+                    {#<li class="{% if currentRoute == ('About') %}active{% endif %}"><a href="{{ path('About') }}">About</a></li>#}
                     <!-- <li><a href="#contact">Contact</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>

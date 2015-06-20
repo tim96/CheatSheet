@@ -3,9 +3,8 @@
     <h1>Controller</h1>
 </div>
 
-<!-- Example row of columns -->
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <h1>Request</h1>
 <pre>// First variant
 public function action(Request $request)
@@ -49,7 +48,10 @@ $this->addFlash('notice', 'Your changes were saved!');
     {{ '</div>'|escape }}
 {% verbatim %}{% endfor %}{% endverbatim %}</pre>
     </div>
-    <div class="col-md-6">
+</div>
+
+<div class="row">
+    <div class="col-md-12">
         <h1>Simple controller</h1>
                 <pre><code class="php">/**
 * @Route("/hello/{name}", name="hello")
