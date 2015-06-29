@@ -4,14 +4,72 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
-        <pre><code class="php"></code></pre>
-    </div>
-    <div class="col-md-6">
-        <pre><code class="php"></code></pre>
-    </div>
-</div>
+    <div class="col-md-12">
+        <pre>
+framework:
+    router: { resource: "%kernel.root_dir%/config/routing.yml" }
 
-<div class="row">
-    <div class="col-md-12"></div>
+// Defining custom routes:
+hello_yml:
+    resource: "@NameBundle/Resources/config/routing.yml"
+hello_annotation:
+    resource: "@NameBundle/Controller/NameController.php"
+    type:     annotation
+
+// Prefix
+prefix_yml:
+    resource: "@NameBundle/Resources/config/routing.yml"
+    prefix: /admin
+// Prefix annotation
+/**
+ * @Route("/blog")
+ */
+class NameController extends Controller
+{
+    /**
+     * @Route("/{id}")
+     */
+    public function showAction($id)
+    {
+    }
+}
+
+Route: http://www.myurl.com/name/en/2
+route_name:
+    path: /name/{culture}/{page}
+    defaults: { _controller: NameBundle:Name:index, page: 1}
+    requirments:
+        page: \d+
+        culture: en|ru
+        methods: [GET]
+home: # http://host.myurl.com/
+    path: /
+    host: "{user}.example.com"
+    defaults: { _controller: NameBundle:Api:Login }
+main:
+    path: /
+    defaults: { _controller: NameBundle:Main:homepage }
+
+class BlogController extends Controller{
+    /**
+    * @Route("/blog/ / ", requirements={"page" = "\d+"}, defaults={"page" = 1}, name="blog")
+    * @Method({"GET"})
+    */
+    public function indexAction($page) {
+    }
+    or
+    public function indexAction($page = 1) {
+    }
+}
+
+// Relative URL
+$url = $this->get('router')->generate('blog', array('culture' => 'ru', 'page' => 2)); // /blog/en/2
+$urlSlug = $this->get('router')->generate('blog_slug', array('slug' => 'my-post')); // /blog/my-post
+
+// Absolute URL
+$url = $this->get('router')->generate('blog', array('culture' => 'ru', 'page' => 2), true); // http://www.url.com/blog/en/2
+$urlSlug = $this->get('router')->generate('blog_slug', array('slug' => 'my-post'), true); // http://www.url.com/blog/my-post
+
+        </pre>
+    </div>
 </div>

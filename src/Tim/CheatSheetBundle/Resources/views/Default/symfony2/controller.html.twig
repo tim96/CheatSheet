@@ -3,11 +3,10 @@
     <h1>Controller</h1>
 </div>
 
-<!-- Example row of columns -->
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <h1>Request</h1>
-<pre><code class="php">// First variant
+<pre>// First variant
 public function action(Request $request)
 {
     $qet = $request->query->all(); to get all GET params
@@ -47,9 +46,12 @@ $this->addFlash('notice', 'Your changes were saved!');
     {{ '<div class="flash-notice">'|escape }}
         {% verbatim %}{{ flashMessage }}{% endverbatim %}
     {{ '</div>'|escape }}
-{% verbatim %}{% endfor %}{% endverbatim %}</code></pre>
+{% verbatim %}{% endfor %}{% endverbatim %}</pre>
     </div>
-    <div class="col-md-6">
+</div>
+
+<div class="row">
+    <div class="col-md-12">
         <h1>Simple controller</h1>
                 <pre><code class="php">/**
 * @Route("/hello/{name}", name="hello")

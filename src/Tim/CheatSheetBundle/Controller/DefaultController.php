@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Tim\CheatSheetBundle\Entity\Feedback;
+use Tim\CheatSheetBundle\Form\FeedbackType;
 
 class DefaultController extends Controller
 {
@@ -15,7 +17,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        return $this->redirectToRoute('Symfony2');
     }
 
     /**
@@ -66,9 +68,39 @@ class DefaultController extends Controller
      * @Route("/contact", name="Contact")
      * @Template()
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        // todo: Add contact form
+        $feedback = new Feedback();
+        $form = $this->createForm(new FeedbackType(), $feedback);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $data = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Thank you, for your feedback!'
+            );
+
+            return $this->redirectToRoute('thankyou');
+        }
+
+        return array(
+            'form' => $form->createView()
+        );
+    }
+
+    /**
+     * @Route("/thankyou", name="thankyou")
+     * @Template()
+     */
+    public function thankyouAction()
+    {
         return array();
     }
 }

@@ -1,0 +1,138 @@
+
+<div class="page-header">
+    <h1>Forms</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <pre>
+{% verbatim %}
+// src/Acme/TaskBundle/Controller/DefaultController.php
+namespace Acme\TaskBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Acme\TaskBundle\Entity\Task;
+use Symfony\Component\HttpFoundation\Request;
+
+class DefaultController extends Controller
+{
+    public function newAction(Request $request)
+    {
+    // create a task and give it some dummy data for this example
+    $task = $this->createForm(new Task());
+    $task->setTask('Write a blog post');
+    $task->setDueDate(new \DateTime('tomorrow'));
+
+    $form = $this->createFormBuilder($task)
+        ->add('task', 'text')
+        ->add('dueDate', 'date')
+        ->getForm();
+
+    return $this->render('AcmeTaskBundle:Default:new.html.twig', array(
+        'form' => $form->createView()
+    ));
+
+    }
+}
+
+
+// src/Acme/TaskBundle/Form/Type/TaskType.php
+namespace Acme\TaskBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+class TaskType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('task');
+        $builder->add('dueDate', null, array('widget' => 'single_text'));
+
+        //Any extra field not mapped to the object must define property_path.
+        $builder->add('agree','checkbox', array('property_path' => false));
+
+        //Embedding one form, you need to create first the categoryType class as usual.
+        $builder->add('category', new CategoryType());
+
+        //Embedding a collection of TAGS forms. You already have a tagType form.
+        $builder->add('tags', 'collection', array('type' => new TagType()));
+
+    }
+
+    public function getName()
+    {
+        return 'task'; //must be unique.
+    }
+
+    //Symfony can guess the type but it is a good practice to always set de data_class because embedding forms is necessary.
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'Acme\TaskBundle\Entity\Task',
+            'cascade_validation' => true, //needed to validate embeed forms.
+            'validation_groups' => array('registration'), //use of validation groups.
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            // a unique key to help generate the secret token
+            'intention' => 'task_item',
+        ));
+    }
+
+}
+
+{% endverbatim %}{{ '<form action="{{ path("task_new") }}" method="post" {{ form_enctype(form) }}>
+{{ form_widget(form) }}
+<input type="submit" />
+</form>
+
+
+<form action="{{ path("task_new") }}" method="post" {{ form_enctype(form) }}>
+{{ form_errors(form) }}
+
+{{ form_row(form.task) }}
+{{ form_row(form.dueDate) }}
+
+{{ form_rest(form) }}
+
+<input type="submit" />
+</form>
+
+
+<form action="{{ path("task_new") }}" method="post" {{ form_enctype(form) }}>
+{{ form_errors(form) }}
+<div>
+    {{ form_label(form.task,"custom label") }}
+    {{ form_errors(form.task) }}
+    {{ form_widget(form.task, { "attr": {"class": "span3"} })) }}
+</div>
+<div>
+    {{ form_label(form.dueDate) }}
+    {{ form_errors(form.dueDate) }}
+    {{ form_widget(form.dueDate) }}
+</div>
+
+{# Render one embedded form #}
+<h3>Category</h3>
+<div class="category">
+    {{ form_row(form.category.name) }}
+</div>
+
+{# Render multiple embedded forms #}
+<h3>Tags</h3>
+<ul class="tags">
+    {% for tag in form.tags %}
+    <li>{{ form_row(tag.name) }}</li>
+    {% endfor %}
+</ul>
+
+{{ form_rest(form) }}
+
+</form>'|escape }}{% verbatim %}
+
+
+{% endverbatim %}
+        </pre>
+    </div>
+</div>

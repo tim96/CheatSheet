@@ -14,22 +14,38 @@ Symfony 2 Page
             <li class="{% if tab == 'twig' %}active{% endif %}"><a href="#twig" data-toggle="tab"><span class="glyphicon glyphicon-file"></span> Twig</a></li>
             <li class="{% if tab == 'console-commands' %}active{% endif %}"><a href="#console-commands" data-toggle="tab"><span class="glyphicon glyphicon-console"></span> Console commands</a></li>
             <li class="{% if tab == 'routing' %}active{% endif %}"><a href="#routing" data-toggle="tab"><span class="glyphicon glyphicon-sort"></span> Routing</a></li>
+            <li class="{% if tab == 'testing' %}active{% endif %}"><a href="#testing" data-toggle="tab"><span class="glyphicon glyphicon-transfer"></span> Testing</a></li>
+            <li class="{% if tab == 'validation' %}active{% endif %}"><a href="#validation" data-toggle="tab"><span class="glyphicon glyphicon-plus"></span> Validation</a></li>
+            <li class="{% if tab == 'forms' %}active{% endif %}"><a href="#forms" data-toggle="tab"><span class="glyphicon glyphicon-file"></span> Forms</a></li>
+            <li class="{% if tab == 'translation' %}active{% endif %}"><a href="#translation" data-toggle="tab"><span class="glyphicon glyphicon-book"></span> Translation</a></li>
         </ul>
         <div id="my-tab-content" class="tab-content">
-            <div class="tab-pane active" id="controller">
+            <div class="tab-pane {% if tab == 'controller' %}active{% endif %}" id="controller">
                 {% include 'TimCheatSheetBundle:Default/symfony2:controller.html.twig' %}
             </div>
 
-            <div class="tab-pane" id="twig">
+            <div class="tab-pane {% if tab == 'twig' %}active{% endif %}" id="twig">
                 {% include 'TimCheatSheetBundle:Default/symfony2:twig.html.twig' %}
             </div>
 
-            <div class="tab-pane" id="console-commands">
+            <div class="tab-pane {% if tab == 'console-commands' %}active{% endif %}" id="console-commands">
                 {% include 'TimCheatSheetBundle:Default/symfony2:consoleCommands.html.twig' %}
             </div>
 
-            <div class="tab-pane" id="routing">
+            <div class="tab-pane {% if tab == 'routing' %}active{% endif %}" id="routing">
                 {% include 'TimCheatSheetBundle:Default/symfony2:routing.html.twig' %}
+            </div>
+             <div class="tab-pane {% if tab == 'testing' %}active{% endif %}" id="testing">
+                {% include 'TimCheatSheetBundle:Default/symfony2:testing.html.twig' %}
+            </div>
+            <div class="tab-pane {% if tab == 'validation' %}active{% endif %}" id="validation">
+                {% include 'TimCheatSheetBundle:Default/symfony2:validation.html.twig' %}
+            </div>
+            <div class="tab-pane {% if tab == 'forms' %}active{% endif %}" id="forms">
+                {% include 'TimCheatSheetBundle:Default/symfony2:forms.html.twig' %}
+            </div>
+            <div class="tab-pane {% if tab == 'translation' %}active{% endif %}" id="translation">
+                {% include 'TimCheatSheetBundle:Default/symfony2:translation.html.twig' %}
             </div>
         </div>
 
