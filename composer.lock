@@ -1392,12 +1392,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle.git",
-                "reference": "eb7044bf48c4dbfe866ffcc69dfc1bdc17994a43"
+                "reference": "5cf613f52558d47648485f0828612533165603af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/eb7044bf48c4dbfe866ffcc69dfc1bdc17994a43",
-                "reference": "eb7044bf48c4dbfe866ffcc69dfc1bdc17994a43",
+                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/5cf613f52558d47648485f0828612533165603af",
+                "reference": "5cf613f52558d47648485f0828612533165603af",
                 "shasum": ""
             },
             "require": {
@@ -1443,7 +1443,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-06-19 00:47:37"
+            "time": "2015-07-04 11:05:59"
         },
         {
             "name": "symfony/swiftmailer-bundle",
