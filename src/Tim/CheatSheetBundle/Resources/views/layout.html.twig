@@ -15,10 +15,10 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
-        {% stylesheets '@TimCheatSheetBundle/Resources/public/css/cosmo/bootstrap.min.css' filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-        {% stylesheets '@TimCheatSheetBundle/Resources/public/css/site.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        {% stylesheets
+        '@TimCheatSheetBundle/Resources/public/css/cosmo/bootstrap.min.css' filter='cssrewrite'
+        '@TimCheatSheetBundle/Resources/public/css/site.css' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
     {% endblock %}
@@ -28,10 +28,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js"></script>
 
-        {% javascripts '@TimCheatSheetBundle/Resources/public/js/bootstrap.min.js' %}
-            <script src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-        {% javascripts '@TimCheatSheetBundle/Resources/public/js/site.js' %}
+        {% javascripts
+            '@TimCheatSheetBundle/Resources/public/js/site.js'
+            '@TimCheatSheetBundle/Resources/public/js/bootstrap.min.js' %}
             <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock %}
@@ -60,6 +59,7 @@
                     <li class="{% if currentRoute == ('Symfony2') %}active{% endif %}"><a href="{{ path('Symfony2') }}">Symfony 2.7</a></li>
                     <li class="{% if currentRoute == ('Doctrine2') %}active{% endif %}"><a href="{{ path('Doctrine2') }}">Doctrine 2</a></li>
                     <li class="{% if currentRoute == ('SonataAdmin') %}active{% endif %}"><a href="{{ path('SonataAdmin') }}">SonataAdminBundle</a></li>
+                    <li class="{% if currentRoute == ('Faq') %}active{% endif %}"><a href="{{ path('Faq') }}">FAQ</a></li>
                     <li class="{% if currentRoute == ('Contact') %}active{% endif %}"><a href="{{ path('Contact') }}">Contact</a></li>
                     {#<li class="{% if currentRoute == ('About') %}active{% endif %}"><a href="{{ path('About') }}">About</a></li>#}
                     <!-- <li><a href="#contact">Contact</a></li>
