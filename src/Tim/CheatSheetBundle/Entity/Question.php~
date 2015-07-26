@@ -1,0 +1,93 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: tim
+ * Date: 26.07.2015
+ * Time: 19:51
+ */
+
+namespace Tim\CheatSheetBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Question
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Tim\CheatSheetBundle\Entity\QuestionRepository")
+ */
+class Question
+{
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('now');
+        $this->updatedAt = new \DateTime('now');
+        $this->isPublish = false;
+        $this->isDeleted = false;
+    }
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    protected $title;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     *
+     * @ORM\Column(name="question", type="text")
+     */
+    protected $question;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     *
+     * @ORM\Column(name="content", type="text")
+     */
+    protected $content;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("\DateTime")
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     **/
+    private $createdAt;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("\DateTime")
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     **/
+    private $updatedAt;
+
+    /**
+     * @ORM\Column(name="is_publish", type="boolean", options={"default": false})
+     **/
+    private $isPublish = false;
+
+    /**
+     * @ORM\Column(name="is_deleted", type="boolean", options={"default": false})
+     **/
+    private $isDeleted = false;
+
+
+}
