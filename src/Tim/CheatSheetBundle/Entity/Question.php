@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: tim
+ * Date: 26.07.2015
+ * Time: 19:51
+ */
 
 namespace Tim\CheatSheetBundle\Entity;
 
@@ -6,17 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Feedback
+ * Question
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Tim\CheatSheetBundle\Entity\FeedbackRepository")
+ * @ORM\Entity(repositoryClass="Tim\CheatSheetBundle\Entity\QuestionRepository")
  */
-class Feedback
+class Question
 {
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
-        $this->isAnswered = false;
+        $this->updatedAt = new \DateTime('now');
+        $this->isPublish = false;
         $this->isDeleted = false;
     }
 
@@ -33,32 +40,28 @@ class Feedback
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = false
-     * )
-     * @ORM\Column(name="email", type="string", length=255)
+     *
+     * @ORM\Column(name="title", type="string", length=255)
      */
-    private $email;
+    protected $title;
 
     /**
      * @var string
      *
      * @Assert\NotBlank()
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="question", type="text")
      */
-    protected $name;
+    protected $question;
 
     /**
-     *
      * @var string
      *
      * @Assert\NotBlank()
      *
-     * @ORM\Column(name="message", type="text")
+     * @ORM\Column(name="content", type="text")
      */
-    protected $message;
+    protected $content;
 
     /**
      * @Assert\NotBlank()
@@ -69,14 +72,27 @@ class Feedback
     private $createdAt;
 
     /**
-     * @ORM\Column(name="is_answered", type="boolean", options={"default": false})
+     * @Assert\NotBlank()
+     * @Assert\Type("\DateTime")
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
      **/
-    private $isAnswered = false;
+    private $updatedAt;
+
+    /**
+     * @ORM\Column(name="is_publish", type="boolean", options={"default": false})
+     **/
+    private $isPublish = false;
 
     /**
      * @ORM\Column(name="is_deleted", type="boolean", options={"default": false})
      **/
     private $isDeleted = false;
+
+    public function __toString()
+    {
+        return $this->id ? (string)$this->id : "";
+    }
 
     /**
      * Get id
@@ -89,75 +105,75 @@ class Feedback
     }
 
     /**
-     * Set email
+     * Set title
      *
-     * @param string $email
+     * @param string $title
      *
-     * @return Feedback
+     * @return Question
      */
-    public function setEmail($email)
+    public function setTitle($title)
     {
-        $this->email = $email;
+        $this->title = $title;
     
         return $this;
     }
 
     /**
-     * Get email
+     * Get title
      *
      * @return string
      */
-    public function getEmail()
+    public function getTitle()
     {
-        return $this->email;
+        return $this->title;
     }
 
     /**
-     * Set name
+     * Set question
      *
-     * @param string $name
+     * @param string $question
      *
-     * @return Feedback
+     * @return Question
      */
-    public function setName($name)
+    public function setQuestion($question)
     {
-        $this->name = $name;
+        $this->question = $question;
     
         return $this;
     }
 
     /**
-     * Get name
+     * Get question
      *
      * @return string
      */
-    public function getName()
+    public function getQuestion()
     {
-        return $this->name;
+        return $this->question;
     }
 
     /**
-     * Set message
+     * Set content
      *
-     * @param string $message
+     * @param string $content
      *
-     * @return Feedback
+     * @return Question
      */
-    public function setMessage($message)
+    public function setContent($content)
     {
-        $this->message = $message;
+        $this->content = $content;
     
         return $this;
     }
 
     /**
-     * Get message
+     * Get content
      *
      * @return string
      */
-    public function getMessage()
+    public function getContent()
     {
-        return $this->message;
+        return $this->content;
     }
 
     /**
@@ -165,7 +181,7 @@ class Feedback
      *
      * @param \DateTime $createdAt
      *
-     * @return Feedback
+     * @return Question
      */
     public function setCreatedAt($createdAt)
     {
@@ -185,27 +201,51 @@ class Feedback
     }
 
     /**
-     * Set isAnswered
+     * Set updatedAt
      *
-     * @param boolean $isAnswered
+     * @param \DateTime $updatedAt
      *
-     * @return Feedback
+     * @return Question
      */
-    public function setIsAnswered($isAnswered)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->isAnswered = $isAnswered;
+        $this->updatedAt = $updatedAt;
     
         return $this;
     }
 
     /**
-     * Get isAnswered
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set isPublish
+     *
+     * @param boolean $isPublish
+     *
+     * @return Question
+     */
+    public function setIsPublish($isPublish)
+    {
+        $this->isPublish = $isPublish;
+    
+        return $this;
+    }
+
+    /**
+     * Get isPublish
      *
      * @return boolean
      */
-    public function getIsAnswered()
+    public function getIsPublish()
     {
-        return $this->isAnswered;
+        return $this->isPublish;
     }
 
     /**
@@ -213,7 +253,7 @@ class Feedback
      *
      * @param boolean $isDeleted
      *
-     * @return Feedback
+     * @return Question
      */
     public function setIsDeleted($isDeleted)
     {

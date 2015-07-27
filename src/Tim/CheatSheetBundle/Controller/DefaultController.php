@@ -103,4 +103,13 @@ class DefaultController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route("/faq", name="Faq")
+     * @Template()
+     */
+    public function faqAction()
+    {
+        return array();
+    }
 }
