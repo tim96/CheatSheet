@@ -4,13 +4,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
+    <parameters>
+        <parameter key="tim_cheat_sheet.feedback.handler.class">Tim\CheatSheetBundle\Handler\FeedbackHandler</parameter>
+        <parameter key="tim_cheat_sheet.feedback.class">Tim\CheatSheetBundle\Entity\Feedback</parameter>
+    </parameters>
+
     <services>
-        <service id="tim_cheat_sheet.example" class="Tim\CheatSheetBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="tim_cheat_sheet.feedback.handler" class="%tim_cheat_sheet.feedback.handler.class%">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%tim_cheat_sheet.feedback.class%</argument>
         </service>
     </services>
-    -->
 </container>

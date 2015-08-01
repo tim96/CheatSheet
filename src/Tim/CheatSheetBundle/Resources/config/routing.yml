@@ -1,0 +1,4 @@
+tim_cheat_sheet_default:
+    resource: "@TimCheatSheetBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
