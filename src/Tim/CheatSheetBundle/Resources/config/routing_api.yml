@@ -1,0 +1,5 @@
+tim_cheat_sheet_api_v1:
+    resource: "@TimCheatSheetBundle/Controller/ApiV1Controller.php"
+    type:     rest
+    name_prefix: v1
+    prefix:   /v1

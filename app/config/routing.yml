@@ -1,4 +1,8 @@
 tim_cheat_sheet:
-    resource: "@TimCheatSheetBundle/Controller/"
-    type:     annotation
+    resource: "@TimCheatSheetBundle/Resources/config/routing.yml"
     prefix:   /
+
+tim_cheat_sheet_api:
+    resource: "@TimCheatSheetBundle/Resources/config/routing_api.yml"
+    type: rest
+    prefix:   /api

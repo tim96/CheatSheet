@@ -20,6 +20,8 @@
         "sensio/distribution-bundle": "3.*@dev",
         "sensio/framework-extra-bundle": "3.*@dev",
         "sensio/generator-bundle": "2.*@dev",
+        "jms/serializer-bundle": "1.*",
+        "friendsofsymfony/rest-bundle": "1.*",
         "incenteev/composer-parameter-handler": "2.*@dev"
     },
     "require-dev": {
