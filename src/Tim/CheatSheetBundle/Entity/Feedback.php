@@ -4,12 +4,23 @@ namespace Tim\CheatSheetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+// use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
+
+// Help information:
+// @ExclusionPolicy(“all”) : Every field on your entity will be ignore while serializing.
+// @Expose : This field will be serialized
+// @VirtualProperty : This method will be called and serialized as a virtual property. (used_name in our example)
 
 /**
  * Feedback
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Tim\CheatSheetBundle\Entity\FeedbackRepository")
+ *
+ * @ExclusionPolicy("all")
  */
 class Feedback
 {
@@ -26,6 +37,8 @@ class Feedback
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Expose
      */
     private $id;
 
@@ -38,6 +51,8 @@ class Feedback
      *     checkMX = false
      * )
      * @ORM\Column(name="email", type="string", length=255)
+     *
+     * @Expose
      */
     private $email;
 
@@ -47,6 +62,8 @@ class Feedback
      * @Assert\NotBlank()
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *
+     * @Expose
      */
     protected $name;
 
@@ -57,6 +74,8 @@ class Feedback
      * @Assert\NotBlank()
      *
      * @ORM\Column(name="message", type="text")
+     *
+     * @Expose
      */
     protected $message;
 
@@ -230,5 +249,16 @@ class Feedback
     public function getIsDeleted()
     {
         return $this->isDeleted;
+    }
+
+    /**
+     * Get datetime on timestamp
+     *
+     * @return int|null
+     * @VirtualProperty
+     */
+    public function getCreatedAtTimestamp()
+    {
+        return $this->createdAt ? $this->createdAt->getTimestamp() : null;
     }
 }
