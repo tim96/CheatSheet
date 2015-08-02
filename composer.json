@@ -17,7 +17,7 @@
         "symfony/assetic-bundle": "2.*@dev",
         "symfony/swiftmailer-bundle": "2.*@dev",
         "symfony/monolog-bundle": "2.*@dev",
-        "sensio/distribution-bundle": "3.*@dev",
+        "sensio/distribution-bundle": "4.*@dev",
         "sensio/framework-extra-bundle": "3.*@dev",
         "sensio/generator-bundle": "2.*@dev",
         "jms/serializer-bundle": "1.*",
@@ -25,13 +25,13 @@
         "incenteev/composer-parameter-handler": "2.*@dev"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "1.5.*",
-        "phpmd/phpmd": "2.1.*",
-        "sebastian/phpcpd": "2.0.*",
-        "pdepend/pdepend": "2.0.*",
-        "phploc/phploc": "2.0.*",
-        "phpunit/phpunit": "4.3.*",
-        "theseer/phpdox": "0.7.*"
+        "squizlabs/php_codesniffer": "1.*",
+        "phpmd/phpmd": "2.*",
+        "sebastian/phpcpd": "2.*",
+        "pdepend/pdepend": "2.*",
+        "phploc/phploc": "2.*",
+        "phpunit/phpunit": "4.*",
+        "theseer/phpdox": "0.*"
     },
     "scripts": {
         "post-root-package-install": [
