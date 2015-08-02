@@ -14,6 +14,7 @@
         "doctrine/orm": "2.*@dev",
         "doctrine/dbal": "2.*@dev",
         "doctrine/doctrine-bundle": "1.*@dev",
+        "doctrine/doctrine-fixtures-bundle": "2.*",
         "symfony/assetic-bundle": "2.*@dev",
         "symfony/swiftmailer-bundle": "2.*@dev",
         "symfony/monolog-bundle": "2.*@dev",
@@ -22,7 +23,8 @@
         "sensio/generator-bundle": "2.*@dev",
         "jms/serializer-bundle": "1.*",
         "friendsofsymfony/rest-bundle": "1.*",
-        "incenteev/composer-parameter-handler": "2.*@dev"
+        "incenteev/composer-parameter-handler": "2.*@dev",
+        "liip/functional-test-bundle": "1.*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
