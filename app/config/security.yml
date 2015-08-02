@@ -3,10 +3,27 @@ security:
         in_memory:
             memory: ~
 
+    role_hierarchy:
+        ROLE_API:    []
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
 
+        #wsse_secured:
+        #    pattern:   ^/api/.*
+        #    wsse:
+        #        realm: "Secured with WSSE" #identifies the set of resources to which the authentication information will apply (WWW-Authenticate)
+        #        profile: "UsernameToken" #WSSE profile (WWW-Authenticate)
+
         default:
             anonymous: ~
+
+    access_control:
+        - { path: ^/api, role: [ROLE_API] }
+
+        - { path: ^/api/login, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
+
+        - { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
+
