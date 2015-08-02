@@ -8,7 +8,17 @@
 
 namespace Tim\CheatSheetBundle\Handler;
 
-class FeedbackHandler
+use Tim\CheatSheetBundle\Interfaces\IRecordInterface;
+
+class FeedbackHandler extends BaseHandler implements IRecordInterface
 {
-    // todo extends from basehandler and add feedback logic
+    public function get($id)
+    {
+        return $this->getRepository()->find($id);
+    }
+
+    public function getList($options = array())
+    {
+        return $this->getRepository()->findBy($options);
+    }
 }

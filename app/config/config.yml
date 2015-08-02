@@ -105,7 +105,7 @@ sensio_framework_extra:
 fos_rest:
     param_fetcher_listener: true
     view:
-        view_response_listener: 'force'
+        view_response_listener: force
         formats:
             xml:  true
             json: true
