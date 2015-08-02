@@ -23,5 +23,7 @@ security:
     access_control:
         - { path: ^/api, role: [ROLE_API] }
 
-        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/login, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
+
+        - { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
 
