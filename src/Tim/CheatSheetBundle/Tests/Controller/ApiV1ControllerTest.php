@@ -49,5 +49,6 @@ class ApiV1ControllerTest extends WebTestCase
 
         $this->assertTrue(isset($decoded['id']));
         $this->assertEquals("Username", $decoded['name']);
+        $this->assertNotContains("created_at", $decoded);
     }
 }
