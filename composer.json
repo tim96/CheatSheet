@@ -26,7 +26,8 @@
         "friendsofsymfony/user-bundle": "1.*",
         "incenteev/composer-parameter-handler": "2.*@dev",
         "liip/functional-test-bundle": "1.*",
-        "escapestudios/wsse-authentication-bundle": "2.*"
+        "escapestudios/wsse-authentication-bundle": "2.*",
+        "antimattr/google-bundle": "2.*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
