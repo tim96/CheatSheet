@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         {% stylesheets
         '@TimCheatSheetBundle/Resources/public/css/cosmo/bootstrap.min.css' filter='cssrewrite'
-        '@TimCheatSheetBundle/Resources/public/css/site.css' %}
+        '@TimCheatSheetBundle/Resources/public/css/site.css' output='css/compiled/app.css' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
     {% endblock %}
@@ -30,7 +30,7 @@
 
         {% javascripts
             '@TimCheatSheetBundle/Resources/public/js/site.js'
-            '@TimCheatSheetBundle/Resources/public/js/bootstrap.min.js' %}
+            '@TimCheatSheetBundle/Resources/public/js/bootstrap.min.js' output='js/compiled/app.js' %}
             <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock %}

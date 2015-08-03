@@ -46,4 +46,35 @@ class ApiV1Controller extends FOSRestController
 
         return array('Feedbacks' => $feedbacks);
     }
+
+    /**
+     *
+     * @Annotations\View(templateVar="Question")
+     *
+     * @param $id
+     * @return array
+     */
+    public function getQuestionAction($id)
+    {
+        $question = $this->container
+            ->get('tim_cheat_sheet.question.handler')
+            ->get($id);
+
+        return $question;
+    }
+
+    /**
+     *
+     * @Annotations\View(templateVar="Questions")
+     *
+     * @return array
+     */
+    public function getQuestionsAction()
+    {
+        $questions = $this->container
+            ->get('tim_cheat_sheet.question.handler')
+            ->getList();
+
+        return array('Questions' => $questions);
+    }
 }

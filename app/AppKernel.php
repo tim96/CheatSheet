@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Escape\WSSEAuthenticationBundle\EscapeWSSEAuthenticationBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new AntiMattr\GoogleBundle\GoogleBundle(),
             new Tim\CheatSheetBundle\TimCheatSheetBundle(),
         );
 
