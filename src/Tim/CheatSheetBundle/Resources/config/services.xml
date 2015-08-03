@@ -7,6 +7,9 @@
     <parameters>
         <parameter key="tim_cheat_sheet.feedback.handler.class">Tim\CheatSheetBundle\Handler\FeedbackHandler</parameter>
         <parameter key="tim_cheat_sheet.feedback.class">Tim\CheatSheetBundle\Entity\Feedback</parameter>
+
+        <parameter key="tim_cheat_sheet.question.handler.class">Tim\CheatSheetBundle\Handler\QuestionHandler</parameter>
+        <parameter key="tim_cheat_sheet.question.class">Tim\CheatSheetBundle\Entity\Question</parameter>
     </parameters>
 
     <services>
@@ -14,6 +17,12 @@
             <argument type="service" id="service_container" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%tim_cheat_sheet.feedback.class%</argument>
+        </service>
+
+        <service id="tim_cheat_sheet.question.handler" class="%tim_cheat_sheet.question.handler.class%">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%tim_cheat_sheet.question.class%</argument>
         </service>
     </services>
 </container>
