@@ -110,6 +110,9 @@ class DefaultController extends Controller
      */
     public function faqAction()
     {
-        return array();
+        $data = $this->container->get('tim_cheat_sheet.question.handler')
+            ->getListAsArray();
+
+        return array('Questions' => $data);
     }
 }

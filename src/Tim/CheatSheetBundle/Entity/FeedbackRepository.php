@@ -10,4 +10,5 @@ namespace Tim\CheatSheetBundle\Entity;
  */
 class FeedbackRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

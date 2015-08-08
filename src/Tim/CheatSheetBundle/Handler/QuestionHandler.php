@@ -21,4 +21,9 @@ class QuestionHandler extends BaseHandler implements IRecordInterface
     {
         return $this->getRepository()->findBy($options);
     }
+
+    public function getListAsArray()
+    {
+        return $this->getRepository()->getListAsArray();
+    }
 }
