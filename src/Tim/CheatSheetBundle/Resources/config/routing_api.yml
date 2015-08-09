@@ -3,3 +3,9 @@ tim_cheat_sheet_api_v1:
     type:     rest
     name_prefix: api_v1_
     prefix:   /v1
+
+tim_cheat_sheet_api_v2:
+    resource: "@TimCheatSheetBundle/Controller/v2/ApiController.php"
+    type:     rest
+    name_prefix: api_v2_
+    prefix:   /v2

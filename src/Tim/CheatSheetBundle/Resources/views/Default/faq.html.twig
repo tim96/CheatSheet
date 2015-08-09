@@ -11,10 +11,14 @@ FAQ
         </div>
 
         <div class="contentBoxFooter">
-            <div>
-                <a href="a1" class="spoilerButton">1. Question about Doctrine: <i class="fa fa-arrow-down"></i></a>
-                <div id="a1" class="spoiler" style="display: none;">Max content.</div>
-            </div>
+            {% set index = 1 %}
+            {% for question in Questions %}
+                <div>
+                    <a href="a{{ index }}" class="spoilerButton">{{ index }}. {{ question.question }}  <i class="fa fa-arrow-down"></i></a>
+                    <div id="a{{ index }}" class="spoiler" style="display: none;">{{ question.content }}</div>
+                </div>
+                {% set index = index + 1 %}
+            {% endfor %}
         </div>
 
     </div>

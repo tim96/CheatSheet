@@ -1,6 +1,7 @@
 <?php
 
 namespace Tim\CheatSheetBundle\Entity;
+use Doctrine\ORM\AbstractQuery;
 
 /**
  * QuestionRepository
@@ -10,4 +11,16 @@ namespace Tim\CheatSheetBundle\Entity;
  */
 class QuestionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getListAsArray()
+    {
+        $query = $this->createQueryBuilder('q');
+
+        $query->andWhere('q.isPublish = :isPublish')
+            ->setParameter('isPublish', true)
+            ->addOrderBy('q.createdAt', 'DESC')
+        ;
+
+        $data = $query->getQuery()->getResult(AbstractQuery::HYDRATE_ARRAY);
+        return count($data) > 0 ? $data : array();
+    }
 }

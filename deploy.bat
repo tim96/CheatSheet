@@ -1,4 +1,8 @@
 
+php composer.phar self-update
+php composer.phar update
+php composer.phar dump-autoload --optimize
+
 php app/console cache:clear
 php app/console cache:clear --env=prod --no-debug
 
