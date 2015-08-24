@@ -11,13 +11,14 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.7.*",
+        "symfony/assetic-bundle": "2.*",
+        "symfony/swiftmailer-bundle": "2.*",
+        "symfony/monolog-bundle": "2.*",
+        "twig/twig": "1.*",
         "doctrine/orm": "2.*@dev",
         "doctrine/dbal": "2.*@dev",
         "doctrine/doctrine-bundle": "1.*@dev",
         "doctrine/doctrine-fixtures-bundle": "2.*",
-        "symfony/assetic-bundle": "2.*@dev",
-        "symfony/swiftmailer-bundle": "2.*@dev",
-        "symfony/monolog-bundle": "2.*@dev",
         "sensio/distribution-bundle": "4.*@dev",
         "sensio/framework-extra-bundle": "3.*@dev",
         "sensio/generator-bundle": "2.*@dev",
@@ -27,7 +28,13 @@
         "incenteev/composer-parameter-handler": "2.*@dev",
         "liip/functional-test-bundle": "1.*",
         "escapestudios/wsse-authentication-bundle": "2.*",
-        "antimattr/google-bundle": "2.*"
+        "antimattr/google-bundle": "2.*",
+        "suncat/mobile-detect-bundle": "0.*",
+        "tfox/mpdf-port-bundle": "1.*",
+        "hwi/oauth-bundle": "0.*",
+        "cboden/ratchet": "0.*",
+        "gregwar/captcha-bundle": "1.*",
+        "sonata-project/admin-bundle": "2.*@dev"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
