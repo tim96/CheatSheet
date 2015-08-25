@@ -32,7 +32,7 @@ class FeedbackHandler extends BaseHandler implements IRecordInterface
 
     /**
      * @param $record Feedback
-     * @param $mailer
+     * @param $mailer \Swift_Mailer
      * @param $emailTo string
      */
     public function sendNotification($record, $mailer, $emailTo)
@@ -41,10 +41,10 @@ class FeedbackHandler extends BaseHandler implements IRecordInterface
 
         // todo: add new email template
         $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
-      //      ->setBody($this->renderView('TimCheatSheetBundle:Feedback:emailTemplateCreate.html.twig', array('param' => $param)))
+            ->setSubject('New feedback')
+            ->setFrom($mailer->getTransport()->getUsername())
+            ->setTo($emailTo)
+            // ->setBody($this->renderView('TimCheatSheetBundle:Feedback:emailTemplateCreate.html.twig', array('param' => $param)))
             ->setBody("<body><h2>New feedback:</h2><p>id: {$record->getId()}<br/>text: {$record->getMessage()}</p></body>")
         ;
 
