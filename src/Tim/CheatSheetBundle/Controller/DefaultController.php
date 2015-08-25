@@ -77,15 +77,34 @@ class DefaultController extends Controller
 
         if ($form->isValid()) {
 
-            $data = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($data);
-            $em->flush();
+            try {
+                $data = $form->getData();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($data);
+                $em->flush();
 
-            $this->addFlash(
-                'notice',
-                'Thank you, for your feedback!'
-            );
+                $this->addFlash(
+                    'notice',
+                    'Thank you, for your feedback!'
+                );
+            }
+            catch(\Exception $ex)
+            {
+                $this->addFlash('error', 'Sorry, something wrong');
+                return array(
+                    'form' => $form->createView()
+                );
+            }
+
+            try
+            {
+                $mailer = $this->get('mailer');
+                // todo: add email sending
+            }
+            catch(\Exception $ex)
+            {
+                // todo: add save exception
+            }
 
             return $this->redirectToRoute('thankyou');
         }
