@@ -79,9 +79,8 @@ class DefaultController extends Controller
 
             try {
                 $data = $form->getData();
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($data);
-                $em->flush();
+                $record = $this->container->get('tim_cheat_sheet.feedback.handler')
+                    ->create($data);
 
                 $this->addFlash(
                     'notice',
@@ -99,7 +98,10 @@ class DefaultController extends Controller
             try
             {
                 $mailer = $this->get('mailer');
-                // todo: add email sending
+                $email = $this->container->getParameter('email_sender');
+
+                $this->container->get('tim_cheat_sheet.feedback.handler')
+                    ->sendNotification($record, $mailer, $email);
             }
             catch(\Exception $ex)
             {
