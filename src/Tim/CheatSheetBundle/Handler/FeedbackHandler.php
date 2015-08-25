@@ -42,7 +42,7 @@ class FeedbackHandler extends BaseHandler implements IRecordInterface
         // todo: add new email template
         $message = \Swift_Message::newInstance()
             ->setSubject('New feedback')
-            ->setFrom($mailer->getTransport()->getUsername())
+            ->setFrom("feeedback@example.com")
             ->setTo($emailTo)
             // ->setBody($this->renderView('TimCheatSheetBundle:Feedback:emailTemplateCreate.html.twig', array('param' => $param)))
             ->setBody("<body><h2>New feedback:</h2><p>id: {$record->getId()}<br/>text: {$record->getMessage()}</p></body>")
