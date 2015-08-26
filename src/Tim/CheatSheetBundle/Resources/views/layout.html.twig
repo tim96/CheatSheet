@@ -13,28 +13,6 @@
         <![endif]-->
     {% endblock %}
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        {% stylesheets
-        '@TimCheatSheetBundle/Resources/public/css/cosmo/bootstrap.min.css' filter='cssrewrite'
-        '@TimCheatSheetBundle/Resources/public/css/site.css' output='css/compiled/app.css' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-    {% endblock %}
-
-    {% block javascripts %}
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js"></script>
-
-        {% javascripts
-            '@TimCheatSheetBundle/Resources/public/js/site.js'
-            '@TimCheatSheetBundle/Resources/public/js/bootstrap.min.js' output='js/compiled/app.js' %}
-            <script src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-    {% endblock %}
-
     <title>{% block title %}Cheat Sheet{% endblock %}</title>
 </head>
 <body>
@@ -94,6 +72,27 @@
             <p class="text-muted">&copy; CheatSheet</p>
         </div>
     </footer>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    {% stylesheets
+    '@TimCheatSheetBundle/Resources/public/css/cosmo/bootstrap.min.css' filter='cssrewrite'
+    '@TimCheatSheetBundle/Resources/public/css/site.css' output='css/compiled/app.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+    '@TimCheatSheetBundle/Resources/public/js/site.js'
+    '@TimCheatSheetBundle/Resources/public/js/highlight.min.js'
+    '@TimCheatSheetBundle/Resources/public/js/jquery.min.js'
+    '@TimCheatSheetBundle/Resources/public/js/anchor.min.js'
+    '@TimCheatSheetBundle/Resources/public/js/bootstrap.min.js' output='js/compiled/app.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 <script>
