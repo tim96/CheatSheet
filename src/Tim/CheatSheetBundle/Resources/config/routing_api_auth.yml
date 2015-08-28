@@ -1,0 +1,4 @@
+tim_cheat_sheet_api_v2_auth:
+    resource: "@TimCheatSheetBundle/Controller/v2/ApiAuthController.php"
+    type:     annotation
+    prefix:   /v2

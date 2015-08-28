@@ -6,3 +6,7 @@ tim_cheat_sheet_api:
     resource: "@TimCheatSheetBundle/Resources/config/routing_api.yml"
     type: rest
     prefix:   /api
+
+tim_cheat_sheet_api_auth:
+    resource: "@TimCheatSheetBundle/Resources/config/routing_api_auth.yml"
+    prefix:   /api
