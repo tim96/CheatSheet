@@ -59,6 +59,11 @@ class Tag
     private $feedbacks;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Post", mappedBy="tags")
+     **/
+    private $posts;
+
+    /**
      * Get id
      *
      * @return integer
@@ -172,5 +177,39 @@ class Tag
     public function getFeedbacks()
     {
         return $this->feedbacks;
+    }
+
+    /**
+     * Add post
+     *
+     * @param \Tim\CheatSheetBundle\Entity\Post $post
+     *
+     * @return Tag
+     */
+    public function addPost(\Tim\CheatSheetBundle\Entity\Post $post)
+    {
+        $this->posts[] = $post;
+    
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \Tim\CheatSheetBundle\Entity\Post $post
+     */
+    public function removePost(\Tim\CheatSheetBundle\Entity\Post $post)
+    {
+        $this->posts->removeElement($post);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }
