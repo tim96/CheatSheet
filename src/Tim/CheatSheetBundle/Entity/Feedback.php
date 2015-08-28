@@ -8,6 +8,7 @@ use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 // use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\VirtualProperty;
+use Doctrine\Common\Collections\ArrayCollection;
 
 // Help information:
 // @ExclusionPolicy(“all”) : Every field on your entity will be ignore while serializing.
@@ -29,6 +30,7 @@ class Feedback
         $this->createdAt = new \DateTime('now');
         $this->isAnswered = false;
         $this->isDeleted = false;
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -96,6 +98,12 @@ class Feedback
      * @ORM\Column(name="is_deleted", type="boolean", options={"default": false})
      **/
     private $isDeleted = false;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="feedbacks")
+     * @ORM\JoinTable(name="feedback_tag")
+     **/
+    private $tags;
 
     /**
      * Get id
@@ -260,5 +268,39 @@ class Feedback
     public function getCreatedAtTimestamp()
     {
         return $this->createdAt ? $this->createdAt->getTimestamp() : null;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \Tim\CheatSheetBundle\Entity\Tag $tag
+     *
+     * @return Feedback
+     */
+    public function addTag(\Tim\CheatSheetBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \Tim\CheatSheetBundle\Entity\Tag $tag
+     */
+    public function removeTag(\Tim\CheatSheetBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

@@ -18,3 +18,4 @@ web/css/
 web/js/
 web/Resources/
 composer.lock
+*.php~

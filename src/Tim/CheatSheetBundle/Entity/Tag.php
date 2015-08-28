@@ -4,31 +4,21 @@ namespace Tim\CheatSheetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Expose;
-// use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\VirtualProperty;
-
-// Help information:
-// @ExclusionPolicy(“all”) : Every field on your entity will be ignore while serializing.
-// @Expose : This field will be serialized
-// @VirtualProperty : This method will be called and serialized as a virtual property. (used_name in our example)
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Feedback
+ * Tag
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Tim\CheatSheetBundle\Entity\FeedbackRepository")
- *
- * @ExclusionPolicy("all")
+ * @ORM\Entity(repositoryClass="Tim\CheatSheetBundle\Entity\TagRepository")
  */
-class Feedback
+class Tag
 {
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
-        $this->isAnswered = false;
         $this->isDeleted = false;
+        $this->feedbacks = new ArrayCollection();
     }
 
     /**
@@ -37,8 +27,6 @@ class Feedback
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     *
-     * @Expose
      */
     private $id;
 
@@ -46,38 +34,11 @@ class Feedback
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = false
-     * )
-     * @ORM\Column(name="email", type="string", length=255)
-     *
-     * @Expose
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      *
      * @ORM\Column(name="name", type="string", length=255)
-     *
-     * @Expose
      */
     protected $name;
-
-    /**
-     *
-     * @var string
-     *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="message", type="text")
-     *
-     * @Expose
-     */
-    protected $message;
 
     /**
      * @Assert\NotBlank()
@@ -88,14 +49,14 @@ class Feedback
     private $createdAt;
 
     /**
-     * @ORM\Column(name="is_answered", type="boolean", options={"default": false})
-     **/
-    private $isAnswered = false;
-
-    /**
      * @ORM\Column(name="is_deleted", type="boolean", options={"default": false})
      **/
     private $isDeleted = false;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Feedback", mappedBy="tags")
+     **/
+    private $feedbacks;
 
     /**
      * Get id
@@ -108,35 +69,11 @@ class Feedback
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Feedback
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
      * Set name
      *
      * @param string $name
      *
-     * @return Feedback
+     * @return Tag
      */
     public function setName($name)
     {
@@ -156,35 +93,11 @@ class Feedback
     }
 
     /**
-     * Set message
-     *
-     * @param string $message
-     *
-     * @return Feedback
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-    
-        return $this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
-     * @return Feedback
+     * @return Tag
      */
     public function setCreatedAt($createdAt)
     {
@@ -204,35 +117,11 @@ class Feedback
     }
 
     /**
-     * Set isAnswered
-     *
-     * @param boolean $isAnswered
-     *
-     * @return Feedback
-     */
-    public function setIsAnswered($isAnswered)
-    {
-        $this->isAnswered = $isAnswered;
-    
-        return $this;
-    }
-
-    /**
-     * Get isAnswered
-     *
-     * @return boolean
-     */
-    public function getIsAnswered()
-    {
-        return $this->isAnswered;
-    }
-
-    /**
      * Set isDeleted
      *
      * @param boolean $isDeleted
      *
-     * @return Feedback
+     * @return Tag
      */
     public function setIsDeleted($isDeleted)
     {
@@ -252,13 +141,36 @@ class Feedback
     }
 
     /**
-     * Get datetime on timestamp
+     * Add feedback
      *
-     * @return int|null
-     * @VirtualProperty
+     * @param \Tim\CheatSheetBundle\Entity\Feedback $feedback
+     *
+     * @return Tag
      */
-    public function getCreatedAtTimestamp()
+    public function addFeedback(\Tim\CheatSheetBundle\Entity\Feedback $feedback)
     {
-        return $this->createdAt ? $this->createdAt->getTimestamp() : null;
+        $this->feedbacks[] = $feedback;
+    
+        return $this;
+    }
+
+    /**
+     * Remove feedback
+     *
+     * @param \Tim\CheatSheetBundle\Entity\Feedback $feedback
+     */
+    public function removeFeedback(\Tim\CheatSheetBundle\Entity\Feedback $feedback)
+    {
+        $this->feedbacks->removeElement($feedback);
+    }
+
+    /**
+     * Get feedbacks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFeedbacks()
+    {
+        return $this->feedbacks;
     }
 }
