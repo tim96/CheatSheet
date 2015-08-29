@@ -14,14 +14,18 @@
         "symfony/assetic-bundle": "2.*",
         "symfony/swiftmailer-bundle": "2.*",
         "symfony/monolog-bundle": "2.*",
+
         "twig/twig": "1.*",
+
         "doctrine/orm": "2.*@dev",
         "doctrine/dbal": "2.*@dev",
         "doctrine/doctrine-bundle": "1.*@dev",
         "doctrine/doctrine-fixtures-bundle": "2.*",
+
         "sensio/distribution-bundle": "4.*@dev",
         "sensio/framework-extra-bundle": "3.*@dev",
         "sensio/generator-bundle": "2.*@dev",
+
         "jms/serializer-bundle": "1.*",
         "friendsofsymfony/rest-bundle": "1.*",
         "friendsofsymfony/user-bundle": "1.*",
@@ -34,7 +38,10 @@
         "hwi/oauth-bundle": "0.*",
         "cboden/ratchet": "0.*",
         "gregwar/captcha-bundle": "1.*",
-        "sonata-project/admin-bundle": "2.*@dev"
+
+        "sonata-project/admin-bundle": "2.*@dev",
+        "sonata-project/user-bundle": "2.*",
+        "sonata-project/core-bundle": "2.*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
