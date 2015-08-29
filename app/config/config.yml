@@ -2,11 +2,12 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: sonata_core.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: "%locale%"
 
 framework:
     #esi:             ~
@@ -84,8 +85,8 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
-        #types:
-        #    json: Sonata\Doctrine\Types\JsonType
+        types:
+            json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -111,9 +112,25 @@ sensio_framework_extra:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Tim\CheatSheetBundle\Entity\User
+    user_class: Application\Sonata\UserBundle\Entity\User
     group:
-        group_class: Tim\CheatSheetBundle\Entity\Group
+        group_class: Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+    service:
+        user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+
+sonata_user:
+    manager_type: orm
+
+sonata_block:
+    default_contexts: [sonata_page_bundle]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+sonata_admin:
+    #title:      Acme Demo Bundle
+    #title_logo: bundles/acmedemo/img/fancy_acme_logo.png
 
 fos_rest:
     param_fetcher_listener: true
