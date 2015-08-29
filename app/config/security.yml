@@ -1,7 +1,12 @@
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface:
+            algorithm: bcrypt
+            cost: 12
+
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
     role_hierarchy:
         ROLE_API:    []
@@ -10,6 +15,34 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
+
+        admin:
+            pattern:            /admin(.*)
+            context:            user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /admin/login
+                use_forward:    false
+                check_path:     /admin/login_check
+                failure_path:   null
+                require_previous_session: false
+            logout:
+                path:           /admin/logout
+            anonymous:          true
+
+        #main:
+        #    pattern:             .*
+        #    context:             user
+        #    form_login:
+        #        provider:       fos_userbundle
+        #        login_path:     /login
+        #        use_forward:    false
+        #        check_path:     /login_check
+        #        failure_path:   null
+        #        require_previous_session: false
+        #    logout:
+        #        path:           /logout
+        #    anonymous:          true
 
         #wsse_secured:
         #    pattern:   ^/api/.*
@@ -21,9 +54,15 @@ security:
             anonymous: ~
 
     access_control:
-        - { path: ^/api, role: [ROLE_API] }
 
+        # Admin login page needs to be access without credential
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/api, role: [ROLE_API] }
         - { path: ^/api/login, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        - { path: ^/api/logout, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
 
         - { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
 

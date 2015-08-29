@@ -108,6 +108,13 @@ sensio_framework_extra:
     router: { annotations: true }
     request: { converters: true }
 
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Tim\CheatSheetBundle\Entity\User
+    group:
+        group_class: Tim\CheatSheetBundle\Entity\Group
+
 fos_rest:
     param_fetcher_listener: true
     view:
