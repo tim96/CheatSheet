@@ -16,8 +16,11 @@ class Log
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
+        $this->updatedAt = new \DateTime('now');
         $this->data = null;
         $this->userId = null;
+        $this->level = 100;
+        $this->lavelName = "INFO";
     }
 
     /**
@@ -30,14 +33,18 @@ class Log
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="level", type="integer")
+     */
+    protected $level;
+
+    /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @Assert\NotNull()
-     *
-     * @ORM\Column(name="type", type="string")
+     * @ORM\Column(name="level_name", type="string")
      */
-    protected $type;
+    protected $levelName;
 
     /**
      * @var string
@@ -45,7 +52,7 @@ class Log
      * @Assert\NotBlank()
      * @Assert\NotNull()
      *
-     * @ORM\Column(name="message", type="string")
+     * @ORM\Column(name="message", type="text")
      */
     protected $message;
 
@@ -72,6 +79,14 @@ class Log
     private $createdAt;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Type("\DateTime")
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     **/
+    private $updatedAt;
+
+    /**
      * Get id
      *
      * @return integer
@@ -79,6 +94,54 @@ class Log
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set level
+     *
+     * @param integer $level
+     *
+     * @return Log
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return integer
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * Set levelName
+     *
+     * @param string $levelName
+     *
+     * @return Log
+     */
+    public function setLevelName($levelName)
+    {
+        $this->levelName = $levelName;
+    
+        return $this;
+    }
+
+    /**
+     * Get levelName
+     *
+     * @return string
+     */
+    public function getLevelName()
+    {
+        return $this->levelName;
     }
 
     /**
@@ -106,7 +169,7 @@ class Log
     }
 
     /**
-     * Set data (serialize before save)
+     * Set data
      *
      * @param string $data
      *
@@ -114,7 +177,7 @@ class Log
      */
     public function setData($data)
     {
-        $this->data = serialize($data);
+        $this->data = $data;
     
         return $this;
     }
@@ -127,30 +190,6 @@ class Log
     public function getData()
     {
         return $this->data;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Log
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-    
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
     }
 
     /**
@@ -178,26 +217,50 @@ class Log
     }
 
     /**
-     * Set type
+     * Set createdAt
      *
-     * @param string $type
+     * @param \DateTime $createdAt
      *
      * @return Log
      */
-    public function setType($type)
+    public function setCreatedAt($createdAt)
     {
-        $this->type = $type;
+        $this->createdAt = $createdAt;
     
         return $this;
     }
 
     /**
-     * Get type
+     * Get createdAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getType()
+    public function getCreatedAt()
     {
-        return $this->type;
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Log
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

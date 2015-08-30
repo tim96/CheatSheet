@@ -1,0 +1,8 @@
+parameters:
+    logger_database.class: Tim\CheatSheetBundle\Handler\LoggerDatabaseHandler
+
+services:
+    logger_database:
+        class: %logger_database.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]

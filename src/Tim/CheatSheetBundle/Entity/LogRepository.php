@@ -10,4 +10,15 @@ namespace Tim\CheatSheetBundle\Entity;
  */
 class LogRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Find the latest logs
+     */
+    public function findLatest()
+    {
+        $qb = $this->createQueryBuilder('l');
+        $qb->addOrderBy('l.id', 'DESC');
+        $qb->setMaxResults(200);
+        $q = $qb->getQuery();
+        return $q->getResult();
+    }
 }

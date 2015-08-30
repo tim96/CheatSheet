@@ -155,3 +155,21 @@ fos_rest:
     access_denied_listener:
         json: true
     body_listener: true
+
+monolog:
+    handlers:
+        mmain:
+            type:         fingers_crossed
+            action_level: error
+            handler:      nested
+        nested:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        console:
+            type:  console
+        applog:
+            type: service
+            level: debug
+            id: logger_database
+    # channels: ["info", "warning", "error", "crit", "alert", "users"]
