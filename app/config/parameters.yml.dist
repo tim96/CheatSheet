@@ -21,3 +21,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     google_analytics:  ~
     email_sender:      ~
+    locale:            en
