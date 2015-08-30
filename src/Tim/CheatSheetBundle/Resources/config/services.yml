@@ -1,5 +1,7 @@
 parameters:
     logger_database.class: Tim\CheatSheetBundle\Handler\LoggerDatabaseHandler
+    security.authentication.success_handler.class: Tim\CheatSheetBundle\Handler\AuthenticationSuccessHandler
+    security.authentication.failure_handler.class: Tim\CheatSheetBundle\Handler\AuthenticationFailureHandler
 
 services:
     logger_database:
