@@ -2,9 +2,11 @@
 
 namespace Tim\CheatSheetBundle\Controller;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Tim\CheatSheetBundle\Entity\Feedback;
 use Tim\CheatSheetBundle\Form\FeedbackType;
@@ -38,10 +40,14 @@ class DefaultController extends Controller
      */
     public function symfony2Action(Request $request, $tab = 'controller')
     {
-        $qet = $request->query->all(); // to get all GET params
-        $post = $request->request->all(); // to get all POST params.
-        $cookies = $request->cookies->all(); // to get all cookies params.
-        $files = $request->files->all(); // to get all files params.
+        // $qet = $request->query->all(); // to get all GET params
+        // $post = $request->request->all(); // to get all POST params.
+        // $cookies = $request->cookies->all(); // to get all cookies params.
+        // $files = $request->files->all(); // to get all files params.
+
+        /** @var LoggerInterface $logger */
+        // $logger = $this->container->get('logger');
+        // $logger->emergency("Error emergency");
 
         return array('tab' => $tab);
     }
