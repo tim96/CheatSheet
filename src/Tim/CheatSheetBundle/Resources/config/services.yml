@@ -14,5 +14,5 @@ services:
         arguments: [~, Tim\CheatSheetBundle\Entity\Feedback, SonataAdminBundle:CRUD, @service_container]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Feedback}
-         calls:
+        calls:
             - [ setTranslationDomain, [ messages ] ]
