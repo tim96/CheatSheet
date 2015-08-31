@@ -8,3 +8,11 @@ services:
         class: %logger_database.class%
         calls:
             - [ setContainer, [ @service_container ] ]
+
+    tim_cheat_sheet.admin.feedback:
+        class: Tim\CheatSheetBundle\Admin\FeedbackAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\Feedback, SonataAdminBundle:CRUD, @service_container]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Feedback}
+         calls:
+            - [ setTranslationDomain, [ messages ] ]
