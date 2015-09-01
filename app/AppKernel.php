@@ -30,6 +30,8 @@ class AppKernel extends Kernel
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
 
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Tim\CheatSheetBundle\TimCheatSheetBundle(),
