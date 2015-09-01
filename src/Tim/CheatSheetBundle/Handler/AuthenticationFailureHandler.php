@@ -16,7 +16,7 @@ class AuthenticationFailureHandler extends DefaultAuthenticationFailureHandler
 {
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $login_fail = $request->getSession()->get('login_failed_count', 0);
+        $login_fail = $request->getSession()->get('login_fail', 0);
         $login_fail++;
 
         $request->getSession()->set('login_fail', $login_fail);
