@@ -33,6 +33,8 @@ class FeedbackAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        parent::configureListFields($listMapper);
+
         $listMapper
             ->add('_action', 'actions', array(
                 'actions' => array(
