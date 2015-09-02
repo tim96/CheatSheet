@@ -8,7 +8,6 @@
 
 namespace Tim\CheatSheetBundle\Admin;
 
-use Monolog\Logger;
 use Sonata\AdminBundle\Admin\Admin;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Application\Sonata\UserBundle\Entity\User;
@@ -21,7 +20,7 @@ abstract class BaseAdmin extends Admin
     /** @var ContainerInterface */
     protected $container;
 
-    public function __construct($code, $class, $baseControllerName, $container = null)
+    public function __construct($code, $class, $baseControllerName, ContainerInterface $container)
     {
         parent::__construct($code, $class, $baseControllerName);
 
