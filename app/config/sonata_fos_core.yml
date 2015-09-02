@@ -9,6 +9,7 @@ fos_user:
         user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 
 sonata_user:
+    security_acl: false
     manager_type: orm
 
 sonata_block:
@@ -18,5 +19,16 @@ sonata_block:
             contexts:   [admin]
 
 sonata_admin:
-    #title:      Acme Demo Bundle
+    security:
+        handler: sonata.admin.security.handler.role
+        information:
+            EDIT: EDIT
+            LIST: LIST
+            CREATE: CREATE
+            VIEW: VIEW
+            DELETE: DELETE
+            EXPORT: EXPORT
+            OPERATOR: OPERATOR
+            MASTER: MASTER
+    title:      Admin
     #title_logo: bundles/acmedemo/img/fancy_acme_logo.png

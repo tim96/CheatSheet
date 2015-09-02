@@ -10,21 +10,3 @@ tim_cheat_sheet_api:
 tim_cheat_sheet_api_auth:
     resource: "@TimCheatSheetBundle/Resources/config/routing_api_auth.yml"
     prefix:   /api
-
-sonata_user:
-    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
-    prefix:   /admin
-
-admin:
-    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix:   /admin
-
-admin_login:
-    resource: '@ApplicationSonataUserBundle/Controller/AdminSecurityController.php'
-    type:     annotation
-    prefix:   /admin
-
-_sonata_admin:
-    resource: .
-    type:     sonata_admin
-    prefix:   /admin
