@@ -17,7 +17,7 @@ class AuthenticationSuccessHandler extends DefaultAuthenticationSuccessHandler
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
         // brake captcha value
-        // $request->getSession()->set('login_fail', 0);
+        $request->getSession()->set('login_fail', 0);
 
         return parent::onAuthenticationSuccess($request, $token);
     }

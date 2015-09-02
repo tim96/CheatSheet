@@ -2,6 +2,7 @@ parameters:
     logger_database.class: Tim\CheatSheetBundle\Handler\LoggerDatabaseHandler
     security.authentication.success_handler.class: Tim\CheatSheetBundle\Handler\AuthenticationSuccessHandler
     security.authentication.failure_handler.class: Tim\CheatSheetBundle\Handler\AuthenticationFailureHandler
+    security.authentication.listener.form.class: Tim\CheatSheetBundle\Security\Firewall\UsernamePasswordFormAuthenticationListener
 
 services:
     logger_database:

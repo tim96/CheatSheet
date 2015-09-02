@@ -16,14 +16,7 @@ class AuthenticationFailureHandler extends DefaultAuthenticationFailureHandler
 {
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $login_fail = $request->getSession()->get('login_fail', 0);
-        $login_fail++;
-
-        $request->getSession()->set('login_fail', $login_fail);
-
-        if ($login_fail <= 3) {
-            // todo: add captcha processing
-        }
+        $request->getSession()->set('login_fail', $request->getSession()->get('login_fail', 0) + 1);
 
         return parent::onAuthenticationFailure($request, $exception);
     }

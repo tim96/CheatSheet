@@ -73,7 +73,7 @@ class AdminSecurityController extends BaseAdminSecurityController
         }
 
         $login_fail = $request->getSession()->get('login_fail', 0);
-        if ($login_fail >= 3) {
+        if ($login_fail >= 1) {
             $formFactory = $this->container->get('form.factory');
             $captcha = $formFactory->createBuilder('form', array(), array('csrf_protection' => false))
                 ->add('captcha', 'captcha', array())
