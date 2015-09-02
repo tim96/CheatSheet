@@ -2,3 +2,28 @@ tim_cheat_sheet_default:
     resource: "@TimCheatSheetBundle/Controller/DefaultController.php"
     type:     annotation
     prefix:   /
+
+sonata_user_profile_show:
+     pattern:  /
+     defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: sonata_admin_dashboard
+        permanent: true
+
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix:   /admin
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix:   /admin
+
+admin_login:
+    resource: '@ApplicationSonataUserBundle/Controller/AdminSecurityController.php'
+    type:     annotation
+    prefix:   /admin
+
+_sonata_admin:
+    resource: .
+    type:     sonata_admin
+    prefix:   /admin

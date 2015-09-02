@@ -22,7 +22,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @author <yourname> <youremail>
  * @ORM\Entity
- * @ORM\Table(name="group")
+ * @ORM\Table(name="fos_group")
  */
 class Group extends BaseGroup
 {

@@ -21,8 +21,8 @@ use Doctrine\ORM\Mapping as ORM;
  *   working with object : http://www.doctrine-project.org/projects/orm/2.0/docs/reference/working-with-objects/en
  *
  * @author <yourname> <youremail>
- * @ORM\Entity
- * @ORM\Table(name="user")
+ * @ORM\Entity()
+ * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
 {
@@ -32,6 +32,14 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getId() ? (string)$this->getId() : '';
+    }
 
     /**
      * Get id

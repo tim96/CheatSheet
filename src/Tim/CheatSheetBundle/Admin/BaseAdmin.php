@@ -8,10 +8,10 @@
 
 namespace Tim\CheatSheetBundle\Admin;
 
-use Monolog\Logger;
 use Sonata\AdminBundle\Admin\Admin;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Application\Sonata\UserBundle\Entity\User;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 
 abstract class BaseAdmin extends Admin
 {
@@ -20,7 +20,7 @@ abstract class BaseAdmin extends Admin
     /** @var ContainerInterface */
     protected $container;
 
-    public function __construct($code, $class, $baseControllerName, $container = null)
+    public function __construct($code, $class, $baseControllerName, ContainerInterface $container)
     {
         parent::__construct($code, $class, $baseControllerName);
 
@@ -42,5 +42,12 @@ abstract class BaseAdmin extends Admin
     {
         /** @var User $user */
         return $this->container->get('security.token_storage')->getToken()->getUser();
+    }
+
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        parent::configureListFields($listMapper);
+
+        unset($this->listModes['mosaic']);
     }
 }

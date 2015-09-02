@@ -17,3 +17,19 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Feedback}
         calls:
             - [ setTranslationDomain, [ messages ] ]
+
+    tim_cheat_sheet.admin.post_type:
+        class: Tim\CheatSheetBundle\Admin\PostTypeAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\PostType, SonataAdminBundle:CRUD, @service_container]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: PostType}
+        calls:
+            - [ setTranslationDomain, [ messages ] ]
+
+    tim_cheat_sheet.admin.tag:
+        class: Tim\CheatSheetBundle\Admin\TagAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\Tag, SonataAdminBundle:CRUD, @service_container]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Tag}
+        calls:
+            - [ setTranslationDomain, [ messages ] ]

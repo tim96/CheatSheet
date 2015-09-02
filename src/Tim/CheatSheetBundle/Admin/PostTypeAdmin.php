@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class FeedbackAdmin extends BaseAdmin
+class PostTypeAdmin extends BaseAdmin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,11 +17,8 @@ class FeedbackAdmin extends BaseAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('email')
             ->add('name')
-            ->add('message')
             ->add('createdAt')
-            ->add('isAnswered')
             // ->add('isDeleted')
         ;
 
@@ -44,11 +41,8 @@ class FeedbackAdmin extends BaseAdmin
                 )
             ))
             ->add('id')
-            ->add('email')
             ->add('name')
-            ->add('message')
             ->add('createdAt')
-            ->add('isAnswered')
             // ->add('isDeleted')
         ;
     }
@@ -59,12 +53,9 @@ class FeedbackAdmin extends BaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
-            ->add('email')
+            // ->add('id')
             ->add('name')
-            ->add('message')
-            ->add('createdAt')
-            ->add('isAnswered')
+            // ->add('createdAt')
             // ->add('isDeleted')
         ;
     }
@@ -76,11 +67,8 @@ class FeedbackAdmin extends BaseAdmin
     {
         $showMapper
             ->add('id')
-            ->add('email')
             ->add('name')
-            ->add('message')
             ->add('createdAt')
-            ->add('isAnswered')
             // ->add('isDeleted')
         ;
     }
