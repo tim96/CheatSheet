@@ -38,7 +38,7 @@ class User extends BaseUser
      */
     public function __toString()
     {
-        return $this->getId() ? (string)$this->getId() : '';
+        return $this->getId() ? $this->getUsername() : '';
     }
 
     /**
