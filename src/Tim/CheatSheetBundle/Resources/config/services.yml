@@ -33,3 +33,19 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Tag}
         calls:
             - [ setTranslationDomain, [ messages ] ]
+
+    tim_cheat_sheet.admin.question:
+        class: Tim\CheatSheetBundle\Admin\QuestionAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\Question, SonataAdminBundle:CRUD, @service_container]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Question}
+        calls:
+            - [ setTranslationDomain, [ messages ] ]
+
+    tim_cheat_sheet.admin.post:
+        class: Tim\CheatSheetBundle\Admin\PostAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\Post, SonataAdminBundle:CRUD, @service_container]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Post}
+        calls:
+            - [ setTranslationDomain, [ messages ] ]
