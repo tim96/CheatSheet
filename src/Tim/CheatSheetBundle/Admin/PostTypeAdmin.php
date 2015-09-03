@@ -18,7 +18,9 @@ class PostTypeAdmin extends BaseAdmin
         $datagridMapper
             ->add('id')
             ->add('name')
+            ->add('author')
             ->add('createdAt')
+            ->add('updatedAt')
             // ->add('isDeleted')
         ;
 
@@ -42,7 +44,9 @@ class PostTypeAdmin extends BaseAdmin
             ))
             ->add('id')
             ->add('name')
+            ->add('author')
             ->add('createdAt')
+            ->add('updatedAt')
             // ->add('isDeleted')
         ;
     }
@@ -69,6 +73,7 @@ class PostTypeAdmin extends BaseAdmin
             ->add('id')
             ->add('name')
             ->add('createdAt')
+            ->add('updatedAt')
             // ->add('isDeleted')
         ;
     }
