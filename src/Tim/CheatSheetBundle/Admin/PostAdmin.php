@@ -1,5 +1,5 @@
 <?php
-
+      
 namespace Tim\CheatSheetBundle\Admin;
 
 // use Sonata\AdminBundle\Admin\Admin;
@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PostTypeAdmin extends BaseAdmin
+class PostAdmin extends BaseAdmin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,13 +17,11 @@ class PostTypeAdmin extends BaseAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
-            ->add('author')
+            ->add('text')
             ->add('createdAt')
             ->add('updatedAt')
             // ->add('isDeleted')
         ;
-
         parent::configureDatagridFilters($datagridMapper);
     }
 
@@ -32,8 +30,6 @@ class PostTypeAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
-        parent::configureListFields($listMapper);
-
         $listMapper
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -43,12 +39,12 @@ class PostTypeAdmin extends BaseAdmin
                 )
             ))
             ->add('id')
-            ->add('name')
-            ->add('author')
+            ->add('text')
             ->add('createdAt')
             ->add('updatedAt')
             // ->add('isDeleted')
         ;
+        parent::configureListFields($listMapper);
     }
 
     /**
@@ -58,8 +54,9 @@ class PostTypeAdmin extends BaseAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('name')
+            ->add('text')
             // ->add('createdAt')
+            // ->add('updatedAt')
             // ->add('isDeleted')
         ;
     }
@@ -71,7 +68,7 @@ class PostTypeAdmin extends BaseAdmin
     {
         $showMapper
             ->add('id')
-            ->add('name')
+            ->add('text')
             ->add('createdAt')
             ->add('updatedAt')
             // ->add('isDeleted')

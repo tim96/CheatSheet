@@ -18,7 +18,9 @@ class TagAdmin extends BaseAdmin
         $datagridMapper
             ->add('id')
             ->add('name')
+            ->add('author')
             ->add('createdAt')
+            ->add('updatedAt')
             // ->add('isDeleted')
         ;
         parent::configureDatagridFilters($datagridMapper);
@@ -39,7 +41,9 @@ class TagAdmin extends BaseAdmin
             ))
             ->add('id')
             ->add('name')
+            ->add('author')
             ->add('createdAt')
+            ->add('updatedAt')
             // ->add('isDeleted')
         ;
         parent::configureListFields($listMapper);
@@ -66,8 +70,9 @@ class TagAdmin extends BaseAdmin
         $showMapper
             ->add('id')
             ->add('name')
+            ->add('author')
             ->add('createdAt')
-            ->add('isDeleted')
+            ->add('updatedAt')
         ;
     }
 }

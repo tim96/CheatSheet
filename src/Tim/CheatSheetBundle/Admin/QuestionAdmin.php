@@ -1,5 +1,5 @@
 <?php
-
+      
 namespace Tim\CheatSheetBundle\Admin;
 
 // use Sonata\AdminBundle\Admin\Admin;
@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PostTypeAdmin extends BaseAdmin
+class QuestionAdmin extends BaseAdmin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,13 +17,14 @@ class PostTypeAdmin extends BaseAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('name')
-            ->add('author')
+            ->add('title')
+            ->add('question')
+            ->add('content')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('isPublish')
             // ->add('isDeleted')
         ;
-
         parent::configureDatagridFilters($datagridMapper);
     }
 
@@ -32,8 +33,6 @@ class PostTypeAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
-        parent::configureListFields($listMapper);
-
         $listMapper
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -43,12 +42,15 @@ class PostTypeAdmin extends BaseAdmin
                 )
             ))
             ->add('id')
-            ->add('name')
-            ->add('author')
+            ->add('title')
+            ->add('question')
+            ->add('content')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('isPublish')
             // ->add('isDeleted')
         ;
+        parent::configureListFields($listMapper);
     }
 
     /**
@@ -58,8 +60,12 @@ class PostTypeAdmin extends BaseAdmin
     {
         $formMapper
             // ->add('id')
-            ->add('name')
+            ->add('title')
+            ->add('question')
+            ->add('content')
             // ->add('createdAt')
+            // ->add('updatedAt')
+            ->add('isPublish')
             // ->add('isDeleted')
         ;
     }
@@ -71,9 +77,12 @@ class PostTypeAdmin extends BaseAdmin
     {
         $showMapper
             ->add('id')
-            ->add('name')
+            ->add('title')
+            ->add('question')
+            ->add('content')
             ->add('createdAt')
             ->add('updatedAt')
+            ->add('isPublish')
             // ->add('isDeleted')
         ;
     }

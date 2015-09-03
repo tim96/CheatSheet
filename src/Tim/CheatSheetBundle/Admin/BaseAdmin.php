@@ -50,4 +50,46 @@ abstract class BaseAdmin extends Admin
 
         unset($this->listModes['mosaic']);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prePersist($object)
+    {
+        parent::prePersist($object);
+
+        $user = $this->getUser();
+        if (method_exists($object, 'setCreatedAt')) {
+            $object->setCreatedAt(new \DateTime('now'));
+        }
+        if (method_exists($object, 'setAuthor')) {
+            $object->setAuthor($user);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function preUpdate($object)
+    {
+        parent::preUpdate($object);
+
+        $user = $this->getUser();
+        if (method_exists($object, 'setUpdatedAt')) {
+            $object->setUpdatedAt(new \DateTime('now'));
+        }
+        if (method_exists($object, 'setAuthor')) {
+            $object->setAuthor($user);
+        }
+    }
+
+    public function postPersist($object)
+    {
+
+    }
+
+    public function postUpdate($object)
+    {
+
+    }
 }

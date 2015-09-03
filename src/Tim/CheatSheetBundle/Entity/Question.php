@@ -80,6 +80,12 @@ class Question
     private $updatedAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
+
+    /**
      * @ORM\Column(name="is_publish", type="boolean", options={"default": false})
      **/
     private $isPublish = false;
@@ -270,5 +276,29 @@ class Question
     public function getIsDeleted()
     {
         return $this->isDeleted;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $author
+     *
+     * @return Question
+     */
+    public function setAuthor(\Application\Sonata\UserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+    
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }
