@@ -74,6 +74,14 @@ class Post
     private $tags;
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id ? (string)$this->id : '';
+    }
+
+    /**
      * Get id
      *
      * @return integer
