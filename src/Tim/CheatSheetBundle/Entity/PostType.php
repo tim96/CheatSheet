@@ -66,11 +66,16 @@ class PostType
     private $isDeleted = false;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="postType")
+     */
+    private $post;
+
+    /**
      * @return string
      */
     public function __toString()
     {
-        return $this->id ? (string)$this->id : '';
+        return $this->id ? (string)$this->name : '';
     }
 
     /**
@@ -210,5 +215,29 @@ class PostType
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set post
+     *
+     * @param \Tim\CheatSheetBundle\Entity\Post $post
+     *
+     * @return PostType
+     */
+    public function setPost(\Tim\CheatSheetBundle\Entity\Post $post = null)
+    {
+        $this->post = $post;
+    
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \Tim\CheatSheetBundle\Entity\Post
+     */
+    public function getPost()
+    {
+        return $this->post;
     }
 }
