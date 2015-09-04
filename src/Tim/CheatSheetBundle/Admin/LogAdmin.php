@@ -2,13 +2,14 @@
       
 namespace Tim\CheatSheetBundle\Admin;
 
-// use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
-class PostAdmin extends BaseAdmin
+class LogAdmin extends BaseAdmin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,10 +18,13 @@ class PostAdmin extends BaseAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('text')
+            ->add('level')
+            ->add('levelName')
+            ->add('message')
+            ->add('data')
+            ->add('userId')
             ->add('createdAt')
             ->add('updatedAt')
-            // ->add('isDeleted')
         ;
         parent::configureDatagridFilters($datagridMapper);
     }
@@ -31,6 +35,14 @@ class PostAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id')
+            ->add('level')
+            ->add('levelName')
+            ->add('message')
+            ->add('data')
+            ->add('userId')
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -38,11 +50,6 @@ class PostAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
-            ->add('text')
-            ->add('createdAt')
-            ->add('updatedAt')
-            // ->add('isDeleted')
         ;
         parent::configureListFields($listMapper);
     }
@@ -53,14 +60,14 @@ class PostAdmin extends BaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            // ->add('id')
-            ->add('meta')
-            ->add('text')
-            ->add('description', 'ckeditor')
-            ->add('postType')
-            // ->add('createdAt')
-            // ->add('updatedAt')
-            // ->add('isDeleted')
+            ->add('id')
+            ->add('level')
+            ->add('levelName')
+            ->add('message')
+            ->add('data')
+            ->add('userId')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -71,10 +78,27 @@ class PostAdmin extends BaseAdmin
     {
         $showMapper
             ->add('id')
-            ->add('text')
+            ->add('level')
+            ->add('levelName')
+            ->add('message')
+            ->add('data')
+            ->add('userId')
             ->add('createdAt')
             ->add('updatedAt')
-            // ->add('isDeleted')
         ;
     }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+
+        $collection->remove('create');
+        $collection->remove('edit');
+        $collection->remove('delete');
+    }
+
+    protected $datagridValues = array(
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id',
+    );
 }

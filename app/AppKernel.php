@@ -32,6 +32,10 @@ class AppKernel extends Kernel
 
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
 
+            // new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            // new Sonata\FormatterBundle\SonataFormatterBundle(),
+
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Tim\CheatSheetBundle\TimCheatSheetBundle(),

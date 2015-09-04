@@ -41,14 +41,14 @@ class LoggerDatabaseHandler extends AbstractProcessingHandler
     protected function write(array $record)
     {
         if ('doctrine' == $record['channel']) {
-            if ((int)$record['level'] >= Logger::WARNING) {
+            if ((int)$record['level'] > Logger::WARNING) {
                 error_log($record['message']);
             }
             return;
         }
 
         // todo: add save level from db
-        if ((int)$record['level'] >= Logger::WARNING) {
+        if ((int)$record['level'] > Logger::WARNING) {
             try {
                 $em = $this->container->get('doctrine')->getManager();
                 $conn = $em->getConnection();

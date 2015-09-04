@@ -19,6 +19,7 @@ class Post
         $this->createdAt = new \DateTime('now');
         $this->isDeleted = false;
         $this->tags = new ArrayCollection();
+        $this->meta = null;
     }
 
     /**
@@ -33,12 +34,29 @@ class Post
     /**
      * @var string
      *
+     * @ORM\Column(name="meta", type="text", nullable=true)
+     */
+    protected $meta;
+
+    /**
+     * @var string
+     *
      * @Assert\NotBlank()
      * @Assert\NotNull()
      *
      * @ORM\Column(name="text", type="string", length=255)
      */
     protected $text;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    protected $description;
 
     /**
      * @Assert\NotBlank()
@@ -72,6 +90,14 @@ class Post
      * @ORM\JoinTable(name="post_tag")
      **/
     private $tags;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\OneToMany(targetEntity="PostType", mappedBy="post")
+     */
+    private $postType;
 
     /**
      * @return string
@@ -243,5 +269,87 @@ class Post
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set meta
+     *
+     * @param string $meta
+     *
+     * @return Post
+     */
+    public function setMeta($meta)
+    {
+        $this->meta = $meta;
+    
+        return $this;
+    }
+
+    /**
+     * Get meta
+     *
+     * @return string
+     */
+    public function getMeta()
+    {
+        return $this->meta;
+    }
+
+    /**
+     * Add postType
+     *
+     * @param \Tim\CheatSheetBundle\Entity\PostType $postType
+     *
+     * @return Post
+     */
+    public function addPostType(\Tim\CheatSheetBundle\Entity\PostType $postType)
+    {
+        $this->postType[] = $postType;
+    
+        return $this;
+    }
+
+    /**
+     * Remove postType
+     *
+     * @param \Tim\CheatSheetBundle\Entity\PostType $postType
+     */
+    public function removePostType(\Tim\CheatSheetBundle\Entity\PostType $postType)
+    {
+        $this->postType->removeElement($postType);
+    }
+
+    /**
+     * Get postType
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPostType()
+    {
+        return $this->postType;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Post
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
