@@ -56,7 +56,7 @@ class PostAdmin extends BaseAdmin
             // ->add('id')
             ->add('meta')
             ->add('text')
-            ->add('description')
+            ->add('description', 'ckeditor')
             ->add('postType')
             // ->add('createdAt')
             // ->add('updatedAt')

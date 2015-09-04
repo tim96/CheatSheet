@@ -1,0 +1,18 @@
+ivory_ck_editor:
+    default_config: default
+    configs:
+        default:
+            toolbar: [ [ "Cut", "Copy", "PasteText","PasteFromWord"], ["Undo", "Redo"], ["Link", "Unlink"], ["Image", "SpecialChar","Table","BulletedList"],["TextColor", "BGColor"], ["Maximize","Source"], "/",["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "-", "RemoveFormat"], [ "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock" ],["Styles", "Format", "Font", "FontSize"] ]
+            #filebrowserBrowseRoute: admin_sonata_media_media_browser
+            #filebrowserImageBrowseRoute: admin_sonata_media_media_browser
+            # Display images by default when clicking the image dialog browse button
+            #filebrowserImageBrowseRouteParameters:
+            #    provider: sonata.media.provider.image
+            #filebrowserUploadRoute: admin_sonata_media_media_upload
+            #filebrowserUploadRouteParameters:
+            #    provider: sonata.media.provider.file
+            # Upload file as image when sending a file from the image dialog
+            #filebrowserImageUploadRoute: admin_sonata_media_media_upload
+            #filebrowserImageUploadRouteParameters:
+            #    provider: sonata.media.provider.image
+            #    context: my-context # Optional, to upload in a custom context
