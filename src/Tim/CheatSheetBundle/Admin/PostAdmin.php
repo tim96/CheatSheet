@@ -54,7 +54,9 @@ class PostAdmin extends BaseAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('meta')
             ->add('text')
+            ->add('postType')
             // ->add('createdAt')
             // ->add('updatedAt')
             // ->add('isDeleted')
