@@ -49,3 +49,11 @@ services:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Post}
         calls:
             - [ setTranslationDomain, [ messages ] ]
+
+    tim_cheat_sheet.admin.log:
+        class: Tim\CheatSheetBundle\Admin\LogAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\Log, SonataAdminBundle:CRUD, @service_container]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Log}
+        calls:
+            - [ setTranslationDomain, [ messages ] ]
