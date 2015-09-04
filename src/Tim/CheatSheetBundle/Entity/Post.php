@@ -49,6 +49,16 @@ class Post
     protected $text;
 
     /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    protected $description;
+
+    /**
      * @Assert\NotBlank()
      * @Assert\Type("\DateTime")
      *
@@ -317,5 +327,29 @@ class Post
     public function getPostType()
     {
         return $this->postType;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Post
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
