@@ -62,6 +62,9 @@ abstract class BaseAdmin extends Admin
         if (method_exists($object, 'setCreatedAt')) {
             $object->setCreatedAt(new \DateTime('now'));
         }
+        if (method_exists($object, 'setUpdatedAt')) {
+            $object->setUpdatedAt(new \DateTime('now'));
+        }
         if (method_exists($object, 'setAuthor')) {
             $object->setAuthor($user);
         }

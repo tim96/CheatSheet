@@ -59,6 +59,7 @@ class PostTypeAdmin extends BaseAdmin
         $formMapper
             // ->add('id')
             ->add('name')
+            ->add('iconName')
             // ->add('createdAt')
             // ->add('isDeleted')
         ;
@@ -72,6 +73,7 @@ class PostTypeAdmin extends BaseAdmin
         $showMapper
             ->add('id')
             ->add('name')
+            ->add('iconName')
             ->add('createdAt')
             ->add('updatedAt')
             // ->add('isDeleted')
