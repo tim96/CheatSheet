@@ -40,16 +40,22 @@ class DefaultController extends Controller
      */
     public function symfony2Action(Request $request, $tab = 'controller')
     {
-        // $qet = $request->query->all(); // to get all GET params
-        // $post = $request->request->all(); // to get all POST params.
-        // $cookies = $request->cookies->all(); // to get all cookies params.
-        // $files = $request->files->all(); // to get all files params.
+        $posts = $this->container->get('tim_cheat_sheet.post.handler')
+            ->getListAsArray(false, true, true);
+        $postTypes = array();
+        $postSort = array();
 
-        /** @var LoggerInterface $logger */
-        // $logger = $this->container->get('logger');
-        // $logger->emergency("Error emergency");
+        foreach($posts as $post) {
+            if (!isset($postTypes[$post['postType']['id']])) {
+                $postTypes[$post['postType']['id']] = array('name' => $post['postType']['name'],
+                    'icon' => $post['postType']['iconName'],
+                    'isActive' => strtoupper($tab) == strtoupper($post['postType']['name']));
+            }
+            $postSort[$post['postType']['id']][] = $post;
+        }
 
-        return array('tab' => $tab);
+        $result = array('tab' => $tab, 'posts' => $postSort, 'postTypes' => $postTypes);
+        return $result;
     }
 
     /**

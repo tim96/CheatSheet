@@ -10,25 +10,25 @@ namespace Tim\CheatSheetBundle\Entity;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getPosts($isDeleted = false)
+    public function getPosts($isDeleted = false, $isJoinPostType = false, $isJoinTags = false)
     {
-        $query = $this->getPostsQuery($isDeleted);
+        $query = $this->getPostsQuery($isDeleted, $isJoinPostType, $isJoinTags);
 
         $data = $query->getQuery()->getResult();
 
         return $data ? $data : array();
     }
 
-    public function getPostsAsArray($isDeleted = false)
+    public function getPostsAsArray($isDeleted = false, $isJoinPostType = false, $isJoinTags = false)
     {
-        $query = $this->getPostsQuery($isDeleted);
+        $query = $this->getPostsQuery($isDeleted, $isJoinPostType, $isJoinTags);
 
         $data = $query->getQuery()->getArrayResult();
 
         return $data ? $data : array();
     }
 
-    private function getPostsQuery($isDeleted)
+    private function getPostsQuery($isDeleted, $isJoinPostType, $isJoinTags)
     {
         $query = $this->createQueryBuilder('p');
         if (is_bool($isDeleted)) {
@@ -36,6 +36,19 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
                 ->setParameter('isDeleted', $isDeleted)
             ;
         }
+
+        if (is_bool($isJoinPostType) && $isJoinPostType) {
+            $query->addSelect('pt')
+                ->leftJoin('p.postType', 'pt')
+            ;
+        }
+
+        if (is_bool($isJoinTags) && $isJoinTags) {
+            $query->addSelect('t')
+                ->leftJoin('p.tags', 't')
+            ;
+        }
+
         return $query;
     }
 

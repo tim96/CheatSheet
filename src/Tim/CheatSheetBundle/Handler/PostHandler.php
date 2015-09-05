@@ -14,7 +14,7 @@ use Tim\CheatSheetBundle\Interfaces\IRecordInterface;
 class PostHandler extends BaseHandler implements IRecordInterface
 {
     /** @var  PostRepository */
-    private $repository;
+    protected $repository;
 
     public function get($id)
     {
@@ -26,8 +26,8 @@ class PostHandler extends BaseHandler implements IRecordInterface
         return $this->getRepository()->findBy($options);
     }
 
-    public function getListAsArray($deleted = false)
+    public function getListAsArray($deleted = false, $isJoinPostType = false, $isJoinTags = false)
     {
-        return $this->repository->getPostsAsArray($deleted);
+        return $this->repository->getPostsAsArray($deleted, $isJoinPostType, $isJoinTags);
     }
 }

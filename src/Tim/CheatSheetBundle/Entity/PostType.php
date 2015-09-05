@@ -78,6 +78,13 @@ class PostType
     private $post;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="priority", type="integer")
+     */
+    private $priority;
+
+    /**
      * @return string
      */
     public function __toString()
@@ -294,5 +301,29 @@ class PostType
     public function removePost(\Tim\CheatSheetBundle\Entity\Post $post)
     {
         $this->post->removeElement($post);
+    }
+
+    /**
+     * Set priority
+     *
+     * @param integer $priority
+     *
+     * @return PostType
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return integer
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }
