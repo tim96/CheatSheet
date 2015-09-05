@@ -24,7 +24,7 @@ class LogAdmin extends BaseAdmin
             ->add('data')
             ->add('userId')
             ->add('createdAt')
-            ->add('updatedAt')
+            // ->add('updatedAt')
         ;
         parent::configureDatagridFilters($datagridMapper);
     }
@@ -35,14 +35,6 @@ class LogAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('level')
-            ->add('levelName')
-            ->add('message')
-            ->add('data')
-            ->add('userId')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -50,6 +42,14 @@ class LogAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
+            ->add('id')
+            ->add('level')
+            ->add('levelName')
+            ->add('message')
+            // ->add('data')
+            // ->add('userId')
+            ->add('createdAt')
+            // ->add('updatedAt')
         ;
         parent::configureListFields($listMapper);
     }
@@ -83,6 +83,7 @@ class LogAdmin extends BaseAdmin
             ->add('message')
             ->add('data')
             ->add('userId')
+            ->add('ipAddress')
             ->add('createdAt')
             ->add('updatedAt')
         ;
