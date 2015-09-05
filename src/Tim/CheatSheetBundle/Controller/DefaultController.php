@@ -47,12 +47,19 @@ class DefaultController extends Controller
 
         foreach($posts as $post) {
             if (!isset($postTypes[$post['postType']['id']])) {
-                $postTypes[$post['postType']['id']] = array('name' => $post['postType']['name'],
-                    'icon' => $post['postType']['iconName'],
-                    'isActive' => strtoupper($tab) == strtoupper($post['postType']['name']));
+                $postTypes[] = array('name' => $post['postType']['name'],
+                    'icon'     => $post['postType']['iconName'],
+                    'isActive' => strtoupper($tab) == strtoupper($post['postType']['name']),
+                    'priority' => $post['postType']['priority'],
+                    'id'       => $post['postType']['id'],
+                    );
             }
             $postSort[$post['postType']['id']][] = $post;
         }
+
+        usort($postTypes, function($a, $b) {
+             return $a['priority'] - $b['priority'];
+        });
 
         $result = array('tab' => $tab, 'posts' => $postSort, 'postTypes' => $postTypes);
         return $result;

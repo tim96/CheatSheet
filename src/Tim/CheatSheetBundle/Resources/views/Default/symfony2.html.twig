@@ -18,7 +18,7 @@ Symfony 2 Page
         <div id="my-tab-content" class="tab-content">
             {% for key, postType in postTypes %}
                 <div class="tab-pane {% if postType.isActive %}active{% endif %}" id="{{ postType.name }}">
-                    {% include 'TimCheatSheetBundle:Default/symfony2:template.html.twig' with {'posts' : posts[key], 'name' : postType.name} %}
+                    {% include 'TimCheatSheetBundle:Default/symfony2:template.html.twig' with {'posts' : posts[postType.id], 'name' : postType.name} %}
                 </div>
             {% endfor %}
         </div>

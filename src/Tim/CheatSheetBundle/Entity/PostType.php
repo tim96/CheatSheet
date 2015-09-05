@@ -326,4 +326,9 @@ class PostType
     {
         return $this->priority;
     }
+
+    public static function getPriorityList()
+    {
+        return range(0, 10);
+    }
 }
