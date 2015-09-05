@@ -39,6 +39,13 @@ class PostType
     protected $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="icon_name", type="string", length=255)
+     */
+    protected $iconName;
+
+    /**
      * @Assert\NotBlank()
      * @Assert\Type("\DateTime")
      *
@@ -66,9 +73,16 @@ class PostType
     private $isDeleted = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Post", inversedBy="postType")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="postType")
      */
     private $post;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="priority", type="integer")
+     */
+    private $priority;
 
     /**
      * @return string
@@ -239,5 +253,82 @@ class PostType
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * Set iconName
+     *
+     * @param string $iconName
+     *
+     * @return PostType
+     */
+    public function setIconName($iconName)
+    {
+        $this->iconName = $iconName;
+    
+        return $this;
+    }
+
+    /**
+     * Get iconName
+     *
+     * @return string
+     */
+    public function getIconName()
+    {
+        return $this->iconName;
+    }
+
+    /**
+     * Add post
+     *
+     * @param \Tim\CheatSheetBundle\Entity\Post $post
+     *
+     * @return PostType
+     */
+    public function addPost(\Tim\CheatSheetBundle\Entity\Post $post)
+    {
+        $this->post[] = $post;
+    
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \Tim\CheatSheetBundle\Entity\Post $post
+     */
+    public function removePost(\Tim\CheatSheetBundle\Entity\Post $post)
+    {
+        $this->post->removeElement($post);
+    }
+
+    /**
+     * Set priority
+     *
+     * @param integer $priority
+     *
+     * @return PostType
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return integer
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    public static function getPriorityList()
+    {
+        return range(0, 10);
     }
 }

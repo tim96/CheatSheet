@@ -62,6 +62,9 @@ abstract class BaseAdmin extends Admin
         if (method_exists($object, 'setCreatedAt')) {
             $object->setCreatedAt(new \DateTime('now'));
         }
+        if (method_exists($object, 'setUpdatedAt')) {
+            $object->setUpdatedAt(new \DateTime('now'));
+        }
         if (method_exists($object, 'setAuthor')) {
             $object->setAuthor($user);
         }
@@ -85,11 +88,28 @@ abstract class BaseAdmin extends Admin
 
     public function postPersist($object)
     {
-
+        $user = $this->getUser();
+        if (method_exists($object, 'setUpdatedAt')) {
+            $object->setUpdatedAt(new \DateTime('now'));
+        }
+        if (method_exists($object, 'setCreatedAt')) {
+            $object->setCreatedAt(new \DateTime('now'));
+        }
+        if (method_exists($object, 'setAuthor')) {
+            $object->setAuthor($user);
+        }
+        $this->logger->addCritical("{$this->getUser()} #{$this->getUser()->getId()}. Create {$this->getClass()} #{$object->getId()}.");
     }
 
     public function postUpdate($object)
     {
-
+        $user = $this->getUser();
+        if (method_exists($object, 'setUpdatedAt')) {
+            $object->setUpdatedAt(new \DateTime('now'));
+        }
+        if (method_exists($object, 'setAuthor')) {
+            $object->setAuthor($user);
+        }
+        $this->logger->addCritical("{$this->getUser()} #{$this->getUser()->getId()}. Update {$this->getClass()} #{$object->getId()}.");
     }
 }

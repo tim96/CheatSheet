@@ -21,6 +21,7 @@ class Log
         $this->userId = null;
         $this->level = 100;
         $this->lavelName = "INFO";
+        $this->ipAddress = null;
     }
 
     /**
@@ -62,6 +63,13 @@ class Log
      * @ORM\Column(name="data", type="text", nullable=true)
      */
     protected $data;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ip_address", type="string", nullable=true)
+     */
+    protected $ipAddress;
 
     /**
      * @var integer
@@ -262,5 +270,29 @@ class Log
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set ipAddress
+     *
+     * @param string $ipAddress
+     *
+     * @return Log
+     */
+    public function setIpAddress($ipAddress)
+    {
+        $this->ipAddress = $ipAddress;
+    
+        return $this;
+    }
+
+    /**
+     * Get ipAddress
+     *
+     * @return string
+     */
+    public function getIpAddress()
+    {
+        return $this->ipAddress;
     }
 }

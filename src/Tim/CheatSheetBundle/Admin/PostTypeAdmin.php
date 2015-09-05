@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Tim\CheatSheetBundle\Entity\PostType;
 
 class PostTypeAdmin extends BaseAdmin
 {
@@ -18,6 +19,7 @@ class PostTypeAdmin extends BaseAdmin
         $datagridMapper
             ->add('id')
             ->add('name')
+            ->add('priority')
             ->add('author')
             ->add('createdAt')
             ->add('updatedAt')
@@ -44,6 +46,7 @@ class PostTypeAdmin extends BaseAdmin
             ))
             ->add('id')
             ->add('name')
+            ->add('priority')
             ->add('author')
             ->add('createdAt')
             ->add('updatedAt')
@@ -59,6 +62,10 @@ class PostTypeAdmin extends BaseAdmin
         $formMapper
             // ->add('id')
             ->add('name')
+            ->add('priority', 'choice', array(
+                'choices' => PostType::getPriorityList()
+            ))
+            ->add('iconName')
             // ->add('createdAt')
             // ->add('isDeleted')
         ;
@@ -72,6 +79,8 @@ class PostTypeAdmin extends BaseAdmin
         $showMapper
             ->add('id')
             ->add('name')
+            ->add('priority')
+            ->add('iconName')
             ->add('createdAt')
             ->add('updatedAt')
             // ->add('isDeleted')

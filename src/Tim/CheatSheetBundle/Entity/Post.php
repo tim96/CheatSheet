@@ -17,8 +17,10 @@ class Post
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
+        $this->updatedAt = new \DateTime('now');
         $this->isDeleted = false;
         $this->tags = new ArrayCollection();
+        $this->postType = new ArrayCollection();
         $this->meta = null;
     }
 
@@ -92,10 +94,10 @@ class Post
     private $tags;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\NotNull()
+     * @Assert\NotBlank()
      *
-     * @ORM\OneToMany(targetEntity="PostType", mappedBy="post")
+     * @ORM\ManyToOne(targetEntity="PostType", inversedBy="post", cascade={"persist", "remove"})
      */
     private $postType;
 
@@ -351,5 +353,19 @@ class Post
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set postType
+     *
+     * @param \Tim\CheatSheetBundle\Entity\PostType $postType
+     *
+     * @return Post
+     */
+    public function setPostType(\Tim\CheatSheetBundle\Entity\PostType $postType = null)
+    {
+        $this->postType = $postType;
+    
+        return $this;
     }
 }

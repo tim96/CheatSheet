@@ -59,6 +59,7 @@ class LoggerDatabaseHandler extends AbstractProcessingHandler
 
                 /** @var Request $request */
                 $request = $this->container->get('request');
+                $userIp = null;
                 if (!is_null($request)) {
                     $serverData = array();
                     $serverData[] = $request->server->get("HTTP_USER_AGENT");
@@ -66,6 +67,7 @@ class LoggerDatabaseHandler extends AbstractProcessingHandler
                     $serverData[] = $request->server->get("SCRIPT_FILENAME");
                     $serverData[] = $request->server->get("QUERY_STRING");
                     $serverData[] = $request->server->get("REQUEST_URI");
+                    $serverData[] = $userIp = $request->getClientIp();
                     $data = implode("; ", $serverData);
                 }
 
@@ -80,10 +82,10 @@ class LoggerDatabaseHandler extends AbstractProcessingHandler
                 }
 
                 $query = $em->getConnection()->prepare(
-                    'INSERT INTO log(message, level, level_name, data, created_at, updated_at, user_id) VALUES('.
+                    'INSERT INTO log(message, level, level_name, data, created_at, updated_at, user_id, ip_address) VALUES('.
                     $conn->quote($record['message']) .', \''. $record['level'] .'\', \''. $record['level_name'] .
                     '\', '. $conn->quote($data) .', \''. $created .
-                    '\', \''. $created .'\', \''. $userId .'\');'
+                    '\', \''. $created .'\', \''. $userId .'\', \''. $userIp .'\');'
                 );
                 $query->execute();
             } catch (\Exception $e) {
