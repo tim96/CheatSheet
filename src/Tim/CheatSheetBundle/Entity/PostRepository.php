@@ -10,4 +10,33 @@ namespace Tim\CheatSheetBundle\Entity;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getPosts($isDeleted = false)
+    {
+        $query = $this->getPostsQuery($isDeleted);
+
+        $data = $query->getQuery()->getResult();
+
+        return $data ? $data : array();
+    }
+
+    public function getPostsAsArray($isDeleted = false)
+    {
+        $query = $this->getPostsQuery($isDeleted);
+
+        $data = $query->getQuery()->getArrayResult();
+
+        return $data ? $data : array();
+    }
+
+    private function getPostsQuery($isDeleted)
+    {
+        $query = $this->createQueryBuilder('p');
+        if (is_bool($isDeleted)) {
+            $query->where('p.isDeleted = :isDeleted')
+                ->setParameter('isDeleted', $isDeleted)
+            ;
+        }
+        return $query;
+    }
+
 }
