@@ -40,28 +40,8 @@ class DefaultController extends Controller
      */
     public function symfony2Action(Request $request, $tab = 'controller')
     {
-        $posts = $this->container->get('tim_cheat_sheet.post.handler')
-            ->getListAsArray(false, true, true);
-        $postTypes = array();
-        $postSort = array();
-
-        foreach($posts as $post) {
-            if (!isset($postTypes[$post['postType']['id']])) {
-                $postTypes[] = array('name' => $post['postType']['name'],
-                    'icon'     => $post['postType']['iconName'],
-                    'isActive' => strtoupper($tab) == strtoupper($post['postType']['name']),
-                    'priority' => $post['postType']['priority'],
-                    'id'       => $post['postType']['id'],
-                    );
-            }
-            $postSort[$post['postType']['id']][] = $post;
-        }
-
-        usort($postTypes, function($a, $b) {
-             return $a['priority'] - $b['priority'];
-        });
-
-        $result = array('tab' => $tab, 'posts' => $postSort, 'postTypes' => $postTypes);
+        $result = $this->container->get('tim_cheat_sheet.post.handler')
+            ->getContent($tab);
         return $result;
     }
 

@@ -30,4 +30,38 @@ class PostHandler extends BaseHandler implements IRecordInterface
     {
         return $this->repository->getPostsAsArray($deleted, $isJoinPostType, $isJoinTags);
     }
+
+    public function getContent($tab)
+    {
+        $posts = $this->container->get('tim_cheat_sheet.post.handler')
+            ->getListAsArray(false, true, true);
+        $postTypes = array();
+        $postSort = array();
+
+        foreach($posts as $post) {
+            if (!$this->checkAr($postTypes, $post['postType']['id'])) {
+                $postTypes[] = array('name' => $post['postType']['name'],
+                    'icon'     => $post['postType']['iconName'],
+                    'isActive' => strtoupper($tab) == strtoupper($post['postType']['name']),
+                    'priority' => $post['postType']['priority'],
+                    'id'       => $post['postType']['id'],
+                );
+            }
+            $postSort[$post['postType']['id']][] = $post;
+        }
+
+        usort($postTypes, function($a, $b) {
+            return $a['priority'] - $b['priority'];
+        });
+
+        return array('tab' => $tab, 'posts' => $postSort, 'postTypes' => $postTypes);
+    }
+
+    private function checkAr($data, $value)
+    {
+        foreach($data as $item) {
+            if ($item['id'] == $value) return true;
+        }
+        return false;
+    }
 }
