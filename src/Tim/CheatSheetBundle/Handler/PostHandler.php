@@ -51,7 +51,7 @@ class PostHandler extends BaseHandler implements IRecordInterface
         }
 
         usort($postTypes, function($a, $b) {
-            return $a['priority'] - $b['priority'];
+            return $b['priority'] - $a['priority'];
         });
 
         return array('tab' => $tab, 'posts' => $postSort, 'postTypes' => $postTypes);
