@@ -11,13 +11,13 @@ Symfony 2 Page
 
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
             {% for key, postType in postTypes %}
-                <li class="{% if postType.isActive %}active{% endif %}"><a href="#{{ postType.name }}" data-toggle="tab"><span class="glyphicon {{ postType.icon }}"></span> {{ postType.name }}</a></li>
+                <li class="{% if postType.isActive %}active{% endif %}"><a href="#{{ postType.name|replace({' ': ''}) }}" data-toggle="tab"><span class="glyphicon {{ postType.icon }}"></span> {{ postType.name }}</a></li>
             {% endfor %}
         </ul>
 
         <div id="my-tab-content" class="tab-content">
             {% for key, postType in postTypes %}
-                <div class="tab-pane {% if postType.isActive %}active{% endif %}" id="{{ postType.name }}">
+                <div class="tab-pane {% if postType.isActive %}active{% endif %}" id="{{ postType.name|replace({' ': ''}) }}">
                     {% include 'TimCheatSheetBundle:Default/symfony2:template.html.twig' with {'posts' : posts[postType.id], 'name' : postType.name} %}
                 </div>
             {% endfor %}
