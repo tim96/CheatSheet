@@ -8,8 +8,8 @@
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     {% endblock %}
 
@@ -27,12 +27,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">{{ 'layout.project.name'|trans({}, 'TimCheatSheetBundle') }}</a>
+                <a class="navbar-brand" href="{{ path('Home') }}">{{ 'layout.project.name'|trans({}, 'TimCheatSheetBundle') }}</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     {% set currentRoute = app.request.attributes.get('_route') %}
                     <li class="{% if currentRoute == ('Home') %}active{% endif %}"><a href="{{ path('Home') }}">{{ 'layout.home'|trans({}, 'TimCheatSheetBundle') }}</a></li>
+                    <li class="{% if currentRoute == ('About') %}active{% endif %}"><a href="{{ path('About') }}">{{ 'layout.about'|trans({}, 'TimCheatSheetBundle') }}</a></li>
+                    <li class="{% if currentRoute == ('About') %}active{% endif %}"><a href="{{ path('About') }}">{{ 'layout.contribute'|trans({}, 'TimCheatSheetBundle') }}</a></li>
                     <li class="{% if currentRoute == ('Contact') %}active{% endif %}"><a href="{{ path('Contact') }}">{{ 'layout.contact'|trans({}, 'TimCheatSheetBundle') }}</a></li>
                 </ul>
                 {% if is_granted('ROLE_USER') %}
@@ -51,6 +53,10 @@
 {% endblock %}
 
 {% block body %}{% endblock %}
+
+<div class="contentContainer">
+    {% block moreContent %}{% endblock %}
+</div>
 
 {% block footer %}
     {# <footer  class="footer" style="vertical-align: middle;">
