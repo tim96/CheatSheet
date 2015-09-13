@@ -41,6 +41,20 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="google_id", type="string", nullable=true)
+     */
+    private $googleId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="github_id", type="string", nullable=true)
+     */
+    private $githubId;
+
+    /**
      * @return string
      */
     public function __toString()
@@ -56,5 +70,53 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set googleId
+     *
+     * @param string $googleId
+     *
+     * @return User
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+    
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * Set githubId
+     *
+     * @param string $githubId
+     *
+     * @return User
+     */
+    public function setGithubId($githubId)
+    {
+        $this->githubId = $githubId;
+    
+        return $this;
+    }
+
+    /**
+     * Get githubId
+     *
+     * @return string
+     */
+    public function getGithubId()
+    {
+        return $this->githubId;
     }
 }

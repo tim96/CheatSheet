@@ -64,3 +64,7 @@ services:
     tim_cheat_sheet.post.handler:
         class: %tim_cheat_sheet.post.handler.class%
         arguments: [@service_container, @doctrine.orm.entity_manager, %tim_cheat_sheet.post.class%]
+
+# custom services:
+    hwi_oauth.user.provider.entity:
+        class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider

@@ -37,7 +37,7 @@ security:
                 path:           /admin/logout
             anonymous:          true
 
-        main:
+        secured_area:
             pattern:            .*
             context:            user
             form_login:
@@ -53,6 +53,17 @@ security:
                 path:           /user/logout
                 target:         /
             anonymous:          true
+
+            oauth:
+                failure_path: /user/login
+                login_path: /user/login
+                provider: fos_userbundle
+                use_forward: false
+                resource_owners:
+                    google: "/user/login/check-google"
+                    google: "/user/login/check-github"
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
 
         #wsse_secured:
         #    pattern:   ^/api/.*
