@@ -19,7 +19,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->redirectToRoute('Symfony2');
+        return array();
     }
 
     /**
@@ -27,38 +27,6 @@ class DefaultController extends Controller
      * @Template()
      */
     public function aboutAction()
-    {
-        return array();
-    }
-
-    /**
-     * @Route("/symfony2/{tab}", name="Symfony2")
-     * @Template()
-     * @param Request $request
-     * @param $tab
-     * @return array
-     */
-    public function symfony2Action(Request $request, $tab = 'controller')
-    {
-        $result = $this->container->get('tim_cheat_sheet.post.handler')
-            ->getContent($tab);
-        return $result;
-    }
-
-    /**
-     * @Route("/doctrine2", name="Doctrine2")
-     * @Template()
-     */
-    public function doctrine2Action()
-    {
-        return array();
-    }
-
-    /**
-     * @Route("/sonataadmin", name="SonataAdmin")
-     * @Template()
-     */
-    public function sonataAdminAction()
     {
         return array();
     }
@@ -113,26 +81,5 @@ class DefaultController extends Controller
         return array(
             'form' => $form->createView()
         );
-    }
-
-    /**
-     * @Route("/thankyou", name="thankyou")
-     * @Template()
-     */
-    public function thankyouAction()
-    {
-        return array();
-    }
-
-    /**
-     * @Route("/faq", name="Faq")
-     * @Template()
-     */
-    public function faqAction()
-    {
-        $data = $this->container->get('tim_cheat_sheet.question.handler')
-            ->getListAsArray();
-
-        return array('Questions' => $data);
     }
 }

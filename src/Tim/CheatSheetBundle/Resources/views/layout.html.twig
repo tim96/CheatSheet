@@ -13,7 +13,7 @@
         <![endif]-->
     {% endblock %}
 
-    <title>{% block title %}Cheat Sheet{% endblock %}</title>
+    <title>{% block title %}{{ 'layout.title'|trans({}, 'TimCheatSheetBundle') }}{% endblock %}</title>
 </head>
 <body>
 
@@ -27,17 +27,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">CheatSheet</a>
+                <a class="navbar-brand" href="/">{{ 'layout.project.name'|trans({}, 'TimCheatSheetBundle') }}</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     {% set currentRoute = app.request.attributes.get('_route') %}
-                    <li class="{% if currentRoute == ('Symfony2') %}active{% endif %}"><a href="{{ path('Symfony2') }}">Symfony 2.7</a></li>
-                    <li class="{% if currentRoute == ('Doctrine2') %}active{% endif %}"><a href="{{ path('Doctrine2') }}">Doctrine 2</a></li>
-                    <li class="{% if currentRoute == ('SonataAdmin') %}active{% endif %}"><a href="{{ path('SonataAdmin') }}">SonataAdminBundle</a></li>
-                    <li class="{% if currentRoute == ('Faq') %}active{% endif %}"><a href="{{ path('Faq') }}">FAQ</a></li>
-                    <li class="{% if currentRoute == ('Contact') %}active{% endif %}"><a href="{{ path('Contact') }}">Contact</a></li>
+                    <li class="{% if currentRoute == ('Home') %}active{% endif %}"><a href="{{ path('Home') }}">{{ 'layout.home'|trans({}, 'TimCheatSheetBundle') }}</a></li>
+                    <li class="{% if currentRoute == ('Contact') %}active{% endif %}"><a href="{{ path('Contact') }}">{{ 'layout.contact'|trans({}, 'TimCheatSheetBundle') }}</a></li>
                 </ul>
+                {% if is_granted('ROLE_USER') %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('sonata_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'TimCheatSheetBundle') }}</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="{% if currentRoute == ('register') %}active{% endif %}"><a href="{{ path('sonata_user_registration_register') }}">{{ 'layout.register'|trans({}, 'TimCheatSheetBundle') }}</a></li>
+                        <li class="{% if currentRoute == ('login') %}active{% endif %}"><a href="{{ path('sonata_user_security_login') }}">{{ 'layout.login'|trans({}, 'TimCheatSheetBundle') }}</a></li>
+                    </ul>
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -46,16 +53,15 @@
 {% block body %}{% endblock %}
 
 {% block footer %}
-    <footer  class="footer" style="vertical-align: middle;">
+    {# <footer  class="footer" style="vertical-align: middle;">
         <div class="container">
-            <p class="text-muted">&copy; CheatSheet</p>
+            <p class="text-muted">&copy; </p>
         </div>
-    </footer>
+    </footer> #}
 {% endblock %}
 
 {% block stylesheets %}
     {% stylesheets
-    '@TimCheatSheetBundle/Resources/public/css/highlight.js.8.6.default.min.css'
     '@TimCheatSheetBundle/Resources/public/css/font-awesome.4.4.0.min.css'
     '@TimCheatSheetBundle/Resources/public/css/cosmo/bootstrap.min.css' filter='cssrewrite'
     '@TimCheatSheetBundle/Resources/public/css/site.css' output='css/compiled/app.css' %}
@@ -67,7 +73,6 @@
     {% javascripts
     '@TimCheatSheetBundle/Resources/public/js/jquery.min.js'
     '@TimCheatSheetBundle/Resources/public/js/site.js'
-    '@TimCheatSheetBundle/Resources/public/js/highlight.min.js'
     '@TimCheatSheetBundle/Resources/public/js/anchor.min.js'
     '@TimCheatSheetBundle/Resources/public/js/bootstrap.min.js' output='js/compiled/app.js' %}
     <script src="{{ asset_url }}"></script>
