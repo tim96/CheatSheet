@@ -20,7 +20,14 @@ class AuthenticationSuccessHandler extends DefaultAuthenticationSuccessHandler
         // brake captcha value
         $request->getSession()->set('login_fail', 0);
 
-        return new RedirectResponse($this->httpUtils->generateUri($request, 'sonata_admin_dashboard'));
-        // return parent::onAuthenticationSuccess($request, $token);
+        if ($token->getUser()->hasRole('ROLE_USER')) {
+            return new RedirectResponse($this->httpUtils->generateUri($request, '/'));
+        }
+
+        if ($token->getUser()->hasRole('ROLE_ADMIN')) {
+            return new RedirectResponse($this->httpUtils->generateUri($request, 'sonata_admin_dashboard'));
+        }
+        // return new RedirectResponse($this->httpUtils->generateUri($request, 'sonata_admin_dashboard'));
+        return parent::onAuthenticationSuccess($request, $token);
     }
 }

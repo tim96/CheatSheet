@@ -17,6 +17,9 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:
             contexts:   [admin]
+        sonata.block.service.text:
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
 
 sonata_admin:
     security:
@@ -32,3 +35,8 @@ sonata_admin:
             MASTER: MASTER
     title:      Admin
     #title_logo: bundles/acmedemo/img/fancy_acme_logo.png
+
+#hwi_oauth:
+    # name of the firewall in which this bundle is active, this setting MUST be set
+#    firewall_name: secured_area
+#    resource_owners:
