@@ -1,14 +1,14 @@
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /user1/connect
+    prefix:   /user/connect
 
 #hwi_oauth_login:
 #    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-#    prefix:   /user1/login
+#    prefix:   /user/login
 
 hwi_oauth_connect:
     resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
-    prefix:   /user1/connect
+    prefix:   /user/connect
 
 hwi_google_login:
     pattern: /user/login/check-google
