@@ -9,6 +9,7 @@ security:
             id: fos_user.user_provider.username
 
     role_hierarchy:
+        ROLE_USER:         []
         ROLE_API:          []
         ROLE_SONATA_ADMIN: [ROLE_USER]
         ROLE_ADMIN:        [ROLE_USER, ROLE_SONATA_ADMIN]
