@@ -48,7 +48,8 @@
         "sonata-project/doctrine-orm-admin-bundle": "2.*@dev",
 
         "dropbox/dropbox-sdk": "1.*",
-        "google/apiclient": "1.*"
+        "google/apiclient": "1.*",
+        "dizda/cloud-backup-bundle": "3.*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
