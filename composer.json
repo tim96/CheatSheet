@@ -45,7 +45,10 @@
         "sonata-project/core-bundle": "2.*@dev",
         "sonata-project/datagrid-bundle": "2.2.*@dev",
         "sonata-project/formatter-bundle": "2.3.*@dev",
-        "sonata-project/doctrine-orm-admin-bundle": "2.*@dev"
+        "sonata-project/doctrine-orm-admin-bundle": "2.*@dev",
+
+        "dropbox/dropbox-sdk": "1.*",
+        "google/apiclient": "1.*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
