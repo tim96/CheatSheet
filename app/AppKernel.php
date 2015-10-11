@@ -36,6 +36,9 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             // new Sonata\FormatterBundle\SonataFormatterBundle(),
 
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
+
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Tim\CheatSheetBundle\TimCheatSheetBundle(),
