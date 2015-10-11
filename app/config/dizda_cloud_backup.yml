@@ -1,0 +1,58 @@
+dizda_cloud_backup:
+    # By default backup files will have your servers hostname as prefix
+    # such as: hostname_2014-01-01_21-08-39.tar
+    output_file_prefix: hostname
+    #timeout: 300
+    #processor:
+    #    type: zip # Required: tar|zip|7z
+    #    options:
+    #        compression_ratio: 6
+    #        password: qwerty
+            # Split into many files of `split_size` bytes
+        #    split:
+        #        enable: false # Default false
+        #        split_size: 1000 # Make each zip files no larger than "split_size" in bytes
+        #        storages: [ Dropbox, CloudApp, GoogleDrive, Gaufrette ] # Which cloud storages will upload split files
+    #folders: [ web/uploads , other/folder ]
+    #cloud_storages:
+        # Local storage definition
+    #    local:
+    #        path: ~ # Required
+        # CloudApp account. Can be optional, like dropbox.
+        #cloudapp:
+        #    user:        ~ # Required
+        #    password:    ~ # Required
+        # or you can use Gaufrette as well (optional)
+        #gaufrette:
+        #    service_name:   # Gaufrette filesystem(s) service name
+        #        - local_backup_filesystem
+        #        - amazon_backup_filesystem
+        #google_drive:
+        #  token_name: ~ # Required
+        #  remote_path: ~ # Not required, default "/", but you can use path like "/Accounts/backups/"
+        # Using dropbox via official API. You need to add "dropbox/dropbox-sdk": "1.1.*" in your composer.json file
+        #dropbox_sdk:
+        #    remote_path: ~ # Required. Path to upload files (where the root '/' will be application folder)
+        #    access_token: ~ # Required. Access token provided by DropBox to authenticate your application. You can follow instructions at https://www.dropbox.com/developers/core/start/php
+
+    databases:
+        #mongodb:
+        #    all_databases: false # Only required when no database is set
+        #    database:     ~ # Required if all_databases is false
+        #    db_user:     ~ # Not required, leave empty if no auth is required
+        #    db_password: ~ # Not required
+
+        mysql:
+        #    all_databases: false # Only required when no database is set
+        #    database: ~          # Required if all_databases is false
+        #    db_host: localhost   # This, and following is not required and if not specified, the bundle will take ORM configuration in parameters.yml
+        #    db_port: ~           # Default 3306
+        #    db_user: ~
+        #    db_password: ~
+
+        #postgresql:
+        #    database: dbname     # Required
+        #    db_host: localhost   # This, and following is not required and if not specified, the bundle will take ORM configuration in parameters.yml
+        #    db_port: ~           # Default 5432
+        #    db_user: ~
+        #    db_password: ~
