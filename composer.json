@@ -39,7 +39,7 @@
         "cboden/ratchet": "0.*",
         "gregwar/captcha-bundle": "1.*",
 
-        "sonata-project/admin-bundle": "2.*@dev",
+        "sonata-project/admin-bundle": "2.4.*@dev",
         "sonata-project/block-bundle": "2.*@dev",
         "sonata-project/user-bundle": "2.3.*@dev",
         "sonata-project/core-bundle": "2.*@dev",
@@ -50,7 +50,9 @@
         "dropbox/dropbox-sdk": "1.*",
         "google/apiclient": "1.*",
         "dizda/cloud-backup-bundle": "3.*",
-        "knplabs/knp-gaufrette-bundle": "0.*"
+        "knplabs/knp-gaufrette-bundle": "0.*",
+
+        "knplabs/knp-menu-bundle": "*@dev"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
