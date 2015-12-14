@@ -27,9 +27,12 @@ use Symfony\Component\HttpFoundation\Session;
 class AdminSecurityController extends BaseAdminSecurityController
 {
     /**
+     * @param Request $request
+     *
      * @Route("/login", name="login")
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function loginAction()
+    public function loginAction(Request $request = null)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
