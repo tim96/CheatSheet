@@ -1,7 +1,16 @@
 dizda_cloud_backup:
     # By default backup files will have your servers hostname as prefix
     # such as: hostname_2014-01-01_21-08-39.tar
-    output_file_prefix: hostname
+    output_file_prefix: backup_%database_name%
+    #timeout: 300
+    processor:
+        type: tar #zip
+    #    options:
+    #        compression_ratio: 6
+    cloud_storages:
+        # Local storage definition
+        local:
+            path: "%kernel.root_dir%/../backup" # Required
     #timeout: 300
     #processor:
     #    type: zip # Required: tar|zip|7z
