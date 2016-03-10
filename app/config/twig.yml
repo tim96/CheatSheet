@@ -4,3 +4,4 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         google_analytics: "%google_analytics%"
+        yandex_metrika: "%yandex_metrika_key%"
