@@ -22,4 +22,4 @@ parameters:
     google_analytics:  ~
     email_sender:      ~
     locale:            en
-    yandex_metrika_key:~
+    yandex_metrika_key: ~
