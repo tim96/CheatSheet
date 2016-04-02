@@ -64,3 +64,9 @@ services:
     tim_cheat_sheet.post.handler:
         class: %tim_cheat_sheet.post.handler.class%
         arguments: [@service_container, @doctrine.orm.entity_manager, %tim_cheat_sheet.post.class%]
+
+    tim_cheat_sheet.admin.doctrine_post:
+        class: Tim\CheatSheetBundle\Admin\DoctrinePostAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\DoctrinePost, TimCheatSheetBundle:DoctrinePostAdmin, @service_container]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: "Doctrine Post" }
