@@ -51,7 +51,11 @@ class DefaultController extends Controller
      */
     public function doctrine2Action()
     {
-        return array();
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository('TimCheatSheetBundle:DoctrinePost');
+        $records = $repository->findBy(array('isDeleted' => false), array('updatedAt' => 'DESC'), $maxRecords = 10);
+
+        return array('records' => $records);
     }
 
     /**

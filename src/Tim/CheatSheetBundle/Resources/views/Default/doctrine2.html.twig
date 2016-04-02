@@ -10,9 +10,22 @@ Doctrine 2 Page
             <h1>Doctrine 2</h1>
         </div>
 
-        <div>
-            <h4>In development</h4>
+        {#<div>#}
+            {#<h4>In development</h4>#}
+        {#</div>#}
+
+        <div class="container">
+            {% for key, doctrinePost in records %}
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if doctrinePost.text != 'null' %}<h2>{{ doctrinePost.text }}</h2>{% endif %}
+                        {{ doctrinePost.description|raw }}
+                    </div>
+                </div>
+            {% endfor %}
         </div>
+
+        <div style="height: 30px"></div>
 
         <a class="btn btn-primary" href="http://ormcheatsheet.com/" role="button">Read more about Doctrine</a>
     </div>
