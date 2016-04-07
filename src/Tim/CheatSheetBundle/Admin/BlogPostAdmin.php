@@ -25,6 +25,8 @@ class BlogPostAdmin extends BaseAdmin
             ->add('isPublish')
             // ->add('isDeleted')
         ;
+
+        parent::configureDatagridFilters($datagridMapper);
     }
 
     /**
@@ -32,6 +34,8 @@ class BlogPostAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        parent::configureListFields($listMapper);
+        
         $listMapper
             ->add('_action', 'actions', array(
                 'actions' => array(

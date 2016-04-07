@@ -24,6 +24,8 @@ class DoctrinePostAdmin extends BaseAdmin
             ->add('updatedAt')
             // ->add('isDeleted')
         ;
+
+        parent::configureDatagridFilters($datagridMapper);
     }
 
     /**
@@ -31,6 +33,8 @@ class DoctrinePostAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        parent::configureListFields($listMapper);
+        
         $listMapper
             ->add('_action', 'actions', array(
                 'actions' => array(
