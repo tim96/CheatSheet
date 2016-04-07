@@ -70,3 +70,9 @@ services:
         arguments: [~, Tim\CheatSheetBundle\Entity\DoctrinePost, TimCheatSheetBundle:DoctrinePostAdmin, @service_container]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: "Doctrine Post" }
+
+    tim_cheat_sheet.admin.blog_post:
+        class: Tim\CheatSheetBundle\Admin\BlogPostAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\BlogPost, TimCheatSheetBundle:BlogPostAdmin, @service_container]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: "Blog Post" }
