@@ -79,6 +79,11 @@ class Tag
     private $posts;
 
     /**
+     * @ORM\ManyToMany(targetEntity="BlogPost", mappedBy="tags")
+     **/
+    private $blogPosts;
+
+    /**
      * @return string
      */
     public function __toString()
