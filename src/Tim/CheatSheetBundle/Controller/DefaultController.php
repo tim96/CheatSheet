@@ -17,9 +17,11 @@ class DefaultController extends Controller
      * @Route("/", name="Home")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request, $tab = 'controller')
     {
-        return $this->redirectToRoute('Symfony2');
+        $result = $this->container->get('tim_cheat_sheet.post.handler')
+            ->getContent($tab);
+        return $result;
     }
 
     /**
