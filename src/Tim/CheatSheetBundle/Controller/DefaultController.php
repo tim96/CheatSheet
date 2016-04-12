@@ -15,7 +15,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="Home")
-     * @Template()
+     * @Template("TimCheatSheetBundle:Default:symfony2.html.twig")
      */
     public function indexAction(Request $request, $tab = 'controller')
     {
