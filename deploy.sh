@@ -1,6 +1,8 @@
 
-git stash
+#git stash
 git pull --force
+
+php app/console doctrine:schema:update --force --dump-sql
 
 php composer.phar self-update
 php composer.phar update
