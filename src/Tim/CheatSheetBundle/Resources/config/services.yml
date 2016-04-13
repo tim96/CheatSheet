@@ -5,16 +5,18 @@ parameters:
     security.authentication.listener.form.class: Tim\CheatSheetBundle\Security\Firewall\UsernamePasswordFormAuthenticationListener
     tim_cheat_sheet.post.handler.class: Tim\CheatSheetBundle\Handler\PostHandler
     tim_cheat_sheet.post.class: Tim\CheatSheetBundle\Entity\Post
+    tim_cheat_sheet.blog.post.handler.class: Tim\CheatSheetBundle\Handler\BlogPostHandler
+    tim_cheat_sheet.blog.post.class: Tim\CheatSheetBundle\Entity\BlogPost
 
 services:
     logger_database:
-        class: %logger_database.class%
+        class: '%logger_database.class%'
         calls:
-            - [ setContainer, [ @service_container ] ]
+            - [ setContainer, [ '@service_container' ] ]
 
     tim_cheat_sheet.admin.feedback:
         class: Tim\CheatSheetBundle\Admin\FeedbackAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\Feedback, SonataAdminBundle:CRUD, @service_container]
+        arguments: [~, Tim\CheatSheetBundle\Entity\Feedback, SonataAdminBundle:CRUD, '@service_container']
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Feedback}
         calls:
@@ -22,7 +24,7 @@ services:
 
     tim_cheat_sheet.admin.post_type:
         class: Tim\CheatSheetBundle\Admin\PostTypeAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\PostType, SonataAdminBundle:CRUD, @service_container]
+        arguments: [~, Tim\CheatSheetBundle\Entity\PostType, SonataAdminBundle:CRUD, '@service_container']
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: PostType}
         calls:
@@ -30,7 +32,7 @@ services:
 
     tim_cheat_sheet.admin.tag:
         class: Tim\CheatSheetBundle\Admin\TagAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\Tag, SonataAdminBundle:CRUD, @service_container]
+        arguments: [~, Tim\CheatSheetBundle\Entity\Tag, SonataAdminBundle:CRUD, '@service_container']
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Tag}
         calls:
@@ -38,7 +40,7 @@ services:
 
     tim_cheat_sheet.admin.question:
         class: Tim\CheatSheetBundle\Admin\QuestionAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\Question, SonataAdminBundle:CRUD, @service_container]
+        arguments: [~, Tim\CheatSheetBundle\Entity\Question, SonataAdminBundle:CRUD, '@service_container']
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Question}
         calls:
@@ -46,7 +48,7 @@ services:
 
     tim_cheat_sheet.admin.post:
         class: Tim\CheatSheetBundle\Admin\PostAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\Post, SonataAdminBundle:CRUD, @service_container]
+        arguments: [~, Tim\CheatSheetBundle\Entity\Post, SonataAdminBundle:CRUD, '@service_container']
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Post}
         calls:
@@ -54,7 +56,7 @@ services:
 
     tim_cheat_sheet.admin.log:
         class: Tim\CheatSheetBundle\Admin\LogAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\Log, SonataAdminBundle:CRUD, @service_container]
+        arguments: [~, Tim\CheatSheetBundle\Entity\Log, SonataAdminBundle:CRUD, '@service_container']
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Log}
         calls:
@@ -62,17 +64,21 @@ services:
 
 # handlers:
     tim_cheat_sheet.post.handler:
-        class: %tim_cheat_sheet.post.handler.class%
-        arguments: [@service_container, @doctrine.orm.entity_manager, %tim_cheat_sheet.post.class%]
+        class: '%tim_cheat_sheet.post.handler.class%'
+        arguments: ['@service_container', '@doctrine.orm.entity_manager', '%tim_cheat_sheet.post.class%']
+
+    tim_cheat_sheet.blog.post.handler:
+        class: '%tim_cheat_sheet.blog.post.handler.class%'
+        arguments: ['@service_container', '@doctrine.orm.entity_manager', '%tim_cheat_sheet.blog.post.class%']
 
     tim_cheat_sheet.admin.doctrine_post:
         class: Tim\CheatSheetBundle\Admin\DoctrinePostAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\DoctrinePost, TimCheatSheetBundle:DoctrinePostAdmin, @service_container]
+        arguments: [~, Tim\CheatSheetBundle\Entity\DoctrinePost, TimCheatSheetBundle:DoctrinePostAdmin, '@service_container']
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: "Doctrine Post" }
 
     tim_cheat_sheet.admin.blog_post:
         class: Tim\CheatSheetBundle\Admin\BlogPostAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\BlogPost, TimCheatSheetBundle:BlogPostAdmin, @service_container]
+        arguments: [~, Tim\CheatSheetBundle\Entity\BlogPost, TimCheatSheetBundle:BlogPostAdmin, '@service_container']
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: "Blog Post" }
