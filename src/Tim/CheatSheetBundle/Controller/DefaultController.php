@@ -34,6 +34,15 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/blog", name="Blog")
+     * @Template()
+     */
+    public function blogAction()
+    {
+        return array();
+    }
+
+    /**
      * @Route("/symfony2/{tab}", name="Symfony2")
      * @Template()
      * @param Request $request
