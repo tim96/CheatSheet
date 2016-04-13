@@ -35,11 +35,14 @@ class DefaultController extends Controller
 
     /**
      * @Route("/blog/{name}", name="Blog")
-     * @Template()
      */
     public function blogAction(Request $request, $name = null)
     {
-        return array();
+        if (null === $name) {
+            return $this->render("TimCheatSheetBundle:Default:blog.html.twig");
+        }
+
+        return $this->render("TimCheatSheetBundle:Default:blogItem.html.twig");
     }
 
     /**
