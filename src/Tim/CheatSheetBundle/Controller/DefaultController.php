@@ -38,11 +38,23 @@ class DefaultController extends Controller
      */
     public function blogAction(Request $request, $name = null)
     {
+        $blogPostService = $this->container->get('tim_cheat_sheet.blog.post.handler');
+
         if (null === $name) {
-            return $this->render("TimCheatSheetBundle:Default:blog.html.twig");
+            $records = $blogPostService->findBy(array('isDeleted' => false, 'isPublish' => true),
+                array('updatedAt' => 'DESC'), $maxRecords = 10);
+            return $this->render("TimCheatSheetBundle:Default:blog.html.twig", array('records' => $records));
         }
 
-        return $this->render("TimCheatSheetBundle:Default:blogItem.html.twig");
+        $record = $blogPostService->getRepository()->getOneByNameQuery($name)->getQuery()->getResult();
+        if (count($record) < 1) {
+            // if we can't find post by name, we show all last posts
+            $records = $blogPostService->findBy(array('isDeleted' => false, 'isPublish' => true),
+                array('updatedAt' => 'DESC'), $maxRecords = 10);
+            return $this->render("TimCheatSheetBundle:Default:blog.html.twig", array('records' => $records));
+        }
+
+        return $this->render("TimCheatSheetBundle:Default:blogItem.html.twig", array('record' => $record[0]));
     }
 
     /**

@@ -6,6 +6,20 @@
 
 {% block body %}
     <div class="container" style="padding-top: 30px; padding-bottom: 60px;">
+        {% for blogPost in records %}
+            <div>
+                <h3>{{ blogPost.text }}</h3>
 
+                <p>
+                    {{ blogPost.intro|raw }}
+                </p>
+
+                <a href="{{ path('Blog', { 'name' : blogPost.text }) }}">
+                    <button type="button" class="btn btn-info btn-sm">
+                        Read more ...
+                    </button>
+                </a>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
