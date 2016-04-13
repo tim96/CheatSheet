@@ -34,10 +34,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/blog", name="Blog")
+     * @Route("/blog/{name}", name="Blog")
      * @Template()
      */
-    public function blogAction()
+    public function blogAction(Request $request, $name = null)
     {
         return array();
     }
