@@ -10,4 +10,23 @@ namespace Tim\CheatSheetBundle\Entity;
  */
 class BlogPostRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getOneByNameQuery($name, $isDeleted = false, $isPublish = true)
+    {
+        $qb = $this->createQueryBuilder('bp');
+
+        if (is_bool($isDeleted)) {
+            $qb->andWhere('bp.isDeleted != :isDeleted')
+                ->setParameter('isDeleted', !$isDeleted);
+        }
+
+        if (is_bool($isPublish)) {
+            $qb->andWhere('bp.isPublish = :isPublic')
+                ->setParameter('isPublic', $isPublish);
+        }
+
+        $qb->andWhere('bp.text = :name')
+            ->setParameter('name', $name);
+
+        return $qb;
+    }
 }

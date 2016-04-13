@@ -25,4 +25,17 @@ class BlogPostHandler extends BaseHandler implements IRecordInterface
     {
         return $this->getRepository()->findBy($options);
     }
+
+    public function findBy($options = array(), $orderBy = null, $maxRecords = null, $offset = null)
+    {
+        return $this->getRepository()->findBy($options, $orderBy, $maxRecords, $offset);
+    }
+
+    /**
+     * @return BlogPostRepository
+     */
+    public function getRepository()
+    {
+        return parent::getRepository();
+    }
 }
