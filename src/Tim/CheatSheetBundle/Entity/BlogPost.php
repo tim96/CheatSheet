@@ -46,6 +46,16 @@ class BlogPost
      * @Assert\NotBlank()
      * @Assert\NotNull()
      *
+     * @ORM\Column(name="intro", type="text")
+     */
+    protected $intro;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
      * @ORM\Column(name="description", type="text")
      */
     protected $description;
@@ -338,5 +348,29 @@ class BlogPost
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set intro
+     *
+     * @param string $intro
+     *
+     * @return BlogPost
+     */
+    public function setIntro($intro)
+    {
+        $this->intro = $intro;
+    
+        return $this;
+    }
+
+    /**
+     * Get intro
+     *
+     * @return string
+     */
+    public function getIntro()
+    {
+        return $this->intro;
     }
 }
