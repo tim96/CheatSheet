@@ -36,6 +36,9 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             // new Sonata\FormatterBundle\SonataFormatterBundle(),
 
+            // for pagination
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
 
