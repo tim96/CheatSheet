@@ -65,17 +65,13 @@ class DefaultController extends Controller
         $maxRecords = 10;
 
         if (null === $name) {
-            $records = $blogPostService->findBy(array('isDeleted' => false, 'isPublish' => true),
-                array('updatedAt' => 'DESC'), $maxRecords);
-            return $this->render("TimCheatSheetBundle:Default:blog.html.twig", array('records' => $records));
+            return $this->redirectToRoute('BlogPaging');
         }
 
         $record = $blogPostService->getRepository()->getOneByNameQuery($name)->getQuery()->getResult();
         if (count($record) < 1) {
             // if we can't find post by name, we show all last posts
-            $records = $blogPostService->findBy(array('isDeleted' => false, 'isPublish' => true),
-                array('updatedAt' => 'DESC'), $maxRecords);
-            return $this->render("TimCheatSheetBundle:Default:blog.html.twig", array('records' => $records));
+            return $this->redirectToRoute('BlogPaging');
         }
 
         return $this->render("TimCheatSheetBundle:Default:blogItem.html.twig", array('record' => $record[0]));
