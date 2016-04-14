@@ -34,15 +34,39 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/blog/{page}", name="BlogPaging", requirements={
+     *     "page": "\d+"
+     * })
+     * @throws \LogicException
+     */
+    public function blogPagingAction(Request $request, $page = 1)
+    {
+        $paginator = $this->get('knp_paginator');
+        $maxRecords = 10;
+
+        $blogPostService = $this->container->get('tim_cheat_sheet.blog.post.handler');
+        $query = $blogPostService->getRepository()->getList()->getQuery();
+        $pagination = $paginator->paginate(
+            $query, /* query for get records */
+            $page, /* page number */
+            $maxRecords /* limit per page */
+        );
+
+        return $this->render('TimCheatSheetBundle:Default:blogPaging.html.twig',
+            array('pagination' => $pagination));
+    }
+
+    /**
      * @Route("/blog/{name}", name="Blog")
      */
     public function blogAction(Request $request, $name = null)
     {
         $blogPostService = $this->container->get('tim_cheat_sheet.blog.post.handler');
+        $maxRecords = 10;
 
         if (null === $name) {
             $records = $blogPostService->findBy(array('isDeleted' => false, 'isPublish' => true),
-                array('updatedAt' => 'DESC'), $maxRecords = 10);
+                array('updatedAt' => 'DESC'), $maxRecords);
             return $this->render("TimCheatSheetBundle:Default:blog.html.twig", array('records' => $records));
         }
 
@@ -50,7 +74,7 @@ class DefaultController extends Controller
         if (count($record) < 1) {
             // if we can't find post by name, we show all last posts
             $records = $blogPostService->findBy(array('isDeleted' => false, 'isPublish' => true),
-                array('updatedAt' => 'DESC'), $maxRecords = 10);
+                array('updatedAt' => 'DESC'), $maxRecords);
             return $this->render("TimCheatSheetBundle:Default:blog.html.twig", array('records' => $records));
         }
 

@@ -36,7 +36,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     {% set currentRoute = app.request.attributes.get('_route') %}
-                    <li class="{% if currentRoute == ('Blog') %}active{% endif %}"><a href="{{ path('Blog') }}">Blog</a></li>
+                    <li class="{% if currentRoute == ('Blog') or currentRoute == ('BlogPaging') %}active{% endif %}"><a href="{{ path('Blog') }}">Blog</a></li>
                     <li class="{% if currentRoute == ('Symfony2') or currentRoute == ('Home') %}active{% endif %}"><a href="{{ path('Home') }}">Symfony 2.7</a></li>
                     <li class="{% if currentRoute == ('Doctrine2') %}active{% endif %}"><a href="{{ path('Doctrine2') }}">Doctrine 2</a></li>
                     <li class="{% if currentRoute == ('SonataAdmin') %}active{% endif %}"><a href="{{ path('SonataAdmin') }}">SonataAdminBundle</a></li>

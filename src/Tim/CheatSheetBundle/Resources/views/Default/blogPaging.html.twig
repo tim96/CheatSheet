@@ -1,0 +1,29 @@
+{% extends 'TimCheatSheetBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Blog
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="padding-top: 30px; padding-bottom: 60px;">
+        {% for blogPost in pagination %}
+            <div>
+                <h3>{{ blogPost.text }}</h3>
+
+                <p>
+                    {{ blogPost.intro|raw }}
+                </p>
+
+                <a href="{{ path('Blog', { 'name' : blogPost.text }) }}">
+                    <button type="button" class="btn btn-info btn-sm">
+                        Read more ...
+                    </button>
+                </a>
+            </div>
+        {% endfor %}
+
+        <div class="navigation navigation-frontend">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}
