@@ -52,7 +52,8 @@
         "dizda/cloud-backup-bundle": "3.*@dev",
         "knplabs/knp-gaufrette-bundle": "0.*@dev",
 
-        "knplabs/knp-menu-bundle": "*@dev"
+        "knplabs/knp-menu-bundle": "*@dev",
+        "knplabs/knp-paginator-bundle": "2.*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
