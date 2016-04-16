@@ -53,7 +53,8 @@
         "knplabs/knp-gaufrette-bundle": "0.*@dev",
 
         "knplabs/knp-menu-bundle": "*@dev",
-        "knplabs/knp-paginator-bundle": "2.*"
+        "knplabs/knp-paginator-bundle": "2.*",
+        "stfalcon/tinymce-bundle": "1.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",

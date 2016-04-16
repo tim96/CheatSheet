@@ -39,6 +39,9 @@ class AppKernel extends Kernel
             // for pagination
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
+            // for add tinymce
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
 
