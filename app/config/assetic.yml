@@ -2,23 +2,23 @@
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ TimCheatSheetBundle ]
-    assets:
-      font-awesome-eot:
-        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.eot'
-        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.eot'
-      font-awesome-svg:
-        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.svg'
-        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.svg'
-      font-awesome-ttf:
-        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
-        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
-      font-awesome-woff:
-        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.woff'
-        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.woff'
-      font-awesome-woff2:
-        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.woff2'
-        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.woff2'
+#    bundles:        [ TimCheatSheetBundle ]
+#    assets:
+#      font-awesome-eot:
+#        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.eot'
+#        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.eot'
+#      font-awesome-svg:
+#        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.svg'
+#        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.svg'
+#      font-awesome-ttf:
+#        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
+#        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.ttf'
+#      font-awesome-woff:
+#        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.woff'
+#        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.woff'
+#      font-awesome-woff2:
+#        inputs: '@TimCheatSheetBundle/Resources/public/css/fonts/glyphicons-halflings-regular.woff2'
+#        output: '/Resources/public/css/fonts/glyphicons-halflings-regular.woff2'
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
