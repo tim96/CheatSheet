@@ -12,8 +12,32 @@
 
 {% block body %}
     <div class="container" style="padding-top: 30px; padding-bottom: 60px;">
-        <h2>{{ record.text }}</h2>
+        <div class="row">
+            <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
+                <div>
+                    <h1>{{ record.text }}</h1>
 
-        {{ record.description|raw }}
+                    <div>
+                        <a href="{{ path('Blog', {'name' : record.text}) }}"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                        <span style="font-size: small;">Added: {{ record.updatedAt|date("d.m.Y H:i") }}</span>
+                    </div>
+
+                    <p style="font-size: large; padding-top: 15px;">
+                        {{ record.description|raw }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 hidden-sm hidden-xs">
+                <div>
+                    Blog Tags
+                </div>
+                <div>
+                    Popular posts
+                </div>
+                <div>
+                    Subscribe
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
