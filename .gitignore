@@ -21,3 +21,4 @@ composer.lock
 *.php~
 node_modules/
 bower_components/
+web/fonts/
