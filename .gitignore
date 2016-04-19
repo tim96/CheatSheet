@@ -19,3 +19,4 @@ web/js/
 web/Resources/
 composer.lock
 *.php~
+node_modules/
