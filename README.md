@@ -11,5 +11,6 @@ TODO:
 - [ ] Upgrade project from symfony 2.7 to symfony 2.8
 - [ ] After upgrade project fix all deprecations in code
 - [ ] Add 'tinymce' inputs to edit forms
+- [ ] Add template to show popular posts
 
 A Symfony project created on June 7, 2015, 7:11 pm.
