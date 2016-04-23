@@ -27,11 +27,16 @@
             {% endfor %}
             </div>
             <div class="col-md-4 col-lg-4 hidden-sm hidden-xs">
-                <div>
-                    Search
-                </div>
+                {#<div>#}
+                    {# todo: uncomment after include search engine #}
+                    {#Search#}
+                {#</div>#}
                 <div>
                     Blog Tags
+                    {% for tag in tags %}
+                        {# todo: redesign this blog #}
+                        {{ tag.name }}
+                    {% endfor %}
                 </div>
                 <div>
                     Popular posts

@@ -53,8 +53,13 @@ class DefaultController extends Controller
             $maxRecords /* limit per page */
         );
 
+        $maxTagRecords = 15;
+        $tagService = $this->container->get('tim_cheat_sheet.tag.handler');
+        $tags = $tagService->getRepository()->findBy(
+            array('isDeleted' => false), array('blogPostCount' => 'DESC'), $maxTagRecords);
+
         return $this->render('TimCheatSheetBundle:Default:blogPaging.html.twig',
-            array('pagination' => $pagination));
+            array('pagination' => $pagination, 'tags' => $tags));
     }
 
     /**
