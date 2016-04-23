@@ -20,6 +20,7 @@ class Tag
         $this->updatedAt = new \DateTime('now');
         $this->isDeleted = false;
         $this->feedbacks = new ArrayCollection();
+        $this->blogPostCount = 0;
     }
 
     /**
@@ -82,6 +83,13 @@ class Tag
      * @ORM\ManyToMany(targetEntity="BlogPost", mappedBy="tags")
      **/
     private $blogPosts;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="blog_post_count", type="integer")
+     */
+    private $blogPostCount;
 
     /**
      * @return string
@@ -287,5 +295,65 @@ class Tag
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set blogPostCount
+     *
+     * @param int $blogPostCount
+     *
+     * @return Tag
+     */
+    public function setBlogPostCount($blogPostCount)
+    {
+        $this->blogPostCount = $blogPostCount;
+    
+        return $this;
+    }
+
+    /**
+     * Get blogPostCount
+     *
+     * @return int
+     */
+    public function getBlogPostCount()
+    {
+        return $this->blogPostCount;
+    }
+
+    /**
+     * Add blogPost
+     *
+     * @param \Tim\CheatSheetBundle\Entity\BlogPost $blogPost
+     *
+     * @return Tag
+     */
+    public function addBlogPost(\Tim\CheatSheetBundle\Entity\BlogPost $blogPost)
+    {
+        $this->blogPosts[] = $blogPost;
+    
+        return $this;
+    }
+
+    /**
+     * Remove blogPost
+     *
+     * @param \Tim\CheatSheetBundle\Entity\BlogPost $blogPost
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeBlogPost(\Tim\CheatSheetBundle\Entity\BlogPost $blogPost)
+    {
+        return $this->blogPosts->removeElement($blogPost);
+    }
+
+    /**
+     * Get blogPosts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBlogPosts()
+    {
+        return $this->blogPosts;
     }
 }
