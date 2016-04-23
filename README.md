@@ -6,7 +6,7 @@ Website about symfony (symfony 2, maybe symfony 3 in future), doctrine ORM, and 
 TODO:
 
 - [X] Add gulp and bower support to work with resource files
-- [ ] Add new fields to save view count and comments
+- [X] Add new fields to save view count and comments
 - [ ] Add function to save post view
 - [ ] Add route to show post using tags
 - [ ] Upgrade project from symfony 2.7 to symfony 2.8

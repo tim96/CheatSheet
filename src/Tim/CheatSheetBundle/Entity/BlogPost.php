@@ -98,6 +98,20 @@ class BlogPost
      **/
     private $tags;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="view_count", type="integer")
+     */
+    private $viewCount;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="comment_count", type="integer")
+     */
+    private $commentCount;
+
     public function __construct()
     {
         $this->isDeleted = false;
@@ -105,6 +119,8 @@ class BlogPost
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->tags = new ArrayCollection();
+        $this->viewCount = 0;
+        $this->commentCount = 0;
     }
 
     public function __toString()
@@ -372,5 +388,53 @@ class BlogPost
     public function getIntro()
     {
         return $this->intro;
+    }
+
+    /**
+     * Set viewCount
+     *
+     * @param int $viewCount
+     *
+     * @return BlogPost
+     */
+    public function setViewCount($viewCount)
+    {
+        $this->viewCount = $viewCount;
+    
+        return $this;
+    }
+
+    /**
+     * Get viewCount
+     *
+     * @return int
+     */
+    public function getViewCount()
+    {
+        return $this->viewCount;
+    }
+
+    /**
+     * Set commentCount
+     *
+     * @param int $commentCount
+     *
+     * @return BlogPost
+     */
+    public function setCommentCount($commentCount)
+    {
+        $this->commentCount = $commentCount;
+    
+        return $this;
+    }
+
+    /**
+     * Get commentCount
+     *
+     * @return int
+     */
+    public function getCommentCount()
+    {
+        return $this->commentCount;
     }
 }
