@@ -1,0 +1,19 @@
+
+{# todo: redesign this blog #}
+<div class="panel panel-success">
+
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-tags"></i> Tags</h3>
+    </div>
+
+    <div class="panel-body">
+
+        {% for tag in tags %}
+            {% set className = 'btn-success' %}
+            <a href="{{ path('BlogTagsPaging', {'tagName' : tag}) }}">
+                <button type="button" class="btn {{ className }} btn-tags">{{ tag }}</button>
+            </a>
+        {% endfor %}
+
+    </div>
+</div>
