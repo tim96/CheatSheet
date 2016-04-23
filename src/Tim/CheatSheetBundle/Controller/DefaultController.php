@@ -6,6 +6,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Tim\CheatSheetBundle\Entity\BlogPost;
@@ -63,7 +64,43 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/blog/tag/{tagName}/{page}", name="BlogTagsPaging", requirements={
+     *     "page": "\d+"
+     * })
+     * @Method({"GET"})
+     *
+     * @throws \LogicException
+     */
+    public function blogTagsPagingAction(Request $request, $tagName = null, $page = 1)
+    {
+        if (null === $tagName) {
+            return $this->redirectToRoute('BlogPaging');
+        }
+
+        $paginator = $this->get('knp_paginator');
+        $maxRecords = 10;
+
+        $tagService = $this->container->get('tim_cheat_sheet.tag.handler');
+        $tag = $tagService->getRepository()->findOneBy(array('isDeleted' => false, 'name' => $tagName));
+        if (null === $tag) {
+            return $this->redirectToRoute('BlogPaging');
+        }
+
+        $blogPostService = $this->container->get('tim_cheat_sheet.blog.post.handler');
+        $query = $blogPostService->getRepository()->getListByTag($tag->getId())->getQuery();
+        $pagination = $paginator->paginate(
+            $query, /* query for get records */
+            $page, /* page number */
+            $maxRecords /* limit per page */
+        );
+
+        return $this->render('TimCheatSheetBundle:Default:blogPaging.html.twig',
+            array('pagination' => $pagination, 'tags' => array($tag)));
+    }
+
+    /**
      * @Route("/blog/{name}", name="Blog")
+     * @Method({"GET"})
      */
     public function blogAction(Request $request, $name = null)
     {

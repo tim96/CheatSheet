@@ -7,37 +7,48 @@
 {% block body %}
     <div class="container" style="padding-top: 30px; padding-bottom: 60px;">
         <div class="row">
+            {# main block #}
             <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
-            {% for blogPost in pagination %}
+            {% if pagination|length > 0 %}
+                {% for blogPost in pagination %}
+                    <div>
+                        <h1>{{ blogPost.text }}</h1>
+
+                        <a href="{{ path('Blog', {'name' : blogPost.text}) }}"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                        <span style="font-size: small;">Added: {{ blogPost.updatedAt|date("d.m.Y H:i") }}</span>
+
+                        <p style="font-size: large;">
+                            {{ blogPost.intro|raw }}
+                        </p>
+
+                        <a href="{{ path('Blog', { 'name' : blogPost.text }) }}">
+                            <button type="button" class="btn btn-info btn-sm">
+                                Read more ...
+                            </button>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
                 <div>
-                    <h1>{{ blogPost.text }}</h1>
+                    <h1>Sorry, we didn't find anything</h1>
 
-                    <span style="font-size: small;">Added: {{ blogPost.updatedAt|date("d.m.Y H:i") }}</span>
-
-                    <p style="font-size: large;">
-                        {{ blogPost.intro|raw }}
-                    </p>
-
-                    <a href="{{ path('Blog', { 'name' : blogPost.text }) }}">
-                        <button type="button" class="btn btn-info btn-sm">
-                            Read more ...
-                        </button>
+                    <a href="{{ path('BlogPaging') }}">
+                        Return to main blog page
                     </a>
                 </div>
-            {% endfor %}
+                {# todo: add form request for intresting post #}
+            {% endif %}
             </div>
+
+            {# side block #}
             <div class="col-md-4 col-lg-4 hidden-sm hidden-xs">
                 {#<div>#}
                     {# todo: uncomment after include search engine #}
                     {#Search#}
                 {#</div>#}
-                <div>
-                    Blog Tags
-                    {% for tag in tags %}
-                        {# todo: redesign this blog #}
-                        {{ tag.name }}
-                    {% endfor %}
-                </div>
+
+                {{ include('@TimCheatSheet/Default/tagWidget.html.twig', {'tags' : tags}) }}
+
                 <div>
                     Popular posts
                 </div>
