@@ -13,5 +13,7 @@ TODO:
 - [ ] After upgrade project fix all deprecations in code
 - [ ] Add 'tinymce' inputs to edit forms
 - [ ] Add template to show popular posts
+- [ ] Add some search engine to search content inside website
+- [ ] Add function to subscribe to new posts (Subscribe module)
 
 A Symfony project created on June 7, 2015, 7:11 pm.
