@@ -20,6 +20,9 @@
                     <div>
                         <a href="{{ path('Blog', {'name' : record.text}) }}"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
                         <span style="font-size: small;">Added: {{ record.updatedAt|date("d.m.Y H:i") }}</span>
+
+                        {#<i class="fa fa-binoculars" aria-hidden="true" style="padding-left: 10px;"></i>#}
+                        {#<span style="font-size: small;"> {{ record.viewCount }}</span>#}
                     </div>
 
                     <p style="font-size: large; padding-top: 15px;">

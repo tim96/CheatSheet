@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
+use Tim\CheatSheetBundle\Entity\BlogPost;
 use Tim\CheatSheetBundle\Entity\Feedback;
 use Tim\CheatSheetBundle\Form\FeedbackType;
 
@@ -62,7 +63,6 @@ class DefaultController extends Controller
     public function blogAction(Request $request, $name = null)
     {
         $blogPostService = $this->container->get('tim_cheat_sheet.blog.post.handler');
-        $maxRecords = 10;
 
         if (null === $name) {
             return $this->redirectToRoute('BlogPaging');
@@ -74,7 +74,15 @@ class DefaultController extends Controller
             return $this->redirectToRoute('BlogPaging');
         }
 
-        return $this->render("TimCheatSheetBundle:Default:blogItem.html.twig", array('record' => $record[0]));
+        /** @var BlogPost $post */
+        $post = $record[0];
+        $post->setViewCount($post->getViewCount() + 1);
+
+        $om = $this->getDoctrine()->getManager();
+        $om->persist($post);
+        $om->flush();
+
+        return $this->render("TimCheatSheetBundle:Default:blogItem.html.twig", array('record' => $post));
     }
 
     /**

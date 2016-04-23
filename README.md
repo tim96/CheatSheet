@@ -7,7 +7,7 @@ TODO:
 
 - [X] Add gulp and bower support to work with resource files
 - [X] Add new fields to save view count and comments
-- [ ] Add function to save post view
+- [X] Add function to save post view
 - [ ] Add route to show post using tags
 - [ ] Upgrade project from symfony 2.7 to symfony 2.8
 - [ ] After upgrade project fix all deprecations in code
