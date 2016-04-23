@@ -43,4 +43,22 @@ class BlogPostRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb;
     }
+
+    public function getListByTag($tagId, $isDeleted = false, $isPublish = true)
+    {
+        $qb = $this->getList($isDeleted, $isPublish);
+
+        if (null !== $tagId) {
+            $qb->leftJoin('bp.tags', 'tags')
+                ->addSelect('tags')
+                ->andWhere('tags.id = :tagId')
+                ->setParameter('tagId', $tagId)
+            ;
+        }
+
+        $qb->orderBy('bp.updatedAt', 'DESC');
+
+        return $qb;
+    }
+
 }
