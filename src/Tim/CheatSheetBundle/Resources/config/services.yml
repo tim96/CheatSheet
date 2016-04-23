@@ -7,6 +7,8 @@ parameters:
     tim_cheat_sheet.post.class: Tim\CheatSheetBundle\Entity\Post
     tim_cheat_sheet.blog.post.handler.class: Tim\CheatSheetBundle\Handler\BlogPostHandler
     tim_cheat_sheet.blog.post.class: Tim\CheatSheetBundle\Entity\BlogPost
+    tim_cheat_sheet.tag.handler.class: Tim\CheatSheetBundle\Handler\TagHandler
+    tim_cheat_sheet.tag.class: Tim\CheatSheetBundle\Entity\Tag
 
 services:
     logger_database:
@@ -70,6 +72,10 @@ services:
     tim_cheat_sheet.blog.post.handler:
         class: '%tim_cheat_sheet.blog.post.handler.class%'
         arguments: ['@service_container', '@doctrine.orm.entity_manager', '%tim_cheat_sheet.blog.post.class%']
+
+    tim_cheat_sheet.tag.handler:
+        class: '%tim_cheat_sheet.tag.handler.class%'
+        arguments: ['@service_container', '@doctrine.orm.entity_manager', '%tim_cheat_sheet.tag.class%']
 
     tim_cheat_sheet.admin.doctrine_post:
         class: Tim\CheatSheetBundle\Admin\DoctrinePostAdmin
