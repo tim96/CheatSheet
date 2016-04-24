@@ -9,6 +9,8 @@
         <div class="row">
             {# main block #}
             <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
+            {#{% set pagination = pager.currentPageResults %}#}
+            {% set pagination = pager.currentPageResults %}
             {% if pagination|length > 0 %}
                 {% for blogPost in pagination %}
                     <div>
@@ -28,6 +30,16 @@
                         </a>
                     </div>
                 {% endfor %}
+
+                {% if pager.haveToPaginate %}
+                    <div class="pagerfanta">
+                        {{ pagerfanta(my_pager, 'twitter_bootstrap3') }}
+                    </div>
+                {% endif %}
+
+                {#<div class="navigation navigation-frontend">#}
+                    {#{{ knp_pagination_render(pagination) }}#}
+                {#</div>#}
             {% else %}
                 <div>
                     <h1>Sorry, we didn't find anything</h1>
@@ -56,10 +68,6 @@
                     Subscribe
                 </div>
             </div>
-        </div>
-
-        <div class="navigation navigation-frontend">
-            {{ knp_pagination_render(pagination) }}
         </div>
     </div>
 {% endblock %}

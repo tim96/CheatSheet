@@ -2,6 +2,9 @@
 
 namespace Tim\CheatSheetBundle\Controller;
 
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Exception\NotValidCurrentPageException;
+use Pagerfanta\Pagerfanta;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -9,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tim\CheatSheetBundle\Entity\BlogPost;
 use Tim\CheatSheetBundle\Entity\Feedback;
 use Tim\CheatSheetBundle\Form\FeedbackType;
@@ -43,16 +47,28 @@ class DefaultController extends Controller
      */
     public function blogPagingAction(Request $request, $page = 1)
     {
-        $paginator = $this->get('knp_paginator');
-        $maxRecords = 10;
+//        $paginator = $this->get('knp_paginator');
+//        $maxRecords = 10;
 
         $blogPostService = $this->container->get('tim_cheat_sheet.blog.post.handler');
         $query = $blogPostService->getRepository()->getList()->getQuery();
-        $pagination = $paginator->paginate(
-            $query, /* query for get records */
-            $page, /* page number */
-            $maxRecords /* limit per page */
-        );
+
+        $adapter = new DoctrineORMAdapter($query);
+        $pager =  new Pagerfanta($adapter);
+        $pager->setCurrentPage($page);
+
+        try  {
+            $pager->setCurrentPage($page);
+        }
+        catch(NotValidCurrentPageException $e) {
+            return $this->redirectToRoute('BlogPaging', array('page' => 1));
+        }
+
+//        $pagination = $paginator->paginate(
+//            $query, /* query for get records */
+//            $page, /* page number */
+//            $maxRecords /* limit per page */
+//        );
 
         $maxTagRecords = 15;
         $tagService = $this->container->get('tim_cheat_sheet.tag.handler');
@@ -60,7 +76,7 @@ class DefaultController extends Controller
             array('isDeleted' => false), array('blogPostCount' => 'DESC'), $maxTagRecords);
 
         return $this->render('TimCheatSheetBundle:Default:blogPaging.html.twig',
-            array('pagination' => $pagination, 'tags' => $tags));
+            array(/*'pagination' => $pagination,*/'pager' => $pager, 'tags' => $tags));
     }
 
     /**
