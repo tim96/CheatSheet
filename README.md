@@ -9,7 +9,7 @@ TODO:
 - [X] Add new fields to save view count and comments
 - [X] Add function to save post view
 - [X] Add route to show post using tags
-- [ ] Try another pager bundle instead of knp (for example: Pagerfanta)
+- [X] Try another pager bundle instead of knp (for example: Pagerfanta)
 - [ ] Upgrade project from symfony 2.7 to symfony 2.8
 - [ ] After upgrade project fix all deprecations in code
 - [ ] Add 'tinymce' inputs to edit forms
