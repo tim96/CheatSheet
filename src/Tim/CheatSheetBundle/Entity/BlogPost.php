@@ -339,6 +339,7 @@ class BlogPost
      */
     public function addTag(\Tim\CheatSheetBundle\Entity\Tag $tag)
     {
+        $tag->addBlogPost($this);
         $this->tags[] = $tag;
     
         return $this;

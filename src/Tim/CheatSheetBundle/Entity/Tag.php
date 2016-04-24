@@ -224,6 +224,7 @@ class Tag
      */
     public function addPost(\Tim\CheatSheetBundle\Entity\Post $post)
     {
+        $post->addTag($this);
         $this->posts[] = $post;
     
         return $this;
@@ -330,6 +331,7 @@ class Tag
      */
     public function addBlogPost(\Tim\CheatSheetBundle\Entity\BlogPost $blogPost)
     {
+        $blogPost->addTag($this);
         $this->blogPosts[] = $blogPost;
     
         return $this;
