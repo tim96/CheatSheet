@@ -28,7 +28,7 @@ services:
         class: Tim\CheatSheetBundle\Admin\PostTypeAdmin
         arguments: [~, Tim\CheatSheetBundle\Entity\PostType, SonataAdminBundle:CRUD, '@service_container']
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: PostType}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: 'Post Type' }
         calls:
             - [ setTranslationDomain, [ messages ] ]
 

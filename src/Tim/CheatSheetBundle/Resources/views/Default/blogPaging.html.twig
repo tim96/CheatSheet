@@ -13,13 +13,13 @@
             {% set pagination = pager.currentPageResults %}
             {% if pagination|length > 0 %}
                 {% for blogPost in pagination %}
-                    <div>
+                    <div style="padding-bottom: 40px;">
                         <h1>{{ blogPost.text }}</h1>
 
                         <a href="{{ path('Blog', {'name' : blogPost.text}) }}"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
                         <span style="font-size: small;">Added: {{ blogPost.updatedAt|date("d.m.Y H:i") }}</span>
 
-                        <p style="font-size: large;">
+                        <p style="font-size: large; padding-bottom: 10px; padding-top: 10px;">
                             {{ blogPost.intro|raw }}
                         </p>
 
