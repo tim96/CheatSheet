@@ -10,7 +10,7 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.7.*",
+        "symfony/symfony": "2.8.*",
         "symfony/assetic-bundle": "2.*",
         "symfony/swiftmailer-bundle": "2.*",
         "symfony/monolog-bundle": "2.*",
@@ -24,7 +24,7 @@
 
         "sensio/distribution-bundle": "4.*@dev",
         "sensio/framework-extra-bundle": "3.*@dev",
-        "sensio/generator-bundle": "2.*@dev",
+        "sensio/generator-bundle": "3.*@dev",
 
         "jms/serializer-bundle": "1.*@dev",
         "friendsofsymfony/rest-bundle": "1.8.*@dev",
@@ -39,13 +39,13 @@
         "cboden/ratchet": "0.*@dev",
         "gregwar/captcha-bundle": "1.*@dev",
 
-        "sonata-project/admin-bundle": "2.4.*@dev",
+        "sonata-project/admin-bundle": "dev-master as 2.4",
         "sonata-project/block-bundle": "2.*@dev",
-        "sonata-project/user-bundle": "2.3.*@dev",
-        "sonata-project/core-bundle": "2.*@dev",
-        "sonata-project/datagrid-bundle": "2.2.*@dev",
+        "sonata-project/user-bundle": "2.*@dev",
+        "sonata-project/core-bundle": "dev-master as 2.4",
+        "sonata-project/datagrid-bundle": "2.*@dev",
         "sonata-project/formatter-bundle": "2.3.*@dev",
-        "sonata-project/doctrine-orm-admin-bundle": "2.*@dev",
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master as 2.4",
 
         "dropbox/dropbox-sdk": "1.*@dev",
         "google/apiclient": "1.*@dev",
@@ -54,7 +54,7 @@
 
         "knplabs/knp-menu-bundle": "*@dev",
         "knplabs/knp-paginator-bundle": "2.*",
-        "stfalcon/tinymce-bundle": "1.0",
+        "stfalcon/tinymce-bundle": "1.*",
         "white-october/pagerfanta-bundle": "^1.0"
     },
     "require-dev": {
