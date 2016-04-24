@@ -16,5 +16,6 @@ TODO:
 - [ ] Add template to show popular posts
 - [ ] Add some search engine to search content inside website
 - [ ] Add function to subscribe to new posts (Subscribe module)
+- [ ] Add block to dashboard
 
 A Symfony project created on June 7, 2015, 7:11 pm.
