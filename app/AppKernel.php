@@ -38,6 +38,8 @@ class AppKernel extends Kernel
 
             // for pagination
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            // for pagination alternative variant
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
             // for add tinymce
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
