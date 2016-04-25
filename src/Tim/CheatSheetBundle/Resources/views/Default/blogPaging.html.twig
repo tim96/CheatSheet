@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container" style="padding-top: 30px; padding-bottom: 60px;">
+    <div class="container" style="padding-top: 30px; padding-bottom: 60px; font-size: 18px;">
         <div class="row">
             {# main block #}
             <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
@@ -14,14 +14,14 @@
             {% if pagination|length > 0 %}
                 {% for blogPost in pagination %}
                     <div style="padding-bottom: 40px;">
-                        <h1>{{ blogPost.text }}</h1>
+                        <a href="{{ path('Blog', {'name' : blogPost.text}) }}" style="text-decoration: underline;"><h1>{{ blogPost.text }}</h1></a>
 
                         <a href="{{ path('Blog', {'name' : blogPost.text}) }}"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
                         <span style="font-size: small;">Added: {{ blogPost.updatedAt|date("d.m.Y H:i") }}</span>
 
-                        <p style="font-size: large; padding-bottom: 10px; padding-top: 10px;">
+                        <div style="padding-bottom: 15px; padding-top: 20px;">
                             {{ blogPost.intro|raw }}
-                        </p>
+                        </div>
 
                         <a href="{{ path('Blog', { 'name' : blogPost.text }) }}">
                             <button type="button" class="btn btn-info btn-sm">
@@ -70,4 +70,16 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready( function(){
+            hljs.initHighlightingOnLoad();
+
+            $('#tabs').tab();
+        });
+    </script>
 {% endblock %}
