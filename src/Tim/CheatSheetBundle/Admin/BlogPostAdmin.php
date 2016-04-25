@@ -64,14 +64,14 @@ class BlogPostAdmin extends BaseAdmin
     {
         $formMapper
             // ->add('id')
+            ->add('isPublish')
             ->add('meta')
             ->add('tags')
             ->add('text')
-            ->add('intro')
-            ->add('description')
+            ->add('intro', 'textarea', array('attr' => array('rows' => '25')))
+            ->add('description', 'textarea', array('attr' => array('rows' => '25')))
             // ->add('createdAt')
             // ->add('updatedAt')
-            ->add('isPublish')
             // ->add('isDeleted')
         ;
     }
