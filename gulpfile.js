@@ -11,10 +11,12 @@ gulp.task('js', function () {
     return gulp.src([
             'bower_components/jquery/dist/jquery.min.js',
             'bower_components/bootstrap/dist/js/bootstrap.min.js',
-            'bower_components/highlight/src/highlight.js',
+            // 'bower_components/highlight/src/highlight.js',
             // 'bower_components/highlight/src/languages/php.js',
             // 'bower_components/highlight/src/languages/sql.js',
             // 'src/Tim/CheatSheetBundle/Resources/public/js/**/*.js'])
+            // 'src/Tim/CheatSheetBundle/Resources/public/js/highlight.min.js',
+            'src/Tim/CheatSheetBundle/Resources/public/js/highlight.pack.js',
             'src/Tim/CheatSheetBundle/Resources/public/js/anchor.min.js',
             'src/Tim/CheatSheetBundle/Resources/public/js/site.js'])
         .pipe(concat('app.js'))
@@ -28,6 +30,7 @@ gulp.task('css', function () {
     return gulp.src([
             'bower_components/bootstrap/dist/css/bootstrap.css',
             'bower_components/font-awesome/css/font-awesome.min.css',
+            'src/Tim/CheatSheetBundle/Resources/public/css/highlight.min.css',
             'bower_components/highlight/src/styles/github.css',
             'src/Tim/CheatSheetBundle/Resources/public/css/cosmo/bootstrap.min.css',
             // 'src/Tim/CheatSheetBundle/Resources/public/css/**/*.css'])

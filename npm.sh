@@ -15,3 +15,6 @@ npm install gulp-uglifycss
 npm install gulp-less
 npm install gulp-concat
 npm install gulp-sourcemaps
+
+# to run all sripts from gulpfile.js
+gulp
