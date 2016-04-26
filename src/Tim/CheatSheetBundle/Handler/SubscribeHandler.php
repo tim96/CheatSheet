@@ -24,4 +24,11 @@ class SubscribeHandler extends BaseHandler implements IRecordInterface
     {
         // todo: add logic to save new record
     }
+
+    public function create($data)
+    {
+        $this->om->persist($data);
+        $this->om->flush();
+        return $data;
+    }
 }
