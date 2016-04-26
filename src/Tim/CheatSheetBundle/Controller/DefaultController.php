@@ -251,4 +251,17 @@ class DefaultController extends Controller
 
         return array('Questions' => $data);
     }
+
+    public function mostViewedPostAction($max = 3)
+    {
+        $blogPostService = $this->container->get('tim_cheat_sheet.blog.post.handler');
+        $records = $blogPostService->getRepository()->findBy(array('isDeleted' => false, 'isPublish' => true), array(
+            'viewCount' => 'DESC'
+        ), $max);
+
+        return $this->render(
+            '@TimCheatSheet/Default/popularPostsWidget.html.twig',
+            array('records' => $records)
+        );
+    }
 }
