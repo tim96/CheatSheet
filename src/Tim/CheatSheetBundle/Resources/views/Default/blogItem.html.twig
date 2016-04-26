@@ -34,12 +34,12 @@
 
                 {{ include('@TimCheatSheet/Default/tagWidget.html.twig', {'tags' : record.tags}) }}
 
-                <div>
-                    Popular posts
-                </div>
+                {{ render(controller('TimCheatSheetBundle:Default:mostViewedPost')) }}
+
                 <div>
                     Subscribe
                 </div>
+
             </div>
         </div>
     </div>
