@@ -1,0 +1,24 @@
+
+{# todo: redesign this blog #}
+<div class="panel panel-info">
+
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> Most Viewed</h3>
+    </div>
+
+    <div class="panel-body">
+
+        <ul>
+        {% for blogPost in records %}
+
+                <li>
+                    <a href="{{ path('Blog', {'name' : blogPost.text}) }}" style="font-size: 14px;">
+                        {{ blogPost.text }}
+                    </a>
+                </li>
+
+        {% endfor %}
+        </ul>
+
+    </div>
+</div>
