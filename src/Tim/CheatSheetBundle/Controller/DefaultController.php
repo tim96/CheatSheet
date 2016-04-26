@@ -15,7 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tim\CheatSheetBundle\Entity\BlogPost;
 use Tim\CheatSheetBundle\Entity\Feedback;
+use Tim\CheatSheetBundle\Entity\Subscribe;
 use Tim\CheatSheetBundle\Form\FeedbackType;
+use Tim\CheatSheetBundle\Form\SubscribeType;
 
 class DefaultController extends Controller
 {
@@ -263,5 +265,49 @@ class DefaultController extends Controller
             '@TimCheatSheet/Default/popularPostsWidget.html.twig',
             array('records' => $records)
         );
+    }
+
+    /**
+     * @Route("/subscribe", name="Subscribe")
+     * @Method("POST")
+     *
+     * @Template()
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function subscribeAction(Request $request)
+    {
+        $data = $request->request->all();
+
+        $subscribe = new Subscribe();
+        $form = $this->createForm(new SubscribeType(), $subscribe, array('csrf_protection' => false));
+
+        $form->submit($data);
+
+        if ($form->isValid()) {
+
+            try {
+                $data = $form->getData();
+                $record = $this->container->get('tim_cheat_sheet.subscribe.handler')
+                    ->create($data);
+            }
+            catch(\Exception $ex)
+            {
+                // todo: add log error
+                // die('Error: '.$ex->getMessage());
+            }
+
+            // todo: add email send with information
+
+            $this->addFlash(
+                'notice',
+                'Thank you for subscribing to our newsletter!'
+            );
+
+            return $this->redirectToRoute('thankyou');
+        }
+
+        // todo: check this situation
+        exit('Something wrong');
     }
 }

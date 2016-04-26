@@ -6,12 +6,10 @@ Thank you!
 
 {% block body %}
     <div class="container" style="margin-bottom: 70px;">
-        <p class="bg-success">
-            {% for flashMessage in app.session.flashbag.get('notice') %}
-                    <div class="flash-notice">
-                        {{ flashMessage }}
-                    </div>
-            {% endfor %}
-        </p>
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="flash-notice">
+                    <p style="font-size: 24px;">{{ flashMessage }}</p>
+                </div>
+        {% endfor %}
     </div>
 {% endblock %}
