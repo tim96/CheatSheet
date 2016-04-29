@@ -18,8 +18,8 @@ FAQ
             {% set index = 1 %}
             {% for question in Questions %}
                 <div>
-                    <a href="a{{ index }}" class="spoilerButton">{{ index }}. {{ question.question }}  <i class="fa fa-arrow-down"></i></a>
-                    <div id="a{{ index }}" class="spoiler" style="display: none;">{{ question.content }}</div>
+                    <a href="a{{ index }}" class="spoilerButton">{{ index }}. {{ question.question }}  <i class="fa fa-arrow-left"></i></a>
+                    <div id="a{{ index }}" class="spoiler" style="display: none; padding-top: 10px; padding-bottom: 10px;">{{ question.content }}</div>
                 </div>
                 {% set index = index + 1 %}
             {% endfor %}
