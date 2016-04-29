@@ -1,0 +1,3 @@
+
+# run gulp scripts
+gulp
