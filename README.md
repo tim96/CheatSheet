@@ -12,6 +12,7 @@ TODO:
 - [X] Try another pager bundle instead of knp (for example: Pagerfanta)
 - [X] Upgrade project from symfony 2.7 to symfony 2.8
 - [ ] Add separate pages for question like in posts
+- [ ] Add form to upload `sitemap.xml`
 - [ ] After upgrade project fix all deprecations in code
 - [ ] Add 'tinymce' inputs to edit forms
 - [X] Add template to show popular posts
