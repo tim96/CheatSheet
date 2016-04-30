@@ -11,16 +11,48 @@ use Doctrine\ORM\AbstractQuery;
  */
 class QuestionRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getListAsArray()
+    public function getListAsArray($isDeleted = false, $isPublish = true)
     {
-        $query = $this->createQueryBuilder('q');
-
-        $query->andWhere('q.isPublish = :isPublish')
-            ->setParameter('isPublish', true)
-            ->addOrderBy('q.createdAt', 'DESC')
-        ;
+        $query = $this->getList($isDeleted, $isPublish);
 
         $data = $query->getQuery()->getResult(AbstractQuery::HYDRATE_ARRAY);
         return count($data) > 0 ? $data : array();
+    }
+
+    public function getOneByQuestionQuery($question, $isDeleted = false, $isPublish = true)
+    {
+        $qb = $this->getList($isDeleted, $isPublish);
+
+        $qb->andWhere('q.question = :question')
+            ->setParameter('question', $question)
+        ;
+
+        $qb->setMaxResults(1);
+
+        return $qb;
+    }
+
+    /**
+     * @param bool $isDeleted
+     * @param bool $isPublish
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getList($isDeleted = false, $isPublish = true)
+    {
+        $qb = $this->createQueryBuilder('q');
+
+        if (is_bool($isDeleted)) {
+            $qb->andWhere('q.isDeleted != :isDeleted')
+                ->setParameter('isDeleted', !$isDeleted);
+        }
+
+        if (is_bool($isPublish)) {
+            $qb->andWhere('q.isPublish = :isPublic')
+                ->setParameter('isPublic', $isPublish);
+        }
+
+        $qb->orderBy('q.updatedAt', 'DESC');
+
+        return $qb;
     }
 }
