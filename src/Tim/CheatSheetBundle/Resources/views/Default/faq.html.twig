@@ -16,10 +16,14 @@ FAQ
 
         <div class="contentBoxFooter">
             {% set index = 1 %}
-            {% for question in Questions %}
+            {% for question in questions %}
                 <div>
                     <a href="a{{ index }}" class="spoilerButton">{{ index }}. {{ question.question }}  <i class="fa fa-arrow-left"></i></a>
-                    <div id="a{{ index }}" class="spoiler" style="display: none; padding-top: 10px; padding-bottom: 10px;">{{ question.content }}</div>
+                    <a href="{{ path('Faq', {'question' : question.question}) }}" style="float: right;"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+
+                    <div id="a{{ index }}" class="spoiler" style="display: none; padding-top: 10px; padding-bottom: 10px;">
+                        {{ question.content|raw }}
+                    </div>
                 </div>
                 {% set index = index + 1 %}
             {% endfor %}
