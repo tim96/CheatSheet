@@ -243,15 +243,30 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/faq", name="Faq")
-     * @Template()
+     * @Route("/faq/{question}", name="Faq")
+     *
+     * @param null $question
+     * @return array
      */
-    public function faqAction()
+    public function faqAction($question = null)
     {
-        $data = $this->container->get('tim_cheat_sheet.question.handler')
-            ->getListAsArray();
+        // todo: move this code logic to handler
+        if (null === $question) {
+            $data = $this->container->get('tim_cheat_sheet.question.handler')
+                ->getListAsArray();
 
-        return array('Questions' => $data);
+            return $this->render("TimCheatSheetBundle:Default:faq.html.twig", array('questions' => $data));
+        } else {
+            $records = $this->container->get('tim_cheat_sheet.question.handler')
+                ->getRepository()->getOneByQuestionQuery($question)->getQuery()->getResult();
+
+            if (count($records) < 1) {
+                // if we can't find item by question, we redirect to another page
+                return $this->redirectToRoute('Faq');
+            };
+
+            return $this->render("TimCheatSheetBundle:Default:faqItem.html.twig", array('question' => $records[0]));
+        }
     }
 
     public function mostViewedPostAction($max = 3)

@@ -8,10 +8,14 @@
 
 namespace Tim\CheatSheetBundle\Handler;
 
+use Tim\CheatSheetBundle\Entity\QuestionRepository;
 use Tim\CheatSheetBundle\Interfaces\IRecordInterface;
 
 class QuestionHandler extends BaseHandler implements IRecordInterface
 {
+    /** @var  QuestionRepository */
+    protected $repository;
+
     public function get($id)
     {
         return $this->getRepository()->find($id);
@@ -25,5 +29,10 @@ class QuestionHandler extends BaseHandler implements IRecordInterface
     public function getListAsArray()
     {
         return $this->getRepository()->getListAsArray();
+    }
+
+    public function getRepository()
+    {
+        return $this->repository;
     }
 }
