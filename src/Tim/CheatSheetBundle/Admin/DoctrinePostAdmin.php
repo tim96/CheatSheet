@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Tim\CheatSheetBundle\Form\TinymceFieldType;
 
 class DoctrinePostAdmin extends BaseAdmin
 {
@@ -62,7 +63,9 @@ class DoctrinePostAdmin extends BaseAdmin
             // ->add('id')
             ->add('meta')
             ->add('text')
-            ->add('description')
+            ->add('description', new TinymceFieldType(), array(
+                'attr' => array('rows' => '15', 'class' => 'tinymce'))
+            )
             // ->add('createdAt')
             // ->add('updatedAt')
             // ->add('isDeleted')
