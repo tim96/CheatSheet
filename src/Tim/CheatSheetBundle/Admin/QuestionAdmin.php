@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Tim\CheatSheetBundle\Form\TinymceFieldType;
 
 class QuestionAdmin extends BaseAdmin
 {
@@ -62,7 +63,9 @@ class QuestionAdmin extends BaseAdmin
             // ->add('id')
             ->add('title')
             ->add('question')
-            ->add('content')
+            ->add('content', new TinymceFieldType(), array(
+                'attr' => array('rows' => '15', 'class' => 'tinymce'))
+            )
             // ->add('createdAt')
             // ->add('updatedAt')
             ->add('isPublish')
