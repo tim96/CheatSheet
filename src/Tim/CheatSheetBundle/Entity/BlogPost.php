@@ -93,7 +93,7 @@ class BlogPost
     private $isDeleted = false;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="blogPosts")
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="blogPosts", cascade={"persist"})
      * @ORM\JoinTable(name="blog_post_tag")
      **/
     private $tags;

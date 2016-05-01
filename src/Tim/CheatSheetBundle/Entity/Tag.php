@@ -20,6 +20,7 @@ class Tag
         $this->updatedAt = new \DateTime('now');
         $this->isDeleted = false;
         $this->feedbacks = new ArrayCollection();
+        $this->blogPosts = new ArrayCollection();
         $this->blogPostCount = 0;
     }
 
@@ -80,7 +81,7 @@ class Tag
     private $posts;
 
     /**
-     * @ORM\ManyToMany(targetEntity="BlogPost", mappedBy="tags")
+     * @ORM\ManyToMany(targetEntity="BlogPost", mappedBy="tags", cascade={"persist"})
      **/
     private $blogPosts;
 
