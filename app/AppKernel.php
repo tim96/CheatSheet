@@ -13,7 +13,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            // new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
@@ -37,7 +37,7 @@ class AppKernel extends Kernel
             // new Sonata\FormatterBundle\SonataFormatterBundle(),
 
             // for pagination
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            // new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             // for pagination alternative variant
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
