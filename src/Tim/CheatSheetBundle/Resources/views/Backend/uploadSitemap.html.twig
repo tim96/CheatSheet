@@ -1,0 +1,17 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block sonata_admin_content %}
+    <div class="sonata-ba-form">
+
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ flash_message }}
+            </div>
+
+        {% endfor %}
+
+        {{ form(form) }}
+    </div>
+{% endblock %}

@@ -3,6 +3,11 @@ tim_cheat_sheet_default:
     type:     annotation
     prefix:   /
 
+tim_cheat_sheet_admin:
+    resource: "@TimCheatSheetBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /
+
 sonata_user_profile_show:
      pattern:  /
      defaults:
