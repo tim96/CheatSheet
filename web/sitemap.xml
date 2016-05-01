@@ -4,20 +4,28 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
 <url>
-  <loc>http://symfony.overrider.org/symfony2</loc>
+  <loc>http://symfony.overrider.org/</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://symfony.overrider.org/blog</loc>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://symfony.overrider.org/doctrine2</loc>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://symfony.overrider.org/sonataadmin</loc>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://symfony.overrider.org/faq</loc>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://symfony.overrider.org/contact</loc>
+  <changefreq>weekly</changefreq>
 </url>
 </urlset>
