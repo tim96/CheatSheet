@@ -11,13 +11,13 @@ FAQ
         </div>
 
         <div>
-            <h4>In development</h4>
+            <h3>This page is under development</h3>
         </div>
 
         <div class="contentBoxFooter">
             {% set index = 1 %}
             {% for question in questions %}
-                <div>
+                <div style="padding-bottom: 10px; font-size: 16px;">
                     <a href="a{{ index }}" class="spoilerButton">{{ index }}. {{ question.question }}  <i class="fa fa-arrow-left"></i></a>
                     <a href="{{ path('Faq', {'question' : question.question}) }}" style="float: right;"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
 
