@@ -69,7 +69,7 @@ class BlogPostAdmin extends BaseAdmin
             ->add('tags', 'sonata_type_model', array('required' => false, 'expanded' => false, 'multiple' => true))
             // ->add('tags', 'sonata_type_collection')
             ->add('text')
-            ->add('intro', 'textarea', array('attr' => array('rows' => '25')))
+            ->add('intro', 'textarea', array('attr' => array('rows' => '10')))
             ->add('description', 'textarea', array('attr' => array('rows' => '25')))
             // ->add('createdAt')
             // ->add('updatedAt')
