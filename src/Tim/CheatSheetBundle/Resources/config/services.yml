@@ -38,7 +38,7 @@ services:
         class: Tim\CheatSheetBundle\Admin\TagAdmin
         arguments: [~, Tim\CheatSheetBundle\Entity\Tag, SonataAdminBundle:CRUD, '@service_container']
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Tag}
+            - {name: sonata.admin, manager_type: orm, group: 'Tag', label: Tag, on_top: true, icon: '<i class="fa fa-tags"></i>' }
         calls:
             - [ setTranslationDomain, [ messages ] ]
 
@@ -93,7 +93,7 @@ services:
         class: Tim\CheatSheetBundle\Admin\BlogPostAdmin
         arguments: [~, Tim\CheatSheetBundle\Entity\BlogPost, TimCheatSheetBundle:BlogPostAdmin, '@service_container']
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: "Blog Post" }
+            - { name: sonata.admin, manager_type: orm, group: 'Blog Post', label: "Blog Post", on_top: true, icon: '<i class="fa fa-file-text"></i>' }
 
     tim_cheat_sheet.form.tinymce_field:
         class: Tim\CheatSheetBundle\Form\TinymceFieldType
