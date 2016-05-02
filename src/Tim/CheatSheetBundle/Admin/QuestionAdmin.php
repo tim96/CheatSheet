@@ -42,7 +42,7 @@ class QuestionAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id', null, array('route' => array('name' => 'show')))
             ->add('title')
             ->add('question')
             ->add('content')

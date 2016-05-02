@@ -44,7 +44,7 @@ class PostTypeAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id', null, array('route' => array('name' => 'show')))
             ->add('name')
             ->add('priority')
             ->add('author')

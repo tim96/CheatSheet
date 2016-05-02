@@ -39,7 +39,7 @@ class TagAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id', null, array('route' => array('name' => 'show')))
             ->add('name')
             ->add('author')
             ->add('createdAt')

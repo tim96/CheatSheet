@@ -43,7 +43,7 @@ class FeedbackAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id', null, array('route' => array('name' => 'show')))
             ->add('email')
             ->add('name')
             ->add('message')

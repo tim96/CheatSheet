@@ -44,7 +44,7 @@ class BlogPostAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id', null, array('route' => array('name' => 'show')))
             ->add('isPublish')
             ->add('tags')
             // ->add('meta')

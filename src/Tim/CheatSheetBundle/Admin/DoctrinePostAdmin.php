@@ -44,7 +44,7 @@ class DoctrinePostAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id', null, array('route' => array('name' => 'show')))
             ->add('meta')
             ->add('text')
             // ->add('description')

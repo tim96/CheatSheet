@@ -42,7 +42,7 @@ class LogAdmin extends BaseAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id', null, array('route' => array('name' => 'show')))
             ->add('level')
             ->add('levelName')
             ->add('message')
