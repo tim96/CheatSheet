@@ -40,11 +40,11 @@
         "gregwar/captcha-bundle": "1.*@dev",
 
         "sonata-project/admin-bundle": "dev-master as 2.4",
-        "sonata-project/block-bundle": "2.*@dev",
-        "sonata-project/user-bundle": "2.*@dev",
+        "sonata-project/block-bundle": "dev-master as 2.4",
+        "sonata-project/user-bundle": "dev-master",
         "sonata-project/core-bundle": "dev-master as 2.4",
-        "sonata-project/datagrid-bundle": "2.*@dev",
-        "sonata-project/formatter-bundle": "2.3.*@dev",
+        "sonata-project/datagrid-bundle": "dev-master",
+        "sonata-project/formatter-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master as 2.4",
 
         "dropbox/dropbox-sdk": "1.*@dev",
