@@ -1,0 +1,30 @@
+{% block block %}
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{{ label }}</h3>
+        </div>
+        <div class="box-body">
+            <table class="table table-hover">
+                <tbody>
+                    {% for item in result %}
+                            <tr>
+                                <td class="sonata-ba-list-label" width="40%">
+                                    {{ item.text }}
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        {% for itemTemp in item.items %}
+                                            <a class="btn btn-link btn-flat" href="{{ itemTemp.url }}">
+                                                {{ itemTemp.icon|raw }}
+                                                {{ itemTemp.text }}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

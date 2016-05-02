@@ -17,6 +17,7 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:
             contexts:   [admin]
+        tim_cheat_sheet.block.service.static: ~
 
 sonata_admin:
     security:
@@ -32,3 +33,7 @@ sonata_admin:
             MASTER: MASTER
     title:      Admin
     #title_logo: bundles/acmedemo/img/fancy_acme_logo.png
+    dashboard:
+        blocks:
+            - { position: left, type: sonata.admin.block.admin_list }
+            - { position: right, type: tim_cheat_sheet.block.service.static }

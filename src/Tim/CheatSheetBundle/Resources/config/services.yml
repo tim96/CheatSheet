@@ -99,3 +99,9 @@ services:
         class: Tim\CheatSheetBundle\Form\TinymceFieldType
         tags:
             - { name: form.type }
+
+    tim_cheat_sheet.block.service.static:
+        class: Tim\CheatSheetBundle\Block\StaticBlockService
+        arguments: [ 'tim_cheat_sheet.block.service.static', '@templating', '@service_container' ]
+        tags:
+            - { name: sonata.block }
