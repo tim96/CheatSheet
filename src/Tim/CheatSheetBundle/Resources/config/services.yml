@@ -22,7 +22,7 @@ services:
         class: Tim\CheatSheetBundle\Admin\FeedbackAdmin
         arguments: [~, Tim\CheatSheetBundle\Entity\Feedback, SonataAdminBundle:CRUD, '@service_container']
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Feedback}
+            - {name: sonata.admin, manager_type: orm, group: 'Feedback', label: Feedback, on_top: true, icon: '<i class="fa fa-envelope"></i>' }
         calls:
             - [ setTranslationDomain, [ messages ] ]
 
