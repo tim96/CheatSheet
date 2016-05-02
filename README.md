@@ -13,6 +13,7 @@ TODO:
 - [X] Upgrade project from symfony 2.7 to symfony 2.8
 - [X] Add separate pages for question like in posts
 - [X] Add form to upload `sitemap.xml`
+- [ ] Add route to show all posts
 - [ ] After upgrade project fix all deprecations in code
 - [X] Add 'tinymce' inputs to edit forms
 - [X] Add template to show popular posts
