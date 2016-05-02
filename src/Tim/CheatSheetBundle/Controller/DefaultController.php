@@ -117,6 +117,27 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/blog/list", name="BlogList")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function blogListAction(Request $request)
+    {
+        $blogPostService = $this->container->get('tim_cheat_sheet.blog.post.handler');
+        $records = $blogPostService->getRepository()->getList()->getQuery()->getResult();
+
+        $maxTagRecords = 15;
+        $tagService = $this->container->get('tim_cheat_sheet.tag.handler');
+        $tags = $tagService->getRepository()->findBy(
+            array('isDeleted' => false), array('blogPostCount' => 'DESC'), $maxTagRecords);
+
+        return $this->render('TimCheatSheetBundle:Default:blogList.html.twig',
+            array('records' => $records, 'tags' => $tags));
+    }
+
+    /**
      * @Route("/blog/{name}", name="Blog")
      * @Method({"GET"})
      */
