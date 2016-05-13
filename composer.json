@@ -39,13 +39,13 @@
         "cboden/ratchet": "0.*@dev",
         "gregwar/captcha-bundle": "1.*@dev",
 
-        "sonata-project/admin-bundle": "dev-master as 2.4",
-        "sonata-project/block-bundle": "dev-master as 2.4",
+        "sonata-project/admin-bundle": "3.0.0 as 2.4",
+        "sonata-project/core-bundle": "3.0.0 as 2.4",
+        "sonata-project/doctrine-orm-admin-bundle": "3.*",
+        "sonata-project/easy-extends-bundle": "2.*",
         "sonata-project/user-bundle": "dev-master",
-        "sonata-project/core-bundle": "dev-master as 2.4",
-        "sonata-project/datagrid-bundle": "dev-master",
-        "sonata-project/formatter-bundle": "dev-master",
-        "sonata-project/doctrine-orm-admin-bundle": "dev-master as 2.4",
+
+        "egeloen/ckeditor-bundle": "4.*",
 
         "dropbox/dropbox-sdk": "1.*@dev",
         "google/apiclient": "1.*@dev",
@@ -92,6 +92,7 @@
     "config": {
         "bin-dir": "bin"
     },
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
