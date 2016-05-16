@@ -18,19 +18,19 @@ services:
         calls:
             - [ setContainer, [ '@service_container' ] ]
 
-    tim_cheat_sheet.admin.feedback:
-        class: Tim\CheatSheetBundle\Admin\FeedbackAdmin
-        arguments: [~, Tim\CheatSheetBundle\Entity\Feedback, SonataAdminBundle:CRUD, '@service_container']
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: 'Feedback', label: Feedback, on_top: true, icon: '<i class="fa fa-envelope"></i>' }
-        calls:
-            - [ setTranslationDomain, [ messages ] ]
-
     tim_cheat_sheet.admin.post_type:
         class: Tim\CheatSheetBundle\Admin\PostTypeAdmin
         arguments: [~, Tim\CheatSheetBundle\Entity\PostType, SonataAdminBundle:CRUD, '@service_container']
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: 'Post Type', icon: '<i class="fa fa-cogs"></i>' }
+        calls:
+            - [ setTranslationDomain, [ messages ] ]
+
+    tim_cheat_sheet.admin.feedback:
+        class: Tim\CheatSheetBundle\Admin\FeedbackAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\Feedback, SonataAdminBundle:CRUD, '@service_container']
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: 'Feedback', label: Feedback, on_top: true, icon: '<i class="fa fa-envelope"></i>' }
         calls:
             - [ setTranslationDomain, [ messages ] ]
 
