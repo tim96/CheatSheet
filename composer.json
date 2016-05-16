@@ -56,7 +56,8 @@
         "knplabs/knp-paginator-bundle": "2.*",
         "stfalcon/tinymce-bundle": "1.*",
         "white-october/pagerfanta-bundle": "^1.0",
-        "simplethings/entity-audit-bundle": "^0.9.1"
+        "simplethings/entity-audit-bundle": "^0.9.1",
+        "stof/doctrine-extensions-bundle": "^1.2"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
