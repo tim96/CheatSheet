@@ -58,7 +58,8 @@
         "white-october/pagerfanta-bundle": "^1.0",
         "simplethings/entity-audit-bundle": "^0.9.1",
         "stof/doctrine-extensions-bundle": "^1.2",
-        "richsage/rms-push-notifications-bundle": "^0.2.2"
+        "richsage/rms-push-notifications-bundle": "^0.2.2",
+        "sonata-project/notification-bundle": "^2.3"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "1.*",
