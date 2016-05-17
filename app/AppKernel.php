@@ -47,6 +47,12 @@ class AppKernel extends Kernel
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
 
+            // for send push
+            new RMS\PushNotificationsBundle\RMSPushNotificationsBundle(),
+
+            // for notification
+            new Sonata\NotificationBundle\SonataNotificationBundle(),
+
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Tim\CheatSheetBundle\TimCheatSheetBundle(),
