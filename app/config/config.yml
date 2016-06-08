@@ -4,10 +4,8 @@ imports:
     - { resource: services.yml }
     - { resource: sonata_fos_core.yml }
     - { resource: twig.yml }
-#    - { resource: assetic.yml }
     - { resource: fos_rest.yml }
     - { resource: doctrine.yml }
-#    - { resource: sonata_formatter.yml }
     - { resource: ivory.yml }
     - { resource: dizda_cloud_backup.yml }
 
