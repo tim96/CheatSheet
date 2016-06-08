@@ -32,7 +32,7 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('p');
         if (is_bool($isDeleted)) {
-            $query->where('p.isDeleted = :isDeleted')
+            $query->andWhere('p.isDeleted = :isDeleted')
                 ->setParameter('isDeleted', $isDeleted)
             ;
         }

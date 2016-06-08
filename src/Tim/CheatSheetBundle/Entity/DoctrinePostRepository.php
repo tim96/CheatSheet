@@ -10,4 +10,39 @@ namespace Tim\CheatSheetBundle\Entity;
  */
 class DoctrinePostRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getList($name = null, $isPublic = true, $isDeleted = false, $maxResults = null)
+    {
+        return $this->getDoctrinePostsQuery($name, $isPublic, $isDeleted, $maxResults);
+    }
+
+    private function getDoctrinePostsQuery($name, $isPublic = true, $isDeleted = false, $maxResults = null)
+    {
+        $qb = $this->createQueryBuilder('dp');
+
+        if (is_bool($isDeleted)) {
+            $qb->andWhere('dp.isDeleted = :isDeleted')
+                ->setParameter('isDeleted', $isDeleted)
+            ;
+        }
+
+        if (is_bool($isPublic)) {
+            $qb->andWhere('dp.isPublic = :isPublic')
+                ->setParameter('isPublic', $isPublic)
+            ;
+        }
+
+        if (is_string($name)) {
+            $qb->andWhere('dp.text = :name')
+                ->setParameter('name', $name);
+        }
+
+        if (is_int($maxResults)) {
+            $qb->setMaxResults($maxResults);
+        }
+
+        $qb->addOrderBy('dp.orderPosition', 'ASC');
+        $qb->addOrderBy('dp.updatedAt', 'DESC');
+
+        return $qb;
+    }
 }
