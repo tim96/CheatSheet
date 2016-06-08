@@ -16,8 +16,8 @@ chown www-data:www-data -R app/logs
 
 php app/console assets:install web --symlink
 
-php app/console assetic:dump
-php app/console assetic:dump --env=prod --no-debug
+#php app/console assetic:dump
+#php app/console assetic:dump --env=prod --no-debug
 
 chmod 777 -R app/cache
 chmod 777 -R app/logs
