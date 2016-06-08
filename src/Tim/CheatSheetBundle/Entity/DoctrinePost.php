@@ -14,6 +14,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class DoctrinePost
 {
+    const ORDER_DEFAULT = 50;
+
     /**
      * @var int
      *
@@ -73,6 +75,18 @@ class DoctrinePost
     private $author;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="order_position", type="integer", options={"default" = 50})
+     */
+    private $orderPosition;
+
+    /**
+     * @ORM\Column(name="is_public", type="boolean", options={"default": false})
+     **/
+    private $isPublic = false;
+
+    /**
      * @ORM\Column(name="is_deleted", type="boolean", options={"default": false})
      **/
     private $isDeleted = false;
@@ -80,8 +94,10 @@ class DoctrinePost
     public function __construct()
     {
         $this->isDeleted = false;
+        $this->isPublic = false;
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->orderPosition = self::ORDER_DEFAULT;
     }
 
     public function __toString()
@@ -265,5 +281,53 @@ class DoctrinePost
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set isPublic
+     *
+     * @param bool $isPublic
+     *
+     * @return DoctrinePost
+     */
+    public function setIsPublic($isPublic)
+    {
+        $this->isPublic = $isPublic;
+    
+        return $this;
+    }
+
+    /**
+     * Get isPublic
+     *
+     * @return bool
+     */
+    public function getIsPublic()
+    {
+        return $this->isPublic;
+    }
+
+    /**
+     * Set orderPosition
+     *
+     * @param int $orderPosition
+     *
+     * @return DoctrinePost
+     */
+    public function setOrderPosition($orderPosition)
+    {
+        $this->orderPosition = $orderPosition;
+    
+        return $this;
+    }
+
+    /**
+     * Get orderPosition
+     *
+     * @return int
+     */
+    public function getOrderPosition()
+    {
+        return $this->orderPosition;
     }
 }
