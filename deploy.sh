@@ -1,4 +1,7 @@
 
+# How to run deploy script:
+# ./deploy.sh & ./npm.sh
+
 #git stash
 git pull --force
 
