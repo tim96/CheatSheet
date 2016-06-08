@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tim\CheatSheetBundle\Entity\BlogPost;
+use Tim\CheatSheetBundle\Entity\DoctrinePost;
 use Tim\CheatSheetBundle\Entity\Feedback;
 use Tim\CheatSheetBundle\Entity\Subscribe;
 use Tim\CheatSheetBundle\Form\FeedbackType;
@@ -181,16 +182,33 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/doctrine2", name="Doctrine2")
-     * @Template()
+     * @Route("/doctrine2/{name}", name="Doctrine2")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @param null $name
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function doctrine2Action()
+    public function doctrine2Action(Request $request, $name = null)
     {
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('TimCheatSheetBundle:DoctrinePost');
-        $records = $repository->findBy(array('isDeleted' => false), array('updatedAt' => 'DESC'), $maxRecords = 10);
 
-        return array('records' => $records);
+        if (null !== $name) {
+            $records = $repository->getList($name, $isPublic = true,
+                $isDeleted = false, $maxRecords = 1)->getQuery()->getResult();
+
+            if (count($records) > 0) {
+                return $this->render("TimCheatSheetBundle:Default:doctrine2Item.html.twig",
+                    array('doctrinePost' => $records[0]));
+            }
+        }
+
+        $records = $repository->getList(null, $isPublic = true,
+            $isDeleted = false, $maxRecords = DoctrinePost::ORDER_DEFAULT)->getQuery()->getResult();
+
+        return $this->render("TimCheatSheetBundle:Default:doctrine2.html.twig", array('records' => $records));
     }
 
     /**

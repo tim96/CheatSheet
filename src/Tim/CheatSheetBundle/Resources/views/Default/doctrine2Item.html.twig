@@ -1,0 +1,33 @@
+{% extends 'TimCheatSheetBundle::layout.html.twig' %}
+
+{% block meta_tags %}
+    {{ parent() }}
+
+    <meta name="description" content="{{ doctrinePost.meta }}">
+    <meta name="description" content="{{ doctrinePost.text }}">
+{% endblock %}
+
+{% block title %}
+Doctrine - {{ doctrinePost.text }}
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 70px;">
+
+        <div class="page-header">
+            <h3>
+                Text: <strong>{{ doctrinePost.text }}</strong>
+                <a href="{{ path('Doctrine2', {'name' : doctrinePost.text}) }}" style="float: right;">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                </a>
+            </h3>
+        </div>
+
+        <div class="" style="padding-top: 10px; padding-bottom: 10px;">
+            <div style="font-size: 18px;">
+                {{ doctrinePost.description|raw }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

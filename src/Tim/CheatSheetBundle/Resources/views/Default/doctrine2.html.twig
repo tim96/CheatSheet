@@ -18,8 +18,21 @@ Doctrine 2 Page
             {% for key, doctrinePost in records %}
                 <div class="row">
                     <div class="col-md-12">
-                        {% if doctrinePost.text != 'null' %}<h2>{{ doctrinePost.text }}</h2>{% endif %}
-                        {{ doctrinePost.description|raw }}
+                        <div>
+                            {% if doctrinePost.text != 'null' %}
+                                <h2>
+                                    <strong>{{ doctrinePost.text }}</strong>
+
+                                    <a href="{{ path('Doctrine2', {'name' : doctrinePost.text}) }}" style="float: right;">
+                                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                    </a>
+                                </h2>
+                            {% endif %}
+                        </div>
+
+                        <div>
+                            {{ doctrinePost.description|raw }}
+                        </div>
                     </div>
                 </div>
             {% endfor %}
