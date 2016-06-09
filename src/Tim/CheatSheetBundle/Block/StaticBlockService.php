@@ -17,6 +17,7 @@ use Sonata\BlockBundle\Block\BaseBlockService;
 use Tim\CheatSheetBundle\Entity\BlogPostRepository;
 use Tim\CheatSheetBundle\Entity\DoctrinePostRepository;
 use Tim\CheatSheetBundle\Entity\FeedbackRepository;
+use Tim\CheatSheetBundle\Entity\QuestionRepository;
 
 class StaticBlockService extends BaseBlockService
 {
@@ -52,6 +53,9 @@ class StaticBlockService extends BaseBlockService
         $urlDoctrinePostCreate = $router->generate('admin_tim_cheatsheet_doctrinepost_create');
 
         $urlFeedbackList = $router->generate('admin_tim_cheatsheet_feedback_list');
+
+        $urlQuestion = $router->generate('admin_tim_cheatsheet_question_list');
+        $urlQuestionCreate = $router->generate('admin_tim_cheatsheet_question_create');
 
         $em = $this->container->get('doctrine.orm.default_entity_manager');
 
@@ -97,6 +101,20 @@ class StaticBlockService extends BaseBlockService
             $countFeedbacks = 0;
         }
 
+        /** @var QuestionRepository $repQuestion */
+        $repQuestion = $em->getRepository('TimCheatSheetBundle:Question');
+        $queryQuestions = $repQuestion->getList();
+
+        try {
+            $countQuestions = $queryQuestions->select('COUNT(' .$queryQuestions->getRootAlias() . '.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NoResultException $e)
+        {
+            $countQuestions = 0;
+        }
+
         $result[] = array('text' => 'Blog Post', 'items' =>
             array(
                 array('url' => $urlBlogPost, 'text' => 'List (' . $countBlogPosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
@@ -114,6 +132,13 @@ class StaticBlockService extends BaseBlockService
         $result[] = array('text' => 'Feedback', 'items' =>
             array(
                 array('url' => $urlFeedbackList, 'text' => 'List (' . $countFeedbacks . ')', 'icon' => '<i class="fa fa-list"></i>'),
+            )
+        );
+
+        $result[] = array('text' => 'Question', 'items' =>
+            array(
+                array('url' => $urlQuestion, 'text' => 'List (' . $countQuestions . ')', 'icon' => '<i class="fa fa-list"></i>'),
+                array('url' => $urlQuestionCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
             )
         );
 
