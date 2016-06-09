@@ -37,3 +37,6 @@ sonata_admin:
         blocks:
             - { position: left, type: sonata.admin.block.admin_list }
             - { position: right, type: tim_cheat_sheet.block.service.static }
+
+sonata_notification:
+    backend: sonata.notification.backend.runtime
