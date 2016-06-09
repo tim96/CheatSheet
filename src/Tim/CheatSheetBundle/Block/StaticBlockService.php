@@ -14,6 +14,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\CoreBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Tim\CheatSheetBundle\Entity\BlogPostRepository;
+use Tim\CheatSheetBundle\Entity\DoctrinePostRepository;
 
 class StaticBlockService extends BaseBlockService
 {
@@ -58,6 +59,7 @@ class StaticBlockService extends BaseBlockService
             ->getSingleScalarResult()
         ;
 
+        /** @var DoctrinePostRepository $repDoctrinePost */
         $repDoctrinePost = $em->getRepository('TimCheatSheetBundle:DoctrinePost');
         $query = $repDoctrinePost->getList();
         $countDoctrinePosts = $query->select('COUNT(' .$query->getRootAlias() . '.id)')
