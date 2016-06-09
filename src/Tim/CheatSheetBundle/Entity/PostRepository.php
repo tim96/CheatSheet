@@ -28,6 +28,11 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
         return $data ? $data : array();
     }
 
+    public function getList($isDeleted = false, $isJoinPostType = false, $isJoinTags = false)
+    {
+        return $this->getPostsQuery($isDeleted, $isJoinPostType, $isJoinTags);
+    }
+
     private function getPostsQuery($isDeleted, $isJoinPostType, $isJoinTags)
     {
         $query = $this->createQueryBuilder('p');

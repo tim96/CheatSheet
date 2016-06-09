@@ -2,6 +2,7 @@
 
 namespace Tim\CheatSheetBundle\Block;
 
+use Application\Sonata\UserBundle\Entity\UserRepository;
 use Doctrine\ORM\NoResultException;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -17,6 +18,7 @@ use Sonata\BlockBundle\Block\BaseBlockService;
 use Tim\CheatSheetBundle\Entity\BlogPostRepository;
 use Tim\CheatSheetBundle\Entity\DoctrinePostRepository;
 use Tim\CheatSheetBundle\Entity\FeedbackRepository;
+use Tim\CheatSheetBundle\Entity\PostRepository;
 use Tim\CheatSheetBundle\Entity\QuestionRepository;
 
 class StaticBlockService extends BaseBlockService
@@ -56,6 +58,12 @@ class StaticBlockService extends BaseBlockService
 
         $urlQuestion = $router->generate('admin_tim_cheatsheet_question_list');
         $urlQuestionCreate = $router->generate('admin_tim_cheatsheet_question_create');
+
+        $urlPost = $router->generate('admin_tim_cheatsheet_post_list');
+        $urlPostCreate = $router->generate('admin_tim_cheatsheet_post_create');
+
+        $urlUser = $router->generate('admin_sonata_user_user_list');
+        $urlUserCreate = $router->generate('admin_sonata_user_user_create');
 
         $em = $this->container->get('doctrine.orm.default_entity_manager');
 
@@ -115,6 +123,34 @@ class StaticBlockService extends BaseBlockService
             $countQuestions = 0;
         }
 
+        /** @var PostRepository $repPost */
+        $repPost = $em->getRepository('TimCheatSheetBundle:Post');
+        $queryPosts = $repPost->getList();
+
+        try {
+            $countPosts = $queryPosts->select('COUNT(' .$queryPosts->getRootAlias() . '.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NoResultException $e)
+        {
+            $countPosts = 0;
+        }
+
+        /** @var UserRepository $repUser */
+        $repUser = $em->getRepository('ApplicationSonataUserBundle:User');
+        $queryUsers = $repUser->getList();
+
+        try {
+            $countUsers = $queryUsers->select('COUNT(' .$queryUsers->getRootAlias() . '.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NoResultException $e)
+        {
+            $countUsers = 0;
+        }
+
         $result[] = array('text' => 'Blog Post', 'items' =>
             array(
                 array('url' => $urlBlogPost, 'text' => 'List (' . $countBlogPosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
@@ -139,6 +175,20 @@ class StaticBlockService extends BaseBlockService
             array(
                 array('url' => $urlQuestion, 'text' => 'List (' . $countQuestions . ')', 'icon' => '<i class="fa fa-list"></i>'),
                 array('url' => $urlQuestionCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
+            )
+        );
+
+        $result[] = array('text' => 'Symfony Post', 'items' =>
+            array(
+                array('url' => $urlPost, 'text' => 'List (' . $countPosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
+                array('url' => $urlPostCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
+            )
+        );
+
+        $result[] = array('text' => 'User', 'items' =>
+            array(
+                array('url' => $urlUser, 'text' => 'List (' . $countUsers . ')', 'icon' => '<i class="fa fa-list"></i>'),
+                array('url' => $urlUserCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
             )
         );
 
