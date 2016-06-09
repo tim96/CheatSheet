@@ -44,7 +44,7 @@ class FeedbackAdmin extends BaseAdmin
                 )
             ))
             ->addIdentifier('id', null, array('route' => array('name' => 'show')))
-            ->add('email')
+            ->add('email', 'email')
             ->add('name')
             ->add('message')
             ->add('createdAt')
