@@ -45,10 +45,22 @@ class StaticBlockService extends BaseBlockService
         $urlBlogPost = $router->generate('admin_tim_cheatsheet_blogpost_list');
         $urlBlogPostCreate = $router->generate('admin_tim_cheatsheet_blogpost_create');
 
+        $urlDoctrinePost = $router->generate('admin_tim_cheatsheet_doctrinepost_list');
+        $urlDoctrinePostCreate = $router->generate('admin_tim_cheatsheet_doctrinepost_create');
+
+        $em = $this->container->get('doctrine.orm.default_entity_manager');
+
         /** @var BlogPostRepository $repBlogPost */
-        $repBlogPost = $this->container->get('doctrine.orm.default_entity_manager')->getRepository('TimCheatSheetBundle:BlogPost');
+        $repBlogPost = $em->getRepository('TimCheatSheetBundle:BlogPost');
         $query = $repBlogPost->getList();
         $countBlogPosts = $query->select('COUNT(' .$query->getRootAlias() . '.id)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+        $repDoctrinePost = $em->getRepository('TimCheatSheetBundle:DoctrinePost');
+        $query = $repDoctrinePost->getList();
+        $countDoctrinePosts = $query->select('COUNT(' .$query->getRootAlias() . '.id)')
             ->getQuery()
             ->getSingleScalarResult()
         ;
@@ -57,6 +69,13 @@ class StaticBlockService extends BaseBlockService
             array(
                 array('url' => $urlBlogPost, 'text' => 'List (' . $countBlogPosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
                 array('url' => $urlBlogPostCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
+            )
+        );
+
+        $result[] = array('text' => 'Doctrine Post', 'items' =>
+            array(
+                array('url' => $urlDoctrinePost, 'text' => 'List (' . $countDoctrinePosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
+                array('url' => $urlDoctrinePostCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
             )
         );
 
