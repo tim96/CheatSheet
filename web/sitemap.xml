@@ -1,31 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<url>
-  <loc>http://symfony.overrider.org/</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://symfony.overrider.org/blog</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://symfony.overrider.org/doctrine2</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://symfony.overrider.org/sonataadmin</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://symfony.overrider.org/faq</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://symfony.overrider.org/contact</loc>
-  <changefreq>weekly</changefreq>
-</url>
+
+  <url>
+    <loc>http://symfony.overrider.org/</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/blog</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/sonataadmin</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/faq</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/contact</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/Doctrine%20query%20examples</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/How%20do%20I%20set%20a%20default%20value%20in%20Doctrine%202%3F</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/Best%20way%20to%20handle%20many-to-many%20with%20extra%20columns%20in%20reference%20table</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/On%20delete%20cascade%20with%20doctrine2</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/Count%20Rows%20in%20Doctrine%20QueryBuilder</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/How%20to%20debug%20doctrine%20entity%20and%20collections</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/Partial%20objects</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/How%20to%20use%20OrderBy%20in%20Doctrine%20with%20findBY%20function%20in%20symfony2</loc>
+    <changefreq>daily</changefreq>
+  </url>
 </urlset>
