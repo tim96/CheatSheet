@@ -48,6 +48,7 @@ class StaticBlockService extends BaseBlockService
         $label = 'Statistics';
 
         $router = $this->container->get('router');
+
         $urlBlogPost = $router->generate('admin_tim_cheatsheet_blogpost_list');
         $urlBlogPostCreate = $router->generate('admin_tim_cheatsheet_blogpost_create');
 
@@ -69,128 +70,34 @@ class StaticBlockService extends BaseBlockService
 
         /** @var BlogPostRepository $repBlogPost */
         $repBlogPost = $em->getRepository('TimCheatSheetBundle:BlogPost');
-        $query = $repBlogPost->getList();
-
-        try {
-            $countBlogPosts = $query->select('COUNT(' . $query->getRootAlias() . '.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-        }
-        catch(NoResultException $e)
-        {
-            $countBlogPosts = 0;
-        }
+        $countBlogPosts = $this->calculateRecords($repBlogPost->getList());
 
         /** @var DoctrinePostRepository $repDoctrinePost */
         $repDoctrinePost = $em->getRepository('TimCheatSheetBundle:DoctrinePost');
-        $queryDoctrinePost = $repDoctrinePost->getList();
-
-        try {
-            $countDoctrinePosts = $queryDoctrinePost->select('COUNT(' . $queryDoctrinePost->getRootAlias() . '.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-        }
-        catch(NoResultException $e)
-        {
-            $countDoctrinePosts = 0;
-        }
+        $countDoctrinePosts = $this->calculateRecords($repDoctrinePost->getList());
 
         /** @var FeedbackRepository $repFeedback */
         $repFeedback = $em->getRepository('TimCheatSheetBundle:Feedback');
-        $queryFeedbacks = $repFeedback->getList();
-
-        try {
-            $countFeedbacks = $queryFeedbacks->select('COUNT(' .$queryFeedbacks->getRootAlias() . '.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-        }
-        catch(NoResultException $e)
-        {
-            $countFeedbacks = 0;
-        }
+        $countFeedbacks = $this->calculateRecords($repFeedback->getList());
 
         /** @var QuestionRepository $repQuestion */
         $repQuestion = $em->getRepository('TimCheatSheetBundle:Question');
-        $queryQuestions = $repQuestion->getList();
-
-        try {
-            $countQuestions = $queryQuestions->select('COUNT(' .$queryQuestions->getRootAlias() . '.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-        }
-        catch(NoResultException $e)
-        {
-            $countQuestions = 0;
-        }
+        $countQuestions = $this->calculateRecords($repQuestion->getList());
 
         /** @var PostRepository $repPost */
         $repPost = $em->getRepository('TimCheatSheetBundle:Post');
-        $queryPosts = $repPost->getList();
-
-        try {
-            $countPosts = $queryPosts->select('COUNT(' .$queryPosts->getRootAlias() . '.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-        }
-        catch(NoResultException $e)
-        {
-            $countPosts = 0;
-        }
+        $countPosts = $this->calculateRecords($repPost->getList());
 
         /** @var UserRepository $repUser */
         $repUser = $em->getRepository('ApplicationSonataUserBundle:User');
-        $queryUsers = $repUser->getList();
+        $countUsers = $this->calculateRecords($repUser->getList());
 
-        try {
-            $countUsers = $queryUsers->select('COUNT(' .$queryUsers->getRootAlias() . '.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-        }
-        catch(NoResultException $e)
-        {
-            $countUsers = 0;
-        }
-
-        $result[] = array('text' => 'Blog Post', 'items' =>
-            array(
-                array('url' => $urlBlogPost, 'text' => 'List (' . $countBlogPosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
-                array('url' => $urlBlogPostCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
-            )
-        );
-
-        $result[] = array('text' => 'Doctrine Post', 'items' =>
-            array(
-                array('url' => $urlDoctrinePost, 'text' => 'List (' . $countDoctrinePosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
-                array('url' => $urlDoctrinePostCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
-            )
-        );
-
-        $result[] = array('text' => 'Feedback', 'items' =>
-            array(
-                array('url' => $urlFeedbackList, 'text' => 'List (' . $countFeedbacks . ')', 'icon' => '<i class="fa fa-list"></i>'),
-            )
-        );
-
-        $result[] = array('text' => 'Question', 'items' =>
-            array(
-                array('url' => $urlQuestion, 'text' => 'List (' . $countQuestions . ')', 'icon' => '<i class="fa fa-list"></i>'),
-                array('url' => $urlQuestionCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
-            )
-        );
-
-        $result[] = array('text' => 'Symfony Post', 'items' =>
-            array(
-                array('url' => $urlPost, 'text' => 'List (' . $countPosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
-                array('url' => $urlPostCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
-            )
-        );
-
-        $result[] = array('text' => 'User', 'items' =>
-            array(
-                array('url' => $urlUser, 'text' => 'List (' . $countUsers . ')', 'icon' => '<i class="fa fa-list"></i>'),
-                array('url' => $urlUserCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
-            )
-        );
+        $result[] = $this->prepareMenuItem('Blog Post', $urlBlogPost, $countBlogPosts, $urlBlogPostCreate);
+        $result[] = $this->prepareMenuItem('Doctrine Post', $urlDoctrinePost, $countDoctrinePosts, $urlDoctrinePostCreate);
+        $result[] = $this->prepareMenuItem('Feedback', $urlFeedbackList, $countFeedbacks);
+        $result[] = $this->prepareMenuItem('Question', $urlQuestion, $countQuestions, $urlQuestionCreate);
+        $result[] = $this->prepareMenuItem('Symfony Post', $urlPost, $countPosts, $urlPostCreate);
+        $result[] = $this->prepareMenuItem('User', $urlUser, $countUsers, $urlUserCreate);
 
         return $this->renderResponse('TimCheatSheetBundle:Backend:static_block.html.twig', array(
             'block'     => $block,
@@ -198,5 +105,29 @@ class StaticBlockService extends BaseBlockService
             'result'    => $result,
             'label'     => $label
         ), $response);
+    }
+
+    private function calculateRecords($query)
+    {
+        try {
+            return $query->select('COUNT(' .$query->getRootAlias() . '.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NoResultException $e)
+        {
+            return 0;
+        }
+    }
+
+    private function prepareMenuItem($label, $urlFirst, $count, $urlSecond = null)
+    {
+        $items = array();
+        $items[] = array('url' => $urlFirst, 'text' => 'List (' . $count . ')', 'icon' => '<i class="fa fa-list"></i>');
+        if (null !== $urlSecond) {
+            $items[] = array('url' => $urlSecond, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>');
+        }
+
+        return array('text' => $label, 'items' => $items);
     }
 }
