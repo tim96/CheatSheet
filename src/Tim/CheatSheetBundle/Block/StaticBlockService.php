@@ -2,6 +2,7 @@
 
 namespace Tim\CheatSheetBundle\Block;
 
+use Doctrine\ORM\NoResultException;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,7 @@ use Sonata\CoreBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Tim\CheatSheetBundle\Entity\BlogPostRepository;
 use Tim\CheatSheetBundle\Entity\DoctrinePostRepository;
+use Tim\CheatSheetBundle\Entity\FeedbackRepository;
 
 class StaticBlockService extends BaseBlockService
 {
@@ -49,23 +51,51 @@ class StaticBlockService extends BaseBlockService
         $urlDoctrinePost = $router->generate('admin_tim_cheatsheet_doctrinepost_list');
         $urlDoctrinePostCreate = $router->generate('admin_tim_cheatsheet_doctrinepost_create');
 
+        $urlFeedbackList = $router->generate('admin_tim_cheatsheet_feedback_list');
+
         $em = $this->container->get('doctrine.orm.default_entity_manager');
 
         /** @var BlogPostRepository $repBlogPost */
         $repBlogPost = $em->getRepository('TimCheatSheetBundle:BlogPost');
         $query = $repBlogPost->getList();
-        $countBlogPosts = $query->select('COUNT(' .$query->getRootAlias() . '.id)')
-            ->getQuery()
-            ->getSingleScalarResult()
-        ;
+
+        try {
+            $countBlogPosts = $query->select('COUNT(' . $query->getRootAlias() . '.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NoResultException $e)
+        {
+            $countBlogPosts = 0;
+        }
 
         /** @var DoctrinePostRepository $repDoctrinePost */
         $repDoctrinePost = $em->getRepository('TimCheatSheetBundle:DoctrinePost');
-        $query = $repDoctrinePost->getList();
-        $countDoctrinePosts = $query->select('COUNT(' .$query->getRootAlias() . '.id)')
-            ->getQuery()
-            ->getSingleScalarResult()
-        ;
+        $queryDoctrinePost = $repDoctrinePost->getList();
+
+        try {
+            $countDoctrinePosts = $queryDoctrinePost->select('COUNT(' . $queryDoctrinePost->getRootAlias() . '.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NoResultException $e)
+        {
+            $countDoctrinePosts = 0;
+        }
+
+        /** @var FeedbackRepository $repFeedback */
+        $repFeedback = $em->getRepository('TimCheatSheetBundle:Feedback');
+        $queryFeedbacks = $repFeedback->getList();
+
+        try {
+            $countFeedbacks = $queryFeedbacks->select('COUNT(' .$queryFeedbacks->getRootAlias() . '.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NoResultException $e)
+        {
+            $countFeedbacks = 0;
+        }
 
         $result[] = array('text' => 'Blog Post', 'items' =>
             array(
@@ -78,6 +108,12 @@ class StaticBlockService extends BaseBlockService
             array(
                 array('url' => $urlDoctrinePost, 'text' => 'List (' . $countDoctrinePosts . ')', 'icon' => '<i class="fa fa-list"></i>'),
                 array('url' => $urlDoctrinePostCreate, 'text' => 'Add new', 'icon' => '<i class="fa fa-plus-circle"></i>')
+            )
+        );
+
+        $result[] = array('text' => 'Feedback', 'items' =>
+            array(
+                array('url' => $urlFeedbackList, 'text' => 'List (' . $countFeedbacks . ')', 'icon' => '<i class="fa fa-list"></i>'),
             )
         );
 

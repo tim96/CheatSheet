@@ -10,5 +10,28 @@ namespace Tim\CheatSheetBundle\Entity;
  */
 class FeedbackRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getList($isAnswered = false, $isDeleted = false, $maxResults = null)
+    {
+        $qb = $this->createQueryBuilder('f');
 
+        if (is_bool($isDeleted)) {
+            $qb->andWhere('f.isDeleted = :isDeleted')
+                ->setParameter('isDeleted', $isDeleted)
+            ;
+        }
+
+        if (is_bool($isAnswered)) {
+            $qb->andWhere('f.isAnswered = :isAnswered')
+                ->setParameter('isAnswered', $isAnswered)
+            ;
+        }
+
+        if (is_int($maxResults)) {
+            $qb->setMaxResults($maxResults);
+        }
+
+        $qb->addOrderBy('f.createdAt', 'DESC');
+
+        return $qb;
+    }
 }
