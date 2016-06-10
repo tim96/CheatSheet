@@ -50,6 +50,9 @@ class AppKernel extends Kernel
             // for send push
             new RMS\PushNotificationsBundle\RMSPushNotificationsBundle(),
 
+            // for pdf import
+            new TFox\MpdfPortBundle\TFoxMpdfPortBundle(),
+
             // for notification
             new Sonata\NotificationBundle\SonataNotificationBundle(),
             new Application\Sonata\NotificationBundle\ApplicationSonataNotificationBundle(),
