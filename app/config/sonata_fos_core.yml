@@ -20,6 +20,7 @@ sonata_block:
         tim_cheat_sheet.block.service.static: ~
 
 sonata_admin:
+    show_mosaic_button: false
     security:
         handler: sonata.admin.security.handler.role
         information:
