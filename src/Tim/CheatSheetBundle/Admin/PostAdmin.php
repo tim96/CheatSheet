@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class PostAdmin extends BaseAdmin
 {
@@ -61,7 +62,7 @@ class PostAdmin extends BaseAdmin
             // ->add('id')
             ->add('meta')
             ->add('text')
-            ->add('description', 'ckeditor')
+            ->add('description', CKEditorType::class)
             ->add('postType')
             ->add('tags', null, array('multiple' => true))
             ->add('isMain')
