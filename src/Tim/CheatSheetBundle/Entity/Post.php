@@ -22,6 +22,7 @@ class Post
         $this->tags = new ArrayCollection();
         $this->postType = new ArrayCollection();
         $this->meta = null;
+        $this->isMain = false;
     }
 
     /**
@@ -100,6 +101,13 @@ class Post
      * @ORM\ManyToOne(targetEntity="PostType", inversedBy="post", cascade={"persist", "remove"})
      */
     private $postType;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_main", type="boolean", options={"default": true})
+     **/
+    private $isMain;
 
     /**
      * @return string
@@ -367,5 +375,29 @@ class Post
         $this->postType = $postType;
     
         return $this;
+    }
+
+    /**
+     * Set isMain
+     *
+     * @param bool $isMain
+     *
+     * @return Post
+     */
+    public function setIsMain($isMain)
+    {
+        $this->isMain = $isMain;
+    
+        return $this;
+    }
+
+    /**
+     * Get isMain
+     *
+     * @return bool
+     */
+    public function getIsMain()
+    {
+        return $this->isMain;
     }
 }

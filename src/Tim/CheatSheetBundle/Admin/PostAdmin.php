@@ -18,6 +18,7 @@ class PostAdmin extends BaseAdmin
         $datagridMapper
             ->add('id')
             ->add('text')
+            ->add('isMain')
             ->add('createdAt')
             ->add('updatedAt')
             // ->add('isDeleted')
@@ -43,6 +44,7 @@ class PostAdmin extends BaseAdmin
             ->add('description')
             ->add('tags')
             ->add('postType')
+            ->add('isMain')
             ->add('createdAt')
             ->add('updatedAt')
             // ->add('isDeleted')
@@ -62,6 +64,7 @@ class PostAdmin extends BaseAdmin
             ->add('description', 'ckeditor')
             ->add('postType')
             ->add('tags', null, array('multiple' => true))
+            ->add('isMain')
             // ->add('createdAt')
             // ->add('updatedAt')
             // ->add('isDeleted')
@@ -75,7 +78,12 @@ class PostAdmin extends BaseAdmin
     {
         $showMapper
             ->add('id')
+            ->add('meta')
             ->add('text')
+            ->add('description')
+            ->add('postType')
+            ->add('isMain')
+            ->add('tags')
             ->add('createdAt')
             ->add('updatedAt')
             // ->add('isDeleted')
