@@ -1,0 +1,33 @@
+{% extends 'TimCheatSheetBundle::layout.html.twig' %}
+
+{% block meta_tags %}
+    {{ parent() }}
+
+    <meta name="description" content="{{ symfonyPost.meta }}">
+    <meta name="description" content="{{ symfonyPost.text }}">
+{% endblock %}
+
+{% block title %}
+    Symfony - {{ symfonyPost.text }}
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 70px;">
+
+        <div class="page-header">
+            <h3>
+                Text: <strong>{{ symfonyPost.text }}</strong>
+                <a href="{{ path('Symfony2Posts', {'name' : symfonyPost.text}) }}" style="float: right;">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                </a>
+            </h3>
+        </div>
+
+        <div class="" style="padding-top: 10px; padding-bottom: 10px;">
+            <div style="font-size: 18px;">
+                {{ symfonyPost.description|raw }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

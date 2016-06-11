@@ -31,6 +31,11 @@ class PostHandler extends BaseHandler implements IRecordInterface
         return $this->repository->getPostsAsArray($deleted, $isJoinPostType, $isJoinTags);
     }
 
+    public function getListPosts($name, $isMain = false, $isDeleted = false, $maxResulst = null)
+    {
+        return $this->repository->getListPosts($name, $isMain, $isDeleted, $maxResulst);
+    }
+
     public function getContent($tab)
     {
         $posts = $this->container->get('tim_cheat_sheet.post.handler')

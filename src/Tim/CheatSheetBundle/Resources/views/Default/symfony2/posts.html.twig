@@ -1,0 +1,41 @@
+{% extends 'TimCheatSheetBundle::layout.html.twig' %}
+
+{% block title %}
+    Symfony 2 Posts
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 70px;">
+        <div class="page-header">
+            <h1>Symfony 2</h1>
+        </div>
+
+        <div class="container">
+            {% for key, symfonyPost in records %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            {% if symfonyPost.text != 'null' %}
+                                <h2>
+                                    <strong>{{ symfonyPost.text }}</strong>
+
+                                    <a href="{{ path('Symfony2Posts', {'name' : symfonyPost.text}) }}" style="float: right;">
+                                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                    </a>
+                                </h2>
+                            {% endif %}
+                        </div>
+
+                        <div>
+                            {{ symfonyPost.description|raw }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div style="height: 30px"></div>
+
+        <a class="btn btn-primary" href="{{ path('Symfony2') }}" role="button">Read more about Symfony (Cheat Sheet)</a>
+    </div>
+{% endblock %}

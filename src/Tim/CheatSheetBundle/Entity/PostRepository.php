@@ -33,6 +33,30 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
         return $this->getPostsQuery($isDeleted, $isJoinPostType, $isJoinTags);
     }
 
+    public function getListPosts($name, $isMain = false, $isDeleted = false, $maxResults = null,
+                                 $isJoinPostType = false, $isJoinTags = false)
+    {
+        $query = $this->getPostsQuery($isDeleted, $isJoinPostType, $isJoinTags);
+
+        if (is_bool($isMain)) {
+            $query->andWhere('p.isMain = :isMain')
+                ->setParameter('isMain', $isMain)
+            ;
+        }
+
+        if (null !== $name) {
+            $query->andWhere('p.text = :name')
+                ->setParameter('name', $name)
+                ->setMaxResults(1);
+        } else {
+            if (null !== $maxResults) {
+                $query->setMaxResults((int)$maxResults);
+            }
+        }
+
+        return $query->getQuery();
+    }
+
     private function getPostsQuery($isDeleted, $isJoinPostType, $isJoinTags)
     {
         $query = $this->createQueryBuilder('p');

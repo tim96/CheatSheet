@@ -167,8 +167,11 @@ class DefaultController extends Controller
         return $this->render("TimCheatSheetBundle:Default:blogItem.html.twig", array('record' => $post));
     }
 
+    // Example how to exclude some paths in routing
+    // requirements={"tab" = "^(?!posts|login|register).+"}
+
     /**
-     * @Route("/symfony2/{tab}", name="Symfony2")
+     * @Route("/symfony2/{tab}", requirements={"tab" = "^(?!posts).+"}, name="Symfony2")
      * @Template()
      * @param Request $request
      * @param $tab
@@ -363,5 +366,35 @@ class DefaultController extends Controller
 
         // todo: check this situation
         exit('Something wrong');
+    }
+
+    /**
+     * @Route("/symfony2/posts/{name}", name="Symfony2Posts")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @param null|string $name
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     */
+    public function symfony2PostsAction(Request $request, $name = null)
+    {
+        $postService = $this->container->get('tim_cheat_sheet.post.handler');
+
+        if (null !== $name) {
+            $records = $postService->getListPosts($name)->getResult();
+
+            if (count($records) > 0) {
+                return $this->render("TimCheatSheetBundle:Default/symfony2:post.html.twig",
+                    array('symfonyPost' => $records[0]));
+            }
+        }
+
+        $records = $postService->getListPosts($name)->getResult();
+
+        return $this->render("TimCheatSheetBundle:Default/symfony2:posts.html.twig", array('records' => $records));
     }
 }
