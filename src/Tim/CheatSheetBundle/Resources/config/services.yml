@@ -105,3 +105,15 @@ services:
         arguments: [ 'tim_cheat_sheet.block.service.static', '@templating', '@service_container' ]
         tags:
             - { name: sonata.block }
+
+    tim_cheat_sheet.admin.application:
+        class: Tim\CheatSheetBundle\Admin\ApplicationAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\Application, TimCheatSheetBundle:ApplicationAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Application }
+
+    tim_cheat_sheet.admin.application_files:
+        class: Tim\CheatSheetBundle\Admin\ApplicationFilesAdmin
+        arguments: [~, Tim\CheatSheetBundle\Entity\ApplicationFiles, TimCheatSheetBundle:ApplicationFilesAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ApplicationFiles }
