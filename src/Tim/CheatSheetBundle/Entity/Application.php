@@ -67,6 +67,14 @@ class Application
      **/
     private $isPublic;
 
+    /**
+     * @Assert\NotNull()
+     * @Assert\NotBlank()
+     *
+     * @ORM\OneToMany(targetEntity="ApplicationFiles", mappedBy="application", cascade={"persist", "remove"})
+     */
+    private $files;
+
     // todo add dynamic connection between entities for save author id
 
     public function __construct()
@@ -75,6 +83,7 @@ class Application
         $this->updatedAt = new \DateTime();
         $this->description = null;
         $this->isPublic = false;
+        $this->files = new ArrayCollection();
     }
 
     public function __toString()
@@ -210,5 +219,41 @@ class Application
     public function getIsPublic()
     {
         return $this->isPublic;
+    }
+
+    /**
+     * Add file
+     *
+     * @param \Tim\CheatSheetBundle\Entity\ApplicationFiles $file
+     *
+     * @return Application
+     */
+    public function addFile(\Tim\CheatSheetBundle\Entity\ApplicationFiles $file)
+    {
+        $this->files[] = $file;
+    
+        return $this;
+    }
+
+    /**
+     * Remove file
+     *
+     * @param \Tim\CheatSheetBundle\Entity\ApplicationFiles $file
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFile(\Tim\CheatSheetBundle\Entity\ApplicationFiles $file)
+    {
+        return $this->files->removeElement($file);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 }
