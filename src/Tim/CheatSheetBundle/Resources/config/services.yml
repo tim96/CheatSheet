@@ -88,12 +88,16 @@ services:
         arguments: [~, Tim\CheatSheetBundle\Entity\DoctrinePost, TimCheatSheetBundle:DoctrinePostAdmin, '@service_container']
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: "Doctrine Post" }
+        calls:
+            - [ setTranslationDomain, [ 'messages' ] ]
 
     tim_cheat_sheet.admin.blog_post:
         class: Tim\CheatSheetBundle\Admin\BlogPostAdmin
         arguments: [~, Tim\CheatSheetBundle\Entity\BlogPost, TimCheatSheetBundle:BlogPostAdmin, '@service_container']
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Blog Post', label: "Blog Post", on_top: true, icon: '<i class="fa fa-file-text"></i>' }
+        calls:
+            - [ setTranslationDomain, [ 'messages' ] ]
 
     tim_cheat_sheet.form.tinymce_field:
         class: Tim\CheatSheetBundle\Form\TinymceFieldType
@@ -111,9 +115,13 @@ services:
         arguments: [~, Tim\CheatSheetBundle\Entity\Application, TimCheatSheetBundle:ApplicationAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Application }
+        calls:
+            - [ setTranslationDomain, [ 'messages' ] ]
 
     tim_cheat_sheet.admin.application_files:
         class: Tim\CheatSheetBundle\Admin\ApplicationFilesAdmin
         arguments: [~, Tim\CheatSheetBundle\Entity\ApplicationFiles, TimCheatSheetBundle:ApplicationFilesAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: ApplicationFiles }
+        calls:
+            - [ setTranslationDomain, [ 'messages' ] ]
