@@ -24,7 +24,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: 'Post Type', icon: '<i class="fa fa-cogs"></i>' }
         calls:
-            - [ setTranslationDomain, [ messages ] ]
+            - [ setTranslationDomain, [ 'messages' ] ]
 
     tim_cheat_sheet.admin.feedback:
         class: Tim\CheatSheetBundle\Admin\FeedbackAdmin
@@ -32,7 +32,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: 'Feedback', label: Feedback, on_top: true, icon: '<i class="fa fa-envelope"></i>' }
         calls:
-            - [ setTranslationDomain, [ messages ] ]
+            - [ setTranslationDomain, [ 'messages' ] ]
 
     tim_cheat_sheet.admin.tag:
         class: Tim\CheatSheetBundle\Admin\TagAdmin
@@ -40,7 +40,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: 'Tag', label: Tag, on_top: true, icon: '<i class="fa fa-tags"></i>' }
         calls:
-            - [ setTranslationDomain, [ messages ] ]
+            - [ setTranslationDomain, [ 'messages' ] ]
 
     tim_cheat_sheet.admin.question:
         class: Tim\CheatSheetBundle\Admin\QuestionAdmin
@@ -48,7 +48,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Question}
         calls:
-            - [ setTranslationDomain, [ messages ] ]
+            - [ setTranslationDomain, [ 'messages' ] ]
 
     tim_cheat_sheet.admin.post:
         class: Tim\CheatSheetBundle\Admin\PostAdmin
@@ -56,7 +56,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Post}
         calls:
-            - [ setTranslationDomain, [ messages ] ]
+            - [ setTranslationDomain, [ 'messages' ] ]
 
     tim_cheat_sheet.admin.log:
         class: Tim\CheatSheetBundle\Admin\LogAdmin
@@ -64,7 +64,7 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Log}
         calls:
-            - [ setTranslationDomain, [ messages ] ]
+            - [ setTranslationDomain, [ 'messages' ] ]
 
 # handlers:
     tim_cheat_sheet.post.handler:
