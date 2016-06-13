@@ -20,6 +20,10 @@ TODO:
 - [X] Add template to show popular posts
 - [X] Add form to upload document files
 - [ ] Add many-to-many and many-to-many with additional fields
+- [ ] Add examples of lifeCycleCallbacks for doctrine entity
+- [ ] Add examples of subscribers for doctrine entity
+- [ ] Add examples of hydrate doctrine entity
+- [ ] Add performance issues for doctrine flush method (simple, transaction, and update full sql)
 - [ ] Add function to print twig template as pdf
 - [ ] Add form with dynamic fields
 - [ ] Add example how to using doctrine extension function from mysql and etc.
