@@ -24,5 +24,8 @@ TODO:
 - [X] Add form to upload document files
 - [ ] Add function to print twig template as pdf
 - [ ] Add symfony collection
+- [ ] Add multi step form
+- [ ] Add sitemap bundle
+- [ ] Add payment bundle
 
 A Symfony project created on June 7, 2015, 7:11 pm.
