@@ -21,7 +21,8 @@ TODO:
 - [X] Add function to subscribe to new posts (Subscribe module)
 - [X] Add block to dashboard
 - [ ] Add form with dynamic fields
-- [ ] Add form to upload document files
+- [X] Add form to upload document files
 - [ ] Add function to print twig template as pdf
+- [ ] Add symfony collection
 
 A Symfony project created on June 7, 2015, 7:11 pm.
