@@ -14,18 +14,20 @@ TODO:
 - [X] Add separate pages for question like in posts
 - [X] Add form to upload `sitemap.xml`
 - [X] Add route to show all posts
-- [ ] After upgrade project fix all deprecations in code
 - [X] Add 'tinymce' inputs to edit forms
-- [X] Add template to show popular posts
-- [ ] Add some search engine to search content inside website
 - [X] Add function to subscribe to new posts (Subscribe module)
 - [X] Add block to dashboard
-- [ ] Add form with dynamic fields
+- [X] Add template to show popular posts
 - [X] Add form to upload document files
+- [ ] Add many-to-many and many-to-many with additional fields
 - [ ] Add function to print twig template as pdf
+- [ ] Add form with dynamic fields
+- [ ] Add example how to using doctrine extension function from mysql and etc.
 - [ ] Add symfony collection
 - [ ] Add multi step form
 - [ ] Add sitemap bundle
 - [ ] Add payment bundle
+- [ ] Add some search engine to search content inside website
+- [ ] After upgrade project fix all deprecations in code
 
 A Symfony project created on June 7, 2015, 7:11 pm.
