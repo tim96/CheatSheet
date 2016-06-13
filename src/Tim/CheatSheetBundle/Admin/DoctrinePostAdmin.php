@@ -6,6 +6,7 @@ namespace Tim\CheatSheetBundle\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Tim\CheatSheetBundle\Form\TinymceFieldType;
 
@@ -94,5 +95,12 @@ class DoctrinePostAdmin extends BaseAdmin
             ->add('updatedAt')
             ->add('isDeleted')
         ;
+    }
+
+    public function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+
+        $collection->add('createPDF', $this->getRouterIdParameter().'/createPDF');
     }
 }
