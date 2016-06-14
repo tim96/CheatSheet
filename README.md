@@ -19,6 +19,7 @@ TODO:
 - [X] Add block to dashboard
 - [X] Add template to show popular posts
 - [X] Add form to upload document files
+- [ ] Update bower plugins
 - [ ] Add example how to create data using fixtures files
 - [ ] Add many-to-many and many-to-many with additional fields
 - [ ] Add examples of lifeCycleCallbacks for doctrine entity
