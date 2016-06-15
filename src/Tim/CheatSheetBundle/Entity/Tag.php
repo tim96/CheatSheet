@@ -3,6 +3,7 @@
 namespace Tim\CheatSheetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -11,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Tim\CheatSheetBundle\Entity\TagRepository")
+ * @UniqueEntity(fields={"name"})
  */
 class Tag
 {
@@ -39,7 +41,7 @@ class Tag
      * @Assert\NotBlank()
      * @Assert\NotNull()
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     protected $name;
 
