@@ -119,4 +119,5 @@ https://packagist.org/packages/tfox/mpdf-port-bundle
 40. This bundles provides some basic infrastructure for creating a search UI in Symfony2 applications along with integration with Google's search API
 https://packagist.org/packages/liip/search-bundle
 
-
+41. Symfony2 Bundle to manage fixtures with Alice and Faker.
+https://packagist.org/packages/hautelook/alice-bundle
