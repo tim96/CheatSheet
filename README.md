@@ -21,7 +21,7 @@ TODO:
 - [X] Add form to upload document files
 - [ ] Update bower plugins
 - [X] Add example how to create data using fixtures files
-- [ ] Add example for alice-bundle, how to create a lot of fixtures
+- [X] Add example for alice-bundle, how to create a lot of fixtures
 - [ ] Add many-to-many and many-to-many with additional fields
 - [ ] Add examples of lifeCycleCallbacks for doctrine entity
 - [ ] Add examples of subscribers for doctrine entity
