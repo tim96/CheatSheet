@@ -18,3 +18,15 @@
 # --append - Use this flag to append data instead of deleting data before loading it (deleting first is the default behavior);
 
 php app/console doctrine:fixtures:load --append
+
+
+# You can use AlicaBundle to create a lot of test data
+# https://github.com/hautelook/AliceBundle
+
+# See: alica.yml to configuration
+# See: alica_test.yml with sample
+
+# Command to add alica fixtures:
+# --append - Use this flag to append data instead of deleting data before loading it (deleting first is the default behavior);
+# php app/console hautelook_alice:doctrine:fixtures:load
+# php app/console h:d:f:l
