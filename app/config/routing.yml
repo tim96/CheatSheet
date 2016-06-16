@@ -1,3 +1,7 @@
+tim_example:
+    resource: "@TimExampleBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tim_cheat_sheet:
     resource: "@TimCheatSheetBundle/Resources/config/routing.yml"
     prefix:   /
