@@ -3,6 +3,8 @@
 namespace Tim\ExampleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Orders
@@ -37,10 +39,39 @@ class Orders
      **/
     private $updatedAt;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_approved", type="boolean", options={"default": false})
+     **/
+    private $isApproved;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="shipping_address", type="text")
+     */
+    protected $shippingAddress;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tim\ExampleBundle\Entity\Discounts", inversedBy="orders")
+     **/
+    private $discounts;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = null;
+        $this->isApproved = false;
+        $this->discounts = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->id ? (string)$this->id : '';
     }
 
     /**
@@ -115,5 +146,90 @@ class Orders
     public function setUpdatedAtEvent()
     {
         $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * Set isApproved
+     *
+     * @param bool $isApproved
+     *
+     * @return Orders
+     */
+    public function setIsApproved($isApproved)
+    {
+        $this->isApproved = $isApproved;
+    
+        return $this;
+    }
+
+    /**
+     * Get isApproved
+     *
+     * @return bool
+     */
+    public function getIsApproved()
+    {
+        return $this->isApproved;
+    }
+
+    /**
+     * Set shippingAddress
+     *
+     * @param string $shippingAddress
+     *
+     * @return Orders
+     */
+    public function setShippingAddress($shippingAddress)
+    {
+        $this->shippingAddress = $shippingAddress;
+    
+        return $this;
+    }
+
+    /**
+     * Get shippingAddress
+     *
+     * @return string
+     */
+    public function getShippingAddress()
+    {
+        return $this->shippingAddress;
+    }
+
+    /**
+     * Add discount
+     *
+     * @param \Tim\ExampleBundle\Entity\Discounts $discount
+     *
+     * @return Orders
+     */
+    public function addDiscount(\Tim\ExampleBundle\Entity\Discounts $discount)
+    {
+        $discount->addOrder($this);
+        $this->discounts[] = $discount;
+    
+        return $this;
+    }
+
+    /**
+     * Remove discount
+     *
+     * @param \Tim\ExampleBundle\Entity\Discounts $discount
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeDiscount(\Tim\ExampleBundle\Entity\Discounts $discount)
+    {
+        return $this->discounts->removeElement($discount);
+    }
+
+    /**
+     * Get discounts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiscounts()
+    {
+        return $this->discounts;
     }
 }
