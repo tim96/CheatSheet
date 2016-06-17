@@ -58,11 +58,18 @@ class Discounts
      **/
     private $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Tim\ExampleBundle\Entity\OrdersDiscountExtraFields",
+     *     mappedBy="discount", cascade={"persist"})
+     */
+    private $discountsOrders;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = null;
         $this->discounts = new ArrayCollection();
+        $this->discountsOrders = new ArrayCollection();
     }
 
     public function __toString()
