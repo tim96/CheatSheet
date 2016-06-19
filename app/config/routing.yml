@@ -1,3 +1,7 @@
+tim_utils:
+    resource: "@TimUtilsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tim_example:
     resource: "@TimExampleBundle/Resources/config/routing.yml"
     prefix:   /

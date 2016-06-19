@@ -61,6 +61,7 @@ class AppKernel extends Kernel
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Tim\CheatSheetBundle\TimCheatSheetBundle(),
             new Tim\ExampleBundle\TimExampleBundle(),
+            new Tim\UtilsBundle\TimUtilsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
