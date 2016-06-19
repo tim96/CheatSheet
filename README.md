@@ -19,11 +19,12 @@ TODO:
 - [X] Add block to dashboard
 - [X] Add template to show popular posts
 - [X] Add form to upload document files
-- [ ] Update bower plugins
+- [X] Update bower plugins
 - [X] Add example how to create data using fixtures files
 - [X] Add example for alice-bundle, how to create a lot of fixtures
 - [X] Add many-to-many and many-to-many with additional fields
 - [X] Add examples of lifeCycleCallbacks for doctrine entity
+- [ ] Add slugify methods for urls for all entities
 - [ ] Add examples of subscribers for doctrine entity
 - [ ] Add examples of hydrate doctrine entity
 - [ ] Add performance issues for doctrine flush method (simple, transaction, and update full sql)
