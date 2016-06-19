@@ -37,7 +37,7 @@
         "tfox/mpdf-port-bundle": "1.*@dev",
         "hwi/oauth-bundle": "0.*@dev",
         "cboden/ratchet": "0.*@dev",
-        "gregwar/captcha-bundle": "1.*@dev",
+        "gregwar/captcha-bundle": "2.*",
 
         "sonata-project/admin-bundle": "3.*",
         "sonata-project/core-bundle": "3.*",
