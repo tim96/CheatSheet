@@ -4,7 +4,7 @@
     {{ parent() }}
 
     <meta name="description" content="{{ doctrinePost.meta }}">
-    <meta name="description" content="{{ doctrinePost.text }}">
+    <meta name="description" content="{{ doctrinePost.slug }}">
 {% endblock %}
 
 {% block title %}
@@ -17,7 +17,7 @@ Doctrine - {{ doctrinePost.text }}
         <div class="page-header">
             <h3>
                 Text: <strong>{{ doctrinePost.text }}</strong>
-                <a href="{{ path('Doctrine2', {'name' : doctrinePost.text}) }}" style="float: right;">
+                <a href="{{ path('Doctrine2', {'slug' : doctrinePost.slug}) }}" style="float: right;">
                     <i class="fa fa-floppy-o" aria-hidden="true"></i>
                 </a>
             </h3>

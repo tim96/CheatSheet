@@ -185,21 +185,21 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/doctrine2/{name}", name="Doctrine2")
+     * @Route("/doctrine2/{slug}", name="Doctrine2")
      * @Method({"GET"})
      *
      * @param Request $request
-     * @param null $name
+     * @param null|string $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function doctrine2Action(Request $request, $name = null)
+    public function doctrine2Action(Request $request, $slug = null)
     {
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository('TimCheatSheetBundle:DoctrinePost');
 
-        if (null !== $name) {
-            $records = $repository->getList($name, $isPublic = true,
+        if (null !== $slug) {
+            $records = $repository->getListBySlug($slug, $isPublic = true,
                 $isDeleted = false, $maxRecords = 1)->getQuery()->getResult();
 
             if (count($records) > 0) {
