@@ -5,6 +5,7 @@ namespace Tim\CheatSheetBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * DoctrinePost
@@ -90,6 +91,16 @@ class DoctrinePost
      * @ORM\Column(name="is_deleted", type="boolean", options={"default": false})
      **/
     private $isDeleted = false;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    protected $slug;
 
     public function __construct()
     {
@@ -329,5 +340,29 @@ class DoctrinePost
     public function getOrderPosition()
     {
         return $this->orderPosition;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return DoctrinePost
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
