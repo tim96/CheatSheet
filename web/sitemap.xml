@@ -30,35 +30,43 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://symfony.overrider.org/doctrine2/Doctrine%20query%20examples</loc>
+    <loc>http://symfony.overrider.org/symfony2/posts</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://symfony.overrider.org/doctrine2/How%20do%20I%20set%20a%20default%20value%20in%20Doctrine%202%3F</loc>
+    <loc>http://symfony.overrider.org/doctrine2/doctrine-query-examples</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://symfony.overrider.org/doctrine2/Best%20way%20to%20handle%20many-to-many%20with%20extra%20columns%20in%20reference%20table</loc>
+    <loc>http://symfony.overrider.org/doctrine2/how-do-i-set-a-default-value-in-doctrine-2</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://symfony.overrider.org/doctrine2/On%20delete%20cascade%20with%20doctrine2</loc>
+    <loc>http://symfony.overrider.org/doctrine2/best-way-to-handle-many-to-many-with-extra-columns-in-reference-table</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://symfony.overrider.org/doctrine2/Count%20Rows%20in%20Doctrine%20QueryBuilder</loc>
+    <loc>http://symfony.overrider.org/doctrine2/on-delete-cascade-with-doctrine2</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://symfony.overrider.org/doctrine2/How%20to%20debug%20doctrine%20entity%20and%20collections</loc>
+    <loc>http://symfony.overrider.org/doctrine2/count-rows-in-doctrine-querybuilder</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://symfony.overrider.org/doctrine2/Partial%20objects</loc>
+    <loc>http://symfony.overrider.org/doctrine2/how-to-debug-doctrine-entity-and-collections</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://symfony.overrider.org/doctrine2/How%20to%20use%20OrderBy%20in%20Doctrine%20with%20findBY%20function%20in%20symfony2</loc>
+    <loc>http://symfony.overrider.org/doctrine2/partial-objects</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/how-to-use-orderby-in-doctrine-with-findby-function-in-symfony2</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/symfony2</loc>
     <changefreq>daily</changefreq>
   </url>
 </urlset>
