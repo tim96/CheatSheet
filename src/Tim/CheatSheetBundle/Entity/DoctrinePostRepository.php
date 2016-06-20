@@ -15,7 +15,64 @@ class DoctrinePostRepository extends \Doctrine\ORM\EntityRepository
         return $this->getDoctrinePostsQuery($name, $isPublic, $isDeleted, $maxResults);
     }
 
+    public function getListBySlug($slug = null, $isPublic = true, $isDeleted = false, $maxResults = null)
+    {
+        return $this->getDoctrinePostsBySlugQuery($slug, $isPublic, $isDeleted, $maxResults);
+    }
+
+    public function getListBySlugEqualNull($isPublic = true, $isDeleted = false, $maxResults = null)
+    {
+        return $this->getDoctrinePostsBySlugEqualNullQuery($isPublic, $isDeleted, $maxResults);
+    }
+
+    private function getDoctrinePostsBySlugEqualNullQuery($isPublic = true, $isDeleted = false, $maxResults = null)
+    {
+        $qb = $this->getDoctrinePostsDefaultQuery($isPublic, $isDeleted, $maxResults);
+
+        $qb->andWhere(
+            $qb->expr()->orX(
+                $qb->expr()->eq('dp.slug', '\'\''),
+                $qb->expr()->isNull('dp.slug')
+            )
+        );
+
+        return $qb;
+    }
+
+    private function getDoctrinePostsBySlugQuery($slug, $isPublic = true, $isDeleted = false, $maxResults = null)
+    {
+        $qb = $this->getDoctrinePostsDefaultQuery($isPublic, $isDeleted, $maxResults);
+
+        if (is_string($slug)) {
+            $qb->andWhere('dp.slug = :slug')
+                ->setParameter('slug', $slug)
+            ;
+        }
+
+        return $qb;
+    }
+
     private function getDoctrinePostsQuery($name, $isPublic = true, $isDeleted = false, $maxResults = null)
+    {
+        $qb = $this->getDoctrinePostsDefaultQuery($isPublic, $isDeleted, $maxResults);
+
+        if (is_string($name)) {
+            $qb->andWhere('dp.text = :name')
+                ->setParameter('name', $name)
+            ;
+        }
+
+        return $qb;
+    }
+
+    /**
+     * @param bool $isPublic
+     * @param bool $isDeleted
+     * @param null $maxResults
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    private function getDoctrinePostsDefaultQuery($isPublic = true, $isDeleted = false, $maxResults = null)
     {
         $qb = $this->createQueryBuilder('dp');
 
@@ -29,11 +86,6 @@ class DoctrinePostRepository extends \Doctrine\ORM\EntityRepository
             $qb->andWhere('dp.isPublic = :isPublic')
                 ->setParameter('isPublic', $isPublic)
             ;
-        }
-
-        if (is_string($name)) {
-            $qb->andWhere('dp.text = :name')
-                ->setParameter('name', $name);
         }
 
         if (is_int($maxResults)) {
