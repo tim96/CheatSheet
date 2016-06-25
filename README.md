@@ -27,9 +27,9 @@ TODO:
 - [X] Add slugify methods for urls for all entities
 - [ ] Add examples of subscribers for doctrine entity
 - [X] Add examples of hydrate doctrine entity
-- [ ] Add examples how to create commands
+- [X] Add examples how to create commands
 - [ ] Add performance issues for doctrine flush method (simple, transaction, and update full sql)
-- [ ] Add function to print twig template as pdf
+- [X] Add function to print twig template as pdf
 - [ ] Add form with dynamic fields
 - [ ] Add example how to using doctrine extension function from mysql and etc.
 - [ ] Add symfony collection
