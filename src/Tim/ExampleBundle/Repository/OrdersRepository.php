@@ -20,10 +20,13 @@ class OrdersRepository extends \Doctrine\ORM\EntityRepository
     public function getByIds($ids = array())
     {
         $query = $this->createQueryBuilder('o');
-        $query
-            ->andWhere('o.id IN (:ids)')
-            ->setParameter('ids', array_values($ids))
-        ;
+
+        if (count($ids) > 0) {
+            $query
+                ->andWhere('o.id IN (:ids)')
+                ->setParameter('ids', array_values($ids))
+            ;
+        }
 
         // Add example how to use beberlei DoctrineExtensions
         // $emConfig = $this->getEntityManager()->getConfiguration();

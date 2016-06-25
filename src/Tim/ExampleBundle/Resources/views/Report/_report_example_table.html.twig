@@ -1,0 +1,26 @@
+{% extends 'TimExampleBundle:Report:_base_report_example_table.html.twig' %}
+
+{% block content %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Shipping Address</th>
+            <th>Is Approved</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i, order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.shippingAddress }}</td>
+                <td>{{ order.isApproved }}</td>
+                <td>{{ order.createdAt|format_date('MM/dd/Y H:mm') }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
