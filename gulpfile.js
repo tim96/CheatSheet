@@ -43,6 +43,16 @@ gulp.task('css', function () {
         .pipe(gulp.dest('web/css'));
 });
 
+gulp.task('css', function () {
+    return gulp.src(['src/Tim/ExampleBundle/Resources/public/css/table.css'])
+        .pipe(gulpif(/[.]less/, less()))
+        .pipe(concat('table.css'))
+        // .pipe(gulpif(env === 'prod', uglifycss()))
+        // .pipe(sourcemaps.write('./'))
+        .pipe(uglifycss())
+        .pipe(gulp.dest('web/css'));
+});
+
 gulp.task('img', function() {
     return gulp.src('src/Tim/CheatSheetBundle/Resources/public/images/**/*.*')
         .pipe(gulp.dest('web/img'));
