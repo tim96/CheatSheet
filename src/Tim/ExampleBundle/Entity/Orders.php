@@ -239,4 +239,40 @@ class Orders
     {
         return $this->discounts;
     }
+
+    /**
+     * Add ordersDicount
+     *
+     * @param \Tim\ExampleBundle\Entity\OrdersDiscountExtraFields $ordersDicount
+     *
+     * @return Orders
+     */
+    public function addOrdersDicount(\Tim\ExampleBundle\Entity\OrdersDiscountExtraFields $ordersDicount)
+    {
+        $this->ordersDicounts[] = $ordersDicount;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ordersDicount
+     *
+     * @param \Tim\ExampleBundle\Entity\OrdersDiscountExtraFields $ordersDicount
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeOrdersDicount(\Tim\ExampleBundle\Entity\OrdersDiscountExtraFields $ordersDicount)
+    {
+        return $this->ordersDicounts->removeElement($ordersDicount);
+    }
+
+    /**
+     * Get ordersDicounts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrdersDicounts()
+    {
+        return $this->ordersDicounts;
+    }
 }

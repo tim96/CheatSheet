@@ -220,4 +220,40 @@ class Discounts
     {
         return $this->orders;
     }
+
+    /**
+     * Add discountsOrder
+     *
+     * @param \Tim\ExampleBundle\Entity\OrdersDiscountExtraFields $discountsOrder
+     *
+     * @return Discounts
+     */
+    public function addDiscountsOrder(\Tim\ExampleBundle\Entity\OrdersDiscountExtraFields $discountsOrder)
+    {
+        $this->discountsOrders[] = $discountsOrder;
+    
+        return $this;
+    }
+
+    /**
+     * Remove discountsOrder
+     *
+     * @param \Tim\ExampleBundle\Entity\OrdersDiscountExtraFields $discountsOrder
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeDiscountsOrder(\Tim\ExampleBundle\Entity\OrdersDiscountExtraFields $discountsOrder)
+    {
+        return $this->discountsOrders->removeElement($discountsOrder);
+    }
+
+    /**
+     * Get discountsOrders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiscountsOrders()
+    {
+        return $this->discountsOrders;
+    }
 }
