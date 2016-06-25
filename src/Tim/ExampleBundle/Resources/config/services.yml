@@ -1,2 +1,4 @@
 services:
-
+    tim_example.orders.service:
+        class: Tim\ExampleBundle\Service\OrdersService
+        arguments: ['@doctrine.orm.entity_manager', 'Tim\ExampleBundle\Service\OrdersService']
