@@ -4,7 +4,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
   <url>
     <loc>http://symfony.overrider.org/</loc>
     <changefreq>daily</changefreq>
@@ -38,6 +37,10 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>http://symfony.overrider.org/doctrine2/doctrine-performance</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>http://symfony.overrider.org/doctrine2/how-do-i-set-a-default-value-in-doctrine-2</loc>
     <changefreq>daily</changefreq>
   </url>
@@ -63,6 +66,14 @@
   </url>
   <url>
     <loc>http://symfony.overrider.org/doctrine2/how-to-use-orderby-in-doctrine-with-findby-function-in-symfony2</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/reference-to-doctrine-entity-using-entityid</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://symfony.overrider.org/doctrine2/what-is-the-difference-between-inversedby-and-mappedby</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>

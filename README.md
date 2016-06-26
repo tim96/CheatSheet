@@ -28,7 +28,7 @@ TODO:
 - [X] Add examples of subscribers for doctrine entity
 - [X] Add examples of hydrate doctrine entity
 - [X] Add examples how to create commands
-- [ ] Add performance issues for doctrine flush method (simple, transaction, and update full sql)
+- [X] Add performance issues for doctrine flush method (simple, transaction, and update full sql)
 - [ ] Add example for doctrine filters
 - [X] Add function to print twig template as pdf
 - [ ] Add some examples how to paint charts (CharJS, Morris, Flot and etc.)
