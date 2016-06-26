@@ -26,6 +26,9 @@ php app/console doctrine:fixtures:load --append
 # See: alica.yml to configuration
 # See: alica_test.yml with sample
 
+# See availalble data formats:
+# https://github.com/fzaninotto/Faker#fakerprovideren_ustext
+
 # Command to add alica fixtures:
 # --append - Use this flag to append data instead of deleting data before loading it (deleting first is the default behavior);
 # php app/console hautelook_alice:doctrine:fixtures:load
