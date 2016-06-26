@@ -1,0 +1,71 @@
+
+0. Install doctrine and alice bundles
+0.1. Generate TimExampleBundle
+1. Create Book entity
+2. Create books.yml to generate test data
+3. Generate test data using command:
+php app/console hautelook_alice:doctrine:fixtures:load --bundle=TimExampleBundle --append
+4. So we generate almost 45 megabyte test data.
+5. Add command to update books entity.
+6. Run test.
+
+Variant 1:
+~ 27 seconds
+~ 170 MB
+Variant 2:
+Timeout on 240 second
+Variant 3:
+Timeout on 240 second
+Variant 4:
+~ 60 seconds
+~ 130 MB
+Variant 5:
+Timeout on 240 second
+Variant 6:
+~ 20 seconds
+~ 25 MB
+Variant 7:
+~ 18 seconds
+~ 24 MB
+Variant 7.1:
+~ 16 seconds
+~ 18 MB
+Variant 7.2:
+~ 16 seconds
+~ 24 MB
+
+Doctrine performance tips:
+1. Avoid Object Hydration when handling many entities
+$qb = new \Doctrine\ORM\QueryBuilder;
+
+$arrayResults  = $qb->getQuery()->getArrayResult();
+$scalarResults = $qb->getQuery()->getScalarResult();
+
+2. Don’t load the whole entity if you only need reference to it
+$user->addFriend($em->getReference('Octivi\Entity\User', $friendId));
+
+3. Update multiple database rows using Update statement
+$qb->update('Octivi:User', 'u')
+    ->set('u.friend', $friendId)
+    ->getQuery()->execute();
+
+4. Use the advantages of Lazy Collections
+/**
+ * @ManyToMany(targetEntity="CmsUser", mappedBy="groups", fetch="EXTRA_LAZY")
+ */
+public $users;
+makes, that calling Collection’s methods like:
+$users->count();
+$users->slice(…)
+won’t load the whole collection from the database to the memory.
+Instead, Doctrine will cleverly execute appropriate queries such as COUNT.
+
+5. Beware of loading entities in a loop
+$qb = $em->createQueryBuilder('qb1');
+$qb->add('select', 'a, au')
+        ->add('from', 'OctiviTestBundle:Article a')
+        ->join('a.author', 'au');
+
+6. Использование Symfony Profiler Toolbar
+
+7. Doctrine performance.
