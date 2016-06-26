@@ -25,7 +25,7 @@ TODO:
 - [X] Add many-to-many and many-to-many with additional fields
 - [X] Add examples of lifeCycleCallbacks for doctrine entity
 - [X] Add slugify methods for urls for all entities
-- [ ] Add examples of subscribers for doctrine entity
+- [X] Add examples of subscribers for doctrine entity
 - [X] Add examples of hydrate doctrine entity
 - [X] Add examples how to create commands
 - [ ] Add performance issues for doctrine flush method (simple, transaction, and update full sql)

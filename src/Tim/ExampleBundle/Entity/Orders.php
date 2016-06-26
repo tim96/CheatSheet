@@ -5,6 +5,7 @@ namespace Tim\ExampleBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Tim\ExampleBundle\Interfaces\CreatedAtEntityInterface;
 
 /**
  * Orders
@@ -14,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\HasLifecycleCallbacks
  *
  */
-class Orders
+class Orders implements CreatedAtEntityInterface
 {
     /**
      * @var int
