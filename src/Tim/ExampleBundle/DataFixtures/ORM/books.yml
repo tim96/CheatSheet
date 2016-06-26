@@ -1,0 +1,11 @@
+Tim\ExampleBundle\Entity\Book:
+    dummy_{1..20000}:
+        title: <name()>
+        description: <text(2048)>
+        price: <numberBetween(1, 2000)>
+        price: <0>
+        countSold: <numberBetween(0, 20000)>
+        countStock: <numberBetween(0, 20000)>
+        isSold: <boolean(10)>
+        createdAt: <dateTimeBetween('-712 days', 'now')>
+        updatedAt: <dateTime()>
