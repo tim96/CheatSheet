@@ -68,7 +68,7 @@ class Book
      *
      * @Assert\Range(min = 0)
      *
-     * @ORM\Column(name="price", type="float")
+     * @ORM\Column(name="price", type="float", options={"default": 0})
      */
     private $price;
 
@@ -86,10 +86,21 @@ class Book
      */
     private $countStock;
 
+    /**
+     * @var float
+     *
+     * @Assert\Range(min = 0)
+     *
+     * @ORM\Column(name="price_tax", type="float", options={"default": 0})
+     */
+    private $priceTax;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->isSold = false;
+        $this->price = 0;
+        $this->priceTax = 0;
     }
 
     public function __toString()
@@ -297,5 +308,29 @@ class Book
     public function getCountStock()
     {
         return $this->countStock;
+    }
+
+    /**
+     * Set priceTax
+     *
+     * @param float $priceTax
+     *
+     * @return Book
+     */
+    public function setPriceTax($priceTax)
+    {
+        $this->priceTax = $priceTax;
+    
+        return $this;
+    }
+
+    /**
+     * Get priceTax
+     *
+     * @return float
+     */
+    public function getPriceTax()
+    {
+        return $this->priceTax;
     }
 }

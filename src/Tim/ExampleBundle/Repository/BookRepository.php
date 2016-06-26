@@ -10,4 +10,23 @@ namespace Tim\ExampleBundle\Repository;
  */
 class BookRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getList()
+    {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb->orderBy('b.id', 'DESC');
+
+        return $qb;
+    }
+
+    public function getListPartialForExample()
+    {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb->select('partial b.{id, priceTax}');
+
+        $qb->orderBy('b.id', 'DESC');
+
+        return $qb;
+    }
 }

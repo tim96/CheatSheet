@@ -99,7 +99,7 @@ class Orders implements CreatedAtEntityInterface
      *
      * @return Orders
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     
