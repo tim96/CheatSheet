@@ -79,6 +79,13 @@ class Book
      */
     private $countSold;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="count_stock", type="integer", options={"default": 0})
+     */
+    private $countStock;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -266,5 +273,29 @@ class Book
     public function getCountSold()
     {
         return $this->countSold;
+    }
+
+    /**
+     * Set countStock
+     *
+     * @param int $countStock
+     *
+     * @return Book
+     */
+    public function setCountStock($countStock)
+    {
+        $this->countStock = $countStock;
+    
+        return $this;
+    }
+
+    /**
+     * Get countStock
+     *
+     * @return int
+     */
+    public function getCountStock()
+    {
+        return $this->countStock;
     }
 }
