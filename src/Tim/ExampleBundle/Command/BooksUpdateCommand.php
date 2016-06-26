@@ -308,7 +308,6 @@ class BooksUpdateCommand extends ContainerAwareCommand
         $connection = $em->getConnection();
         $connection->getConfiguration()->setSQLLogger(null);
 
-        // try to change Result to arrayResult
         $records = $bookRepository->getList()->getQuery();
 
         $connection->beginTransaction();

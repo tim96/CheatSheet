@@ -2,6 +2,7 @@
 
 namespace Tim\CheatSheetBundle\Entity;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -106,6 +107,7 @@ class DoctrinePost
     {
         $this->isDeleted = false;
         $this->isPublic = false;
+        $this->slug = '';
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->orderPosition = self::ORDER_DEFAULT;
@@ -160,7 +162,10 @@ class DoctrinePost
     public function setText($text)
     {
         $this->text = $text;
-    
+
+        $slugify = new Slugify();
+        $this->setSlug($slugify->slugify($this->text));
+
         return $this;
     }
 
