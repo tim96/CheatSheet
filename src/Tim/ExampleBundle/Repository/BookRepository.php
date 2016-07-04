@@ -29,4 +29,13 @@ class BookRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb;
     }
+
+    public function getListWithParameters($limit)
+    {
+        $qb = $this->getList();
+
+        $qb->setMaxResults($limit);
+
+        return $qb;
+    }
 }
