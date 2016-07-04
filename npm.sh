@@ -6,6 +6,8 @@ bower install bootstrap
 bower install fontawesome
 bower install highlight
 
+bower install Chart.js
+
 npm install --global gulp
 npm install --save-dev gulp
 
