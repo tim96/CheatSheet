@@ -31,7 +31,7 @@ TODO:
 - [X] Add performance issues for doctrine flush method (simple, transaction, and update full sql)
 - [ ] Add example for doctrine filters
 - [X] Add function to print twig template as pdf
-- [ ] Add some examples how to paint charts (CharJS, Morris, Flot and etc.)
+- [X] Add some examples how to paint charts (CharJS, Morris, Flot and etc.)
 - [ ] Add form with dynamic fields
 - [X] Add example how to using doctrine extension function from mysql and etc.
 - [ ] Add symfony collection
