@@ -9,6 +9,7 @@ var env = process.env.type;
 
 gulp.task('js', function () {
     return gulp.src([
+            'src/Tim/ExampleBundle/Resources/public/js/utils.js',
             'bower_components/jquery/dist/jquery.min.js',
             'bower_components/bootstrap/dist/js/bootstrap.min.js',
             // 'bower_components/highlight/src/highlight.js',
@@ -20,6 +21,17 @@ gulp.task('js', function () {
             'src/Tim/CheatSheetBundle/Resources/public/js/anchor.min.js',
             'src/Tim/CheatSheetBundle/Resources/public/js/site.js'])
         .pipe(concat('app.js'))
+        // .pipe(gulpif(env === 'prod', uglify()))
+        .pipe(uglify())
+        // .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/js'));
+});
+
+gulp.task('chart.js', function () {
+    return gulp.src([
+        'bower_components/Chart.js/dist/Chart.min.js'
+    ])
+        .pipe(concat('chart.js'))
         // .pipe(gulpif(env === 'prod', uglify()))
         .pipe(uglify())
         // .pipe(sourcemaps.write('./'))
@@ -67,4 +79,4 @@ gulp.task('fonts', function() {
 });
 
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js', 'css', 'img', 'fonts']);
+gulp.task('default', ['js', 'css', 'img', 'fonts', 'chart.js']);
