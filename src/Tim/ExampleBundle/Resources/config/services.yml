@@ -16,3 +16,6 @@ services:
         class: Tim\ExampleBundle\EventListener\LoggerSubscriber
         tags:
         - { name: doctrine.event_subscriber, connection: default }
+
+    custom_basic_authentication_entry_point:
+       class: Tim\ExampleBundle\DependencyInjection\CustomBasicAuthenticationEntryPoint
