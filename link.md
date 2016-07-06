@@ -121,3 +121,7 @@ https://packagist.org/packages/liip/search-bundle
 
 41. Symfony2 Bundle to manage fixtures with Alice and Faker.
 https://packagist.org/packages/hautelook/alice-bundle
+
+42. Symfony2 Bndle for integrate new relic
+https://github.com/ekino/EkinoNewRelicBundle
+
