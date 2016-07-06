@@ -34,7 +34,7 @@ TODO:
 - [X] Add some examples how to paint charts (CharJS, Morris, Flot and etc.)
 - [ ] Add form with dynamic fields
 - [X] Add example how to using doctrine extension function from mysql and etc.
-- [ ] Add symfony collection
+- [X] Add symfony collection
 - [ ] Add multi step form
 - [ ] Add sitemap bundle
 - [ ] Add payment bundle
