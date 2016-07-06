@@ -1,4 +1,4 @@
 tim_example_frontend:
     resource: "@TimExampleBundle/Controller/FrontendController.php"
     type:     annotation
-    prefix:   /example
+    prefix:   /

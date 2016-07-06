@@ -4,7 +4,7 @@ tim_utils:
 
 tim_example:
     resource: "@TimExampleBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /example
 
 tim_cheat_sheet:
     resource: "@TimCheatSheetBundle/Resources/config/routing.yml"
