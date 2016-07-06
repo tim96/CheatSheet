@@ -24,7 +24,6 @@ class AppKernel extends Kernel
 
             new Sonata\CoreBundle\SonataCoreBundle(),
             new \Sonata\BlockBundle\SonataBlockBundle(),
-            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
@@ -35,6 +34,9 @@ class AppKernel extends Kernel
             // new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             // new Sonata\FormatterBundle\SonataFormatterBundle(),
+
+            // for layout menu
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
             // for pagination
             // new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
