@@ -38,6 +38,17 @@ gulp.task('chart.js', function () {
         .pipe(gulp.dest('web/js'));
 });
 
+gulp.task('symfony-collection.js', function () {
+    return gulp.src([
+        'bower_components/symfony-collection/jquery.collection.js'
+    ])
+        .pipe(concat('symfony-collection.min.js'))
+        // .pipe(gulpif(env === 'prod', uglify()))
+        .pipe(uglify())
+        // .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/js'));
+});
+
 gulp.task('css', function () {
     return gulp.src([
             'bower_components/bootstrap/dist/css/bootstrap.css',
@@ -79,4 +90,4 @@ gulp.task('fonts', function() {
 });
 
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js', 'css', 'img', 'fonts', 'chart.js']);
+gulp.task('default', ['js', 'css', 'img', 'fonts', 'chart.js', 'symfony-collection.js']);

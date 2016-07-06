@@ -8,6 +8,8 @@ bower install highlight
 
 bower install Chart.js
 
+bower install symfony-collection
+
 npm install --global gulp
 npm install --save-dev gulp
 
