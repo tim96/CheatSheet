@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class FrontendController extends Controller
@@ -34,5 +36,51 @@ class FrontendController extends Controller
         $books = $bookService->getListQuery($limit = 25)->getQuery()->getResult();
 
         return array('books' => $books);
+    }
+
+    /**
+     * @Method({"GET","POST"})
+     * @Route("/collection", name="example_collection")
+     * @Template("TimExampleBundle:Frontend:collection.html.twig")
+     *
+     * @param Request $request
+     *
+     * @return array
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     */
+    public function collectionAction(Request $request)
+    {
+        $data = array('values' => array('a', 'b', 'c'));
+        $form = $this
+            ->createFormBuilder($data)
+            ->add('values', CollectionType::class,
+                array(
+                    'type' => 'text',
+                    'label' => 'Add, move, remove values and press Submit.',
+                    'options' => array(
+                        'label' => 'Value',
+                    ),
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'prototype' => true,
+                    'required' => false,
+                    'attr' => array(
+                        'class' => 'my-selector',
+                    ),
+                ))
+            ->add('submit', SubmitType::class)
+            ->getForm()
+        ;
+
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $data = $form->getData();
+        }
+        return array(
+            'form' => $form->createView(),
+            'data' => $data,
+        );
     }
 }

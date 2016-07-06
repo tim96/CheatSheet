@@ -1,0 +1,24 @@
+{% extends 'TimExampleBundle::layout.html.twig' %}
+
+{#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
+{% form_theme form 'TimExampleBundle::jquery.collection.html.twig' %}
+
+{% block body %}
+
+    {{ form(form) }}
+
+    {% for value in data.values %}
+        <p>Value : {{ value }}</p>
+    {% endfor %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="/js/symfony-collection.min.js"></script>
+
+    <script type="text/javascript">
+        $('.my-selector').collection();
+    </script>
+{% endblock %}

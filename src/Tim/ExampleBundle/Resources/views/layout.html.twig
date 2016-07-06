@@ -37,6 +37,7 @@
                 <ul class="nav navbar-nav">
                     {% set currentRoute = app.request.attributes.get('_route') %}
                     <li class="{% if currentRoute == ('example_index') %}active{% endif %}"><a href="{{ path('example_index') }}">Index</a></li>
+                    <li class="{% if currentRoute == ('example_collection') %}active{% endif %}"><a href="{{ path('example_collection') }}">Collection</a></li>
                 </ul>
             </div>
         </div>
