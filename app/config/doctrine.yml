@@ -25,3 +25,5 @@ doctrine:
           datetime_functions:
             MONTH: DoctrineExtensions\Query\Mysql\Month
             YEAR: DoctrineExtensions\Query\Mysql\Year
+        filters:
+            category_public: Tim\ExampleBundle\Doctrine\PublicFilter
