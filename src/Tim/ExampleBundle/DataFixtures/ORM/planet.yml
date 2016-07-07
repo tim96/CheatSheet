@@ -1,0 +1,22 @@
+Tim\ExampleBundle\Entity\Planet:
+    planet_{1..10}:
+        planetName: <word()>
+        isPublic: <boolean(5)>
+        createdAt: <dateTimeBetween('-712 days', 'now')>
+        updatedAt: <dateTime()>
+
+Tim\ExampleBundle\Entity\Country:
+    country_{1..20}:
+        countryName: <name()>
+        isPublic: <boolean(5)>
+        createdAt: <dateTimeBetween('-712 days', 'now')>
+        updatedAt: <dateTime()>
+        planet: @planet_*
+
+Tim\ExampleBundle\Entity\City:
+    city_{1..100}:
+        cityName: <city()>
+        isPublic: <boolean(5)>
+        createdAt: <dateTimeBetween('-712 days', 'now')>
+        updatedAt: <dateTime()>
+        country: @country_*
