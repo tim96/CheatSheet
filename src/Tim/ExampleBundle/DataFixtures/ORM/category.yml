@@ -1,0 +1,6 @@
+Tim\ExampleBundle\Entity\Category:
+    dummy_{1..20}:
+        categoryName: <name()>
+        isPublic: <boolean(4)>
+        createdAt: <dateTimeBetween('-712 days', 'now')>
+        updatedAt: <dateTime()>

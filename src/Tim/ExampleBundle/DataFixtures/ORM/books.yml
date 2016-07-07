@@ -1,5 +1,6 @@
 Tim\ExampleBundle\Entity\Book:
-    dummy_{1..20000}:
+#    dummy_{1..20000}:
+    dummy_{1..20}:
         title: <name()>
         description: <text(2048)>
         price: <numberBetween(1, 2000)>
