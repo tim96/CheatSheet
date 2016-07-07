@@ -38,7 +38,7 @@ TODO:
 - [ ] Add multi step form
 - [ ] Add sitemap bundle
 - [ ] Add payment bundle
-- [ ] Add new environment for frontend without additional bundles
+- [X] Add new environment for frontend without additional bundles
 - [ ] Add some search engine to search content inside website
 - [ ] After upgrade project fix all deprecations in code
 
