@@ -2,3 +2,9 @@ services:
 #    tim_utils.example:
 #        class: Tim\UtilsBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+    before_request_listener:
+        class: Tim\ExampleBundle\EventListener\BeforeRequestListener
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

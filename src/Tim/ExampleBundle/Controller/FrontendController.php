@@ -101,13 +101,15 @@ class FrontendController extends Controller
      */
     public function filtersAction(Request $request)
     {
-        /** @var EntityManager $em */
-        $em = $this->getDoctrine()->getManager();
-        $filters = $em->getFilters()
-            ->enable('category_public')
-        ;
-        $filters->setParameter('isPublic', true);
+//        // Move this code to BeforeRequestListener
+//        /** @var EntityManager $em */
+//        $em = $this->getDoctrine()->getManager();
+//        $filters = $em->getFilters()
+//            ->enable('category_public')
+//        ;
+//        $filters->setParameter('isPublic', true);
 
+        $em = $this->getDoctrine()->getManager();
         $categoryRepository = $em->getRepository('TimExampleBundle:Category');
         $records = $categoryRepository->findAll();
 
