@@ -8,6 +8,7 @@
 
 namespace Tim\ExampleBundle\Controller;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -82,5 +83,34 @@ class FrontendController extends Controller
             'form' => $form->createView(),
             'data' => $data,
         );
+    }
+
+    /**
+     * @Method({"GET"})
+     * @Route("/filters", name="example_filters")
+     * @Template("TimExampleBundle:Frontend:filters.html.twig")
+     *
+     * @param Request $request
+     *
+     * @return array
+     * @throws \LogicException
+     * @throws \InvalidArgumentException
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     */
+    public function filtersAction(Request $request)
+    {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $filters = $em->getFilters()
+            ->enable('category_public')
+        ;
+        $filters->setParameter('isPublic', true);
+
+        $categoryRepository = $em->getRepository('TimExampleBundle:Category');
+        $records = $categoryRepository->findAll();
+
+        return array('records' => $records);
     }
 }

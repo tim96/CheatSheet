@@ -1,0 +1,11 @@
+{% extends 'TimExampleBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        {% for value in records %}
+            <p>Id : {{ value.id }} Name: {{ value.categoryName }} Is Public: {{ value.isPublic }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock body %}
