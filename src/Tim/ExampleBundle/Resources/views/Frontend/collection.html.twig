@@ -1,16 +1,16 @@
 {% extends 'TimExampleBundle::layout.html.twig' %}
 
 {#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
-{% form_theme form 'TimExampleBundle::jquery.collection.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' 'TimExampleBundle::jquery.collection.html.twig' %}
 
 {% block body %}
+    <div class="container">
+        {{ form(form) }}
 
-    {{ form(form) }}
-
-    {% for value in data.values %}
-        <p>Value : {{ value }}</p>
-    {% endfor %}
-
+        {% for value in data.values %}
+            <p>Value : {{ value }}</p>
+        {% endfor %}
+    </div>
 {% endblock body %}
 
 {% block javascripts %}
