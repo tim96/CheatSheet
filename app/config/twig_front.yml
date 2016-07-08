@@ -5,3 +5,6 @@ twig:
     globals:
         google_analytics: "%google_analytics%"
         yandex_metrika: "%yandex_metrika_key%"
+    form:
+       resources:
+           - 'TimExampleBundle:Form/Type:reg.html.twig'

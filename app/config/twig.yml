@@ -8,3 +8,4 @@ twig:
     form:
        resources:
            - 'TimCheatSheetBundle:Widget:tinymce_field.html.twig'
+           - 'TimExampleBundle:Form/Type:reg.html.twig'
