@@ -34,7 +34,10 @@
                 <a class="navbar-brand" href="{{ path('example_index') }}">Example Bundle</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                {{ knp_menu_render('TimExampleBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
+
+                {% block menu %}
+                    {{ knp_menu_render('TimExampleBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
+                {% endblock menu %}
 
                 {#<ul class="nav navbar-nav">#}
                     {#{% set currentRoute = app.request.attributes.get('_route') %}#}

@@ -23,6 +23,7 @@ class Builder implements ContainerAwareInterface
         $menu->addChild('Index', array('route' => 'example_index'));
         $menu->addChild('Collection', array('route' => 'example_collection'));
         $menu->addChild('Filters', array('route' => 'example_filters'));
+        $menu->addChild('Select', array('route' => 'example_select'));
 
         $menu->setChildrenAttributes(array('class' => 'nav navbar-nav'));
 

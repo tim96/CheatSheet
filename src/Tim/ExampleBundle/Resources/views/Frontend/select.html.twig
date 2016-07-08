@@ -1,0 +1,18 @@
+{% extends 'TimExampleBundle::layout.html.twig' %}
+
+{% block body %}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+    <div class="container">
+        <div class="">
+            <div class="page-header">
+                <h1>Select</h1>
+            </div>
+        </div>
+
+        {{ form_start(form, {'class': 'form-horizontal', 'attr': {'class': 'form-horizontal'} }) }}
+            {{ form(form) }}
+        {{ form_end(form) }}
+    </div>
+
+{% endblock body %}

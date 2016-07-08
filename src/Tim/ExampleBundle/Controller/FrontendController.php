@@ -16,6 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Tim\ExampleBundle\Form\Type\RegType;
 
 class FrontendController extends Controller
 {
@@ -86,19 +87,19 @@ class FrontendController extends Controller
     }
 
     /**
-     * @Method({"GET"})
-     * @Route("/filters", name="example_filters")
-     * @Template("TimExampleBundle:Frontend:filters.html.twig")
-     *
-     * @param Request $request
-     *
-     * @return array
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
-     *
-     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
-     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
-     */
+ * @Method({"GET"})
+ * @Route("/filters", name="example_filters")
+ * @Template("TimExampleBundle:Frontend:filters.html.twig")
+ *
+ * @param Request $request
+ *
+ * @return array
+ * @throws \LogicException
+ * @throws \InvalidArgumentException
+ *
+ * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+ * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+ */
     public function filtersAction(Request $request)
     {
 //        // Move this code to BeforeRequestListener
@@ -114,5 +115,37 @@ class FrontendController extends Controller
         $records = $categoryRepository->findAll();
 
         return array('records' => $records);
+    }
+
+    /**
+     * @Method({"GET","POST"})
+     * @Route("/select", name="example_select")
+     * @Template("TimExampleBundle:Frontend:select.html.twig")
+     *
+     * @param Request $request
+     *
+     * @return array
+     * @throws \LogicException
+     * @throws \InvalidArgumentException
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     */
+    public function selectAction(Request $request)
+    {
+        $defaultData = array();
+        $form = $this->createForm(new RegType(), $defaultData);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            // todo: add form processing
+            die('Valid form');
+        }
+
+        return array(
+            'form' => $form->createView()
+        );
     }
 }
