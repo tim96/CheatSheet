@@ -32,6 +32,7 @@ TODO:
 - [X] Add example for doctrine filters
 - [X] Add function to print twig template as pdf
 - [X] Add some examples how to paint charts (CharJS, Morris, Flot and etc.)
+- [ ] Add model for user and create oauth provider
 - [ ] Add form with dynamic fields
 - [X] Add example how to using doctrine extension function from mysql and etc.
 - [X] Add symfony collection
