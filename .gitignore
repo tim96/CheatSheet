@@ -22,3 +22,5 @@ composer.lock
 node_modules/
 bower_components/
 web/fonts/
+web/uploads/products/
+web/uploads/applications/
