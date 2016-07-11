@@ -82,6 +82,9 @@ class AppKernel extends Kernel
 
                 new Tim\ExampleBundle\TimExampleBundle(),
             );
+
+            // for multi step form
+            $bundles[] = new Craue\FormFlowBundle\CraueFormFlowBundle();
         }
 
         # uncomment for show debug profiler

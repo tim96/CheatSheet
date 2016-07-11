@@ -35,7 +35,7 @@ TODO:
 - [ ] Add form with dynamic fields
 - [X] Add example how to using doctrine extension function from mysql and etc.
 - [X] Add symfony collection
-- [ ] Add multi step form
+- [X] Add multi step form
 - [ ] Add sitemap bundle
 - [ ] Add payment bundle
 - [X] Add new environment for frontend without additional bundles
