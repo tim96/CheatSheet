@@ -8,17 +8,17 @@
 
 namespace Tim\ExampleBundle\Controller;
 
-use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Tim\ExampleBundle\Entity\Product;
 use Tim\ExampleBundle\Form\Type\RegType;
 
-class FrontendController extends Controller
+class FrontendController extends BaseController
 {
     /**
      * @Method({"GET"})
@@ -147,5 +147,63 @@ class FrontendController extends Controller
         return array(
             'form' => $form->createView()
         );
+    }
+
+    /**
+     * @Method({"GET","POST"})
+     * @Route("/newProduct", name="example_new_product")
+     *
+     * @param Request $request
+     *
+     * @return array|RedirectResponse
+     * @throws \Symfony\Component\HttpFoundation\File\Exception\FileException
+     * @throws \LogicException
+     * @throws \InvalidArgumentException
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     */
+    public function newProductAction(Request $request)
+    {
+        $product = new Product();
+        $form = $this->createForm('Tim\ExampleBundle\Form\ProductType', $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $product->getFile();
+
+            // Generate a unique name for the file before saving it
+            // substr(str_shuffle(md5(microtime())), 0, 10);
+            mt_srand();
+            $fileName = sha1(mt_rand()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('product_directory'),
+                $fileName
+            );
+
+            $product->setFile($fileName);
+
+            $em = $this->getDoctrine()->getManager();
+
+            try {
+                $em->persist($product);
+                $em->flush();
+
+                $this->success('Product was created successfully');
+
+                return $this->redirect($this->generateUrl('example_new_product'));
+            }
+            catch (\Exception $ex)
+            {
+                $this->danger('Error create product');
+            }
+        }
+
+        return $this->render('TimExampleBundle:Frontend:newProduct.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }

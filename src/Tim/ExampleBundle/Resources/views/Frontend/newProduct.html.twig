@@ -1,0 +1,27 @@
+{% extends 'TimExampleBundle::layout.html.twig' %}
+
+{% block body %}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+    <div class="container">
+        <div class="">
+            <div class="page-header">
+                <h1>Add new product</h1>
+            </div>
+        </div>
+
+        {# Hint: show all flashes with bootstrap styles #}
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-{{ label }}">
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {{ form_start(form, {'class': 'form-horizontal', 'attr': {'class': 'form-horizontal'} }) }}
+            {{ form(form) }}
+        {{ form_end(form) }}
+    </div>
+
+{% endblock body %}
