@@ -19,3 +19,7 @@ services:
 
     custom_basic_authentication_entry_point:
        class: Tim\ExampleBundle\DependencyInjection\CustomBasicAuthenticationEntryPoint
+
+    tim_example.file_uploader.service:
+        class: Tim\ExampleBundle\Service\FileUploaderService
+        arguments: ['%product_directory%']
