@@ -23,3 +23,10 @@ services:
     tim_example.file_uploader.service:
         class: Tim\ExampleBundle\Service\FileUploaderService
         arguments: ['%product_directory%']
+
+    tim_example.product_upload_listener:
+        class: Tim\ExampleBundle\EventListener\ProductUploadListener
+        arguments: ['@tim_example.file_uploader.service']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
