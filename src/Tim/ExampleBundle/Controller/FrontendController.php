@@ -174,16 +174,7 @@ class FrontendController extends BaseController
             /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $product->getFile();
 
-            // Generate a unique name for the file before saving it
-            // substr(str_shuffle(md5(microtime())), 0, 10);
-            mt_srand();
-            $fileName = sha1(mt_rand()).'.'.$file->guessExtension();
-
-            $file->move(
-                $this->getParameter('product_directory'),
-                $fileName
-            );
-
+            $fileName = $this->get('tim_example.file_uploader.service')->upload($file);
             $product->setFile($fileName);
 
             $em = $this->getDoctrine()->getManager();
