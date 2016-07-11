@@ -25,6 +25,7 @@ class Builder implements ContainerAwareInterface
         $menu->addChild('Filters', array('route' => 'example_filters'));
         $menu->addChild('Select', array('route' => 'example_select'));
         $menu->addChild('Add product', array('route' => 'example_new_product'));
+        $menu->addChild('List product', array('route' => 'example_list_product'));
 
         $menu->setChildrenAttributes(array('class' => 'nav navbar-nav'));
 

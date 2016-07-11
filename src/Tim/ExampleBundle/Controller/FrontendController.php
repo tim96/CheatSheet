@@ -171,12 +171,6 @@ class FrontendController extends BaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            $file = $product->getFile();
-
-            $fileName = $this->get('tim_example.file_uploader.service')->upload($file);
-            $product->setFile($fileName);
-
             $em = $this->getDoctrine()->getManager();
 
             try {
@@ -185,7 +179,7 @@ class FrontendController extends BaseController
 
                 $this->success('Product was created successfully');
 
-                return $this->redirect($this->generateUrl('example_new_product'));
+                return $this->redirect($this->generateUrl('example_list_product'));
             }
             catch (\Exception $ex)
             {
@@ -195,6 +189,31 @@ class FrontendController extends BaseController
 
         return $this->render('TimExampleBundle:Frontend:newProduct.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Method({"GET"})
+     * @Route("/listProduct", name="example_list_product")
+     *
+     * @param Request $request
+     *
+     * @return array|RedirectResponse
+     * @throws \Symfony\Component\HttpFoundation\File\Exception\FileException
+     * @throws \LogicException
+     * @throws \InvalidArgumentException
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     */
+    public function listProductAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $productsRepository = $em->getRepository('TimExampleBundle:Product');
+        $products = $productsRepository->findBy(array(), null, 20);
+
+        return $this->render('TimExampleBundle:Frontend:listProduct.html.twig', array(
+            'products' => $products
         ));
     }
 }

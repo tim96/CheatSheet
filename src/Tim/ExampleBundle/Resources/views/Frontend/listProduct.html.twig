@@ -1,0 +1,26 @@
+{% extends 'TimExampleBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="">
+            <div class="page-header">
+                <h1>List products</h1>
+            </div>
+        </div>
+
+        {# Hint: show all flashes with bootstrap styles #}
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-{{ label }}">
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% for i, product in products %}
+            Id: {{ product.id }} {{ product.name }} <a href="{{ asset('uploads/products/' ~ product.file) }}">View file (PDF)</a> <br/>
+        {% endfor %}
+    </div>
+
+{% endblock body %}
