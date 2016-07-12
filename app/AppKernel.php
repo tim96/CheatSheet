@@ -66,6 +66,9 @@ class AppKernel extends Kernel
                 new Tim\CheatSheetBundle\TimCheatSheetBundle(),
                 new Tim\ExampleBundle\TimExampleBundle(),
                 new Tim\UtilsBundle\TimUtilsBundle(),
+
+                // for test another admin bundle
+                new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             );
         } else {
             $bundles = array(
