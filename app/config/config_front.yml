@@ -4,6 +4,7 @@ imports:
     - { resource: swiftmailer.yml }
     - { resource: twig_front.yml }
     - { resource: doctrine.yml }
+    - { resource: security_front.yml }
 
 #framework:
 #    validation:

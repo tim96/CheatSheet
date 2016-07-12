@@ -25,7 +25,7 @@ class CarModel
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="text", nullable=false, unique=true)
+     * @ORM\Column(name="model_name", type="string", length=255, nullable=false, unique=true)
      */
     protected $name;
 
