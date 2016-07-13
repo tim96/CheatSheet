@@ -67,6 +67,7 @@ security:
         - { path: ^/api/logout, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
 
         # Change these rules to adapt them to your needs
+        - { path: ^/easy_admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
         - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
         - { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
 
