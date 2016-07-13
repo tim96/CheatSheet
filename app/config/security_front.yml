@@ -1,0 +1,17 @@
+security:
+    providers:
+        in_memory:
+            memory: ~
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            security: false
+        default:
+            anonymous: ~
+
+    access_control:
+        - { path: ^/user/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/profile, role: ROLE_USER }
+        - { path: ^/user/logout, role: ROLE_USER }
