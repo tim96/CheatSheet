@@ -24,3 +24,9 @@ parameters:
     locale:            en
     yandex_metrika_key: ~
     product_directory: '%kernel.root_dir%/../web/uploads/products'
+    github_id:         ~
+    github_secret:     ~
+    google_id:         ~
+    google_secret:     ~
+    facebook_id:       ~
+    facebook_secret:   ~
