@@ -86,6 +86,7 @@ class LinkList
                 $previousNode = $this->firstNode;
                 $currentNode = $this->firstNode->next;
 
+                /** @var $currentNode ListNode */
                 while($currentNode->next !== null) {
                     $previousNode = $this->firstNode;
                     $currentNode = $this->firstNode->next;
@@ -130,10 +131,12 @@ class LinkList
         $currentNode = $this->firstNode;
         while($currentNode->data !== $key)
         {
-            if($currentNode->next === NULL)
+            if ($currentNode->next === NULL) {
                 return null;
-            else
+            }
+            else {
                 $currentNode = $currentNode->next;
+            }
         }
         return $currentNode;
     }
@@ -170,7 +173,8 @@ class LinkList
         $current = $this->firstNode;
 
         while($current !== null) {
-            array_push($listData, $current->readNode());
+            // array_push($listData, $current->readNode());
+            $listData[] = $current->readNode();
             $current = $current->next;
         }
 
@@ -183,7 +187,7 @@ class LinkList
             $current = $this->firstNode;
             $new = NULL;
 
-            while ($current != NULL)
+            while ($current !== null)
             {
                 $temp = $current->next;
                 $current->next = $new;
