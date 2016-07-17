@@ -90,8 +90,8 @@ class LinkList
 
                 /** @var $currentNode ListNode */
                 while($currentNode->next !== null) {
-                    $previousNode = $this->firstNode;
-                    $currentNode = $this->firstNode->next;
+                    $previousNode = $currentNode;
+                    $currentNode = $currentNode->next;
                 }
 
                 $previousNode->next = null;
