@@ -197,4 +197,18 @@ class LinkList
             $this->firstNode = $new;
         }
     }
+
+    /**
+     * Test function to print content as a list
+     */
+    public function printAsList()
+    {
+        $items = $this->readList();
+        $str = '';
+        foreach($items as $item) {
+            $str .= $item . '->';
+        }
+
+        return $str;
+    }
 }
