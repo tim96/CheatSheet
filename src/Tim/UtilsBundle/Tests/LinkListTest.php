@@ -49,5 +49,13 @@ class LinkListTest extends \PHPUnit_Framework_TestCase
 
         $data = $theList->readNode(1024);
         static::assertNull($data);
+
+        $listData = array();
+        $firstNode = $theList->getFirstNode();
+        while($firstNode !== null) {
+            $listData[] = $firstNode->readNode();
+            $firstNode = $firstNode->next;
+        }
+        static::assertEquals($totalNodes - 3, count($listData));
     }
 }
