@@ -6,6 +6,8 @@
  * Time: 10:15 PM
  */
 
+namespace Tim\UtilsBundle\Algorithms;
+
 class LinkList
 {
     /**
