@@ -11,12 +11,12 @@ namespace Tim\UtilsBundle\Algorithms;
 class DoubleLinkList
 {
     /**
-     * @var ListNode
+     * @var DoubleListNode
      */
     private $firstNode;
 
     /**
-     * @var ListNode
+     * @var DoubleListNode
      */
     private $lastNode;
 
@@ -35,6 +35,41 @@ class DoubleLinkList
     public function isEmpty()
     {
         return (null === $this->firstNode);
+    }
+
+    public function totalNodes()
+    {
+        return $this->count;
+    }
+
+    public function insertFirst($data)
+    {
+        $newLink = new DoubleListNode($data);
+
+        if ($this->isEmpty()) {
+            $this->lastNode = $newLink;
+        } else {
+            $this->firstNode->previous = $newLink;
+        }
+
+        $newLink->next = $this->firstNode;
+        $this->firstNode = $newLink;
+        $this->count++;
+    }
+
+    public function insertLast($data)
+    {
+        $newLink = new DoubleListNode($data);
+
+        if ($this->isEmpty()) {
+            $this->firstNode = $newLink;
+        } else {
+            $this->lastNode->next = $newLink;
+        }
+
+        $newLink->previous = $this->lastNode;
+        $this->lastNode = $newLink;
+        $this->count++;
     }
 
     // todo: add realization
