@@ -72,5 +72,45 @@ class DoubleLinkList
         $this->count++;
     }
 
+    public function readListForward()
+    {
+        $listData = array();
+        $current = $this->firstNode;
+
+        while($current !== null) {
+            $listData[] = $current->readNode();
+            $current = $current->next;
+        }
+
+        return $listData;
+    }
+
+    public function readListBackward()
+    {
+        $listData = array();
+        $current = $this->lastNode;
+
+        while($current !== null) {
+            $listData[] = $current->readNode();
+            $current = $current->previous;
+        }
+
+        return $listData;
+    }
+
     // todo: add realization
+
+    /**
+     * Test function to print content as a list
+     */
+    public function printAsList()
+    {
+        $items = $this->readListForward();
+        $str = '';
+        foreach($items as $item) {
+            $str .= $item . '->';
+        }
+
+        return $str;
+    }
 }
