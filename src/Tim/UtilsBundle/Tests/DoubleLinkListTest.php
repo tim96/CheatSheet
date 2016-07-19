@@ -33,5 +33,20 @@ class DoubleLinkListTest extends \PHPUnit_Framework_TestCase
 
         $data = $theList->readListForward();
         static::assertEquals(1024, $data[100 - 25 + 1]);
+
+        $theList->deleteFirstNode();
+        static::assertEquals($totalNodes, $theList->totalNodes());
+
+        $theList->deleteLastNode();
+        static::assertEquals($totalNodes - 1, $theList->totalNodes());
+
+        $theList->deleteLastNode();
+        static::assertEquals($totalNodes - 2, $theList->totalNodes());
+
+        $theList->deleteNode(25);
+        static::assertEquals($totalNodes - 3, $theList->totalNodes());
+
+        $theList->deleteNode(10000);
+        static::assertEquals($totalNodes - 3, $theList->totalNodes());
     }
 }

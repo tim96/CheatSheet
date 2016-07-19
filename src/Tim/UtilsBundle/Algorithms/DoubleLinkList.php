@@ -131,6 +131,67 @@ class DoubleLinkList
         return $this;
     }
 
+    public function deleteFirstNode()
+    {
+        $temp = $this->firstNode;
+
+        if ($this->firstNode->next === null) {
+            $this->lastNode = null;
+        } else {
+            $this->firstNode->next->previous = null;
+        }
+
+        $this->firstNode = $this->firstNode->next;
+        $this->count--;
+
+        return $temp;
+    }
+
+    public function deleteLastNode()
+    {
+        $temp = $this->lastNode;
+
+        if ($this->firstNode->next === null) {
+            $this->firstNode = null;
+        } else {
+            $this->lastNode->previous->next = null;
+        }
+
+        $this->lastNode = $this->lastNode->previous;
+        $this->count--;
+
+        return $temp;
+    }
+
+    public function deleteNode($key)
+    {
+        $current = $this->firstNode;
+
+        while($current->data !== $key) {
+            $current = $current->next;
+
+            if ($current === null) {
+                return null;
+            }
+        }
+
+        if ($current === $this->firstNode) {
+            $this->firstNode = $current->next;
+        } else {
+            $current->previous->next = $current->next;
+        }
+
+        if ($current === $this->lastNode) {
+            $this->lastNode = $current->previous;
+        } else {
+            $current->next->previous = $current->previous;
+        }
+
+        $this->count--;
+
+        return $current;
+    }
+
     public function readListForward()
     {
         $listData = array();
