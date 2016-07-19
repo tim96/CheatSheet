@@ -81,6 +81,8 @@ class DoubleLinkList
         $newLink->next = $this->firstNode;
         $this->firstNode = $newLink;
         $this->count++;
+
+        return $this;
     }
 
     public function insertLast($data)
@@ -96,6 +98,37 @@ class DoubleLinkList
         $newLink->previous = $this->lastNode;
         $this->lastNode = $newLink;
         $this->count++;
+
+        return $this;
+    }
+
+    public function insertAfter($key, $data)
+    {
+        $current = $this->firstNode;
+
+        while($current->data !== $key) {
+            $current = $current->next;
+
+            if ($current === null) {
+                return false;
+            }
+        }
+
+        $newLink = new ListNode($data);
+
+        if ($current === $this->lastNode) {
+            $newLink->next = null;
+            $this->lastNode = $newLink;
+        } else {
+            $newLink->next = $current->next;
+            $current->next->previous = $newLink;
+        }
+
+        $newLink->previous = $current;
+        $current->next = $newLink;
+        $this->count++;
+
+        return $this;
     }
 
     public function readListForward()

@@ -27,5 +27,11 @@ class DoubleLinkListTest extends \PHPUnit_Framework_TestCase
 
         static::assertInternalType('array', $theList->readListForward());
         static::assertInternalType('array', $theList->readListBackward());
+
+        $theList->insertAfter(25, 1024);
+        static::assertEquals($totalNodes + 1, $theList->totalNodes());
+
+        $data = $theList->readListForward();
+        static::assertEquals(1024, $data[100 - 25 + 1]);
     }
 }
