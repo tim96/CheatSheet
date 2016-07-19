@@ -140,6 +140,11 @@ class BinarySearchTree
         return $current;
     }
 
+    public function isEmpty()
+    {
+        return $this->root === null;
+    }
+
     public function getItems()
     {
         return $this->count;

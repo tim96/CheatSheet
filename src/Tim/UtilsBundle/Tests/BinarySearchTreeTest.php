@@ -18,6 +18,7 @@ class BinarySearchTreeTest extends \PHPUnit_Framework_TestCase
         $countItems = 100;
         $tree = new BinarySearchTree();
 
+        static::assertEquals(true, $tree->isEmpty());
         for ($i = 0; $i <= $countItems; $i++) {
             $tree->create($i);
         }
@@ -36,5 +37,7 @@ class BinarySearchTreeTest extends \PHPUnit_Framework_TestCase
         $max = $tree->max();
         static::assertInstanceOf(TreeNode::class, $max);
         static::assertEquals(100, $max->info);
+
+        static::assertEquals(false, $tree->isEmpty());
     }
 }
