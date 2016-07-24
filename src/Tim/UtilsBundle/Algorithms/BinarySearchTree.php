@@ -66,6 +66,7 @@ class BinarySearchTree
     {
         if ($this->root === null) {
             $this->root = new TreeNode($info);
+            $this->count++;
         } else {
             $current = $this->root;
 
@@ -74,7 +75,7 @@ class BinarySearchTree
                     if ($current->left) {
                         $current = $current->left;
                     } else {
-                        $current->left = new TreeNode($info);
+                        $current->left = new TreeNode($info, $current);
                         $this->count++;
                         break;
                     }
@@ -82,7 +83,7 @@ class BinarySearchTree
                     if ($current->right) {
                         $current = $current->right;
                     } else {
-                        $current->right = new TreeNode($info);
+                        $current->right = new TreeNode($info, $current);
                         $this->count++;
                         break;
                     }
@@ -91,13 +92,17 @@ class BinarySearchTree
                 }
             }
         }
+
+        return $this;
     }
 
     public function search($value)
     {
         $current = $this->root;
 
+//        $i = 0;
         while($current) {
+//            echo $i++.'\n';
             if ($value > $current->info) {
                 $current = $current->right;
             } elseif ($value < $current->info) {
@@ -108,6 +113,18 @@ class BinarySearchTree
         }
 
         return $current;
+    }
+
+    public function delete($value)
+    {
+        $node = $this->search($value);
+        if ($node) {
+            $node->delete();
+            $this->count--;
+            return true;
+        }
+
+        return false;
     }
 
     public function min()
@@ -125,6 +142,16 @@ class BinarySearchTree
         return $current;
     }
 
+    public function minValue()
+    {
+        if (!$this->root) {
+            throw new \RuntimeException('Tree root is empty!');
+        }
+
+        $node = $this->root;
+        return $node->min();
+    }
+
     public function max()
     {
         $current = $this->root;
@@ -138,6 +165,105 @@ class BinarySearchTree
         }
 
         return $current;
+    }
+
+    public function maxValue()
+    {
+        if (!$this->root) {
+            throw new \RuntimeException('Tree root is empty!');
+        }
+
+        $node = $this->root;
+        return $node->max();
+    }
+
+    public function getPreOrder()
+    {
+        $this->preOrder($this->root);
+    }
+
+    public function getInOrder()
+    {
+        $this->inOrder($this->root);
+    }
+
+    public function getPostOrder()
+    {
+        $this->postOrder($this->root);
+    }
+
+    /**
+     * @param TreeNode $node
+     */
+    private function preOrder($node)
+    {
+        echo $node. ' ';
+
+        if ($node->left) {
+            $this->preOrder($node->left);
+        }
+
+        if ($node->right) {
+            $this->preOrder($node->right);
+        }
+    }
+
+    /**
+     * @param TreeNode $node
+     */
+    private function inOrder($node)
+    {
+        if ($node->left) {
+            $this->inOrder($node->left);
+        }
+
+        echo $node. ' ';
+
+        if ($node->right) {
+            $this->inOrder($node->right);
+        }
+    }
+
+    /**
+     * @param TreeNode $node
+     */
+    private function postOrder($node)
+    {
+        if ($node->left) {
+            $this->inOrder($node->left);
+        }
+
+        if ($node->right) {
+            $this->inOrder($node->right);
+        }
+
+        echo $node. ' ';
+    }
+
+    /**
+     * @param TreeNode $node
+     *
+     * @return bool|null|TreeNode
+     */
+    public function readList($node = null)
+    {
+        if (null === $node) {
+            $node = $this->root;
+        }
+
+        if (!$node) {
+            return false;
+        }
+
+        if ($node->left) {
+            $this->readList($node->left);
+        }
+
+        if ($node->right) {
+            $this->readList($node->right);
+        }
+
+        return $node;
     }
 
     public function isEmpty()
