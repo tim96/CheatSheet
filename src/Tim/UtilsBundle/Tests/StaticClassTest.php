@@ -48,26 +48,26 @@ class StaticClassTest extends \PHPUnit_Framework_TestCase
         self::assertEquals(10, $result);
     }
 
-    public function testPerformance()
-    {
-        $arr = array();
-        for($i = 0; $i < 3000000; $i++) {
-            $arr[$i] = $i;
-        }
-        $value = 99999;
-
-        $msc = microtime(true);
-        $pos = in_array($value, $arr);
-        $msc = microtime(true) - $msc;
-
-        echo 'Time in_array: ' . round($msc * 1000, 3) . ' ms \r\n ';
-        self::assertEquals(1, (int)$pos);
-
-        $msc = microtime(true);
-        $pos = StaticClass::binarySearchIterative($value, $arr);
-        $msc = microtime(true) - $msc;
-
-        echo 'Time binarySearchIterative: ' . round($msc * 1000, 3) . ' ms \r\n ';
-        self::assertEquals(true, (bool)$pos);
-    }
+//    public function testPerformance()
+//    {
+//        $arr = array();
+//        for($i = 0; $i < 3000000; $i++) {
+//            $arr[$i] = $i;
+//        }
+//        $value = 99999;
+//
+//        $msc = microtime(true);
+//        $pos = in_array($value, $arr);
+//        $msc = microtime(true) - $msc;
+//
+//        echo 'Time in_array: ' . round($msc * 1000, 3) . ' ms \r\n ';
+//        self::assertEquals(1, (int)$pos);
+//
+//        $msc = microtime(true);
+//        $pos = StaticClass::binarySearchIterative($value, $arr);
+//        $msc = microtime(true) - $msc;
+//
+//        echo 'Time binarySearchIterative: ' . round($msc * 1000, 3) . ' ms \r\n ';
+//        self::assertEquals(true, (bool)$pos);
+//    }
 }
