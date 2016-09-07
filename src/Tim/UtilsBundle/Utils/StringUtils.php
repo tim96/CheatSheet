@@ -38,5 +38,14 @@ class StringUtils
     }
 
     // Extracting substring:
+    public function extractSubstring()
+    {
+        // If $start and $length are positive, substr() returns $length characters in the string, starting at $start.
+        // If you leave out $length, substr() returns the string from $start to the end of the original string
+        // If $start is bigger than the length of the string, substr() returns false
 
+        // $substring = substr($string, $start, $length);
+
+        $username = substr($_GET['username'], 0, 8);
+    }
 }
