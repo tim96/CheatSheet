@@ -78,5 +78,39 @@ class StringUtils
         // printf('<a href="more-text.php?id=%d">%s</a>', $ob->id, substr_replace($ob->message, ' ...', 25));
     }
 
+    // Process each byte in a string individually
+    protected function processingStringOneByte()
+    {
+        $string = "This weekend, I'm going shopping for a pet chicken.";
+        for ($i = 0, $j = strlen($string); $i < $j; $i++) {
+            $byte = $string[$i];
+        }
+    }
+
+    // Find the first occurrence of a string
+    protected function searchFirstOccurence()
+    {
+        // string strstr( string $haystack , mixed $needle [, bool $before_needle = false ] )
+        // Returns part of haystack string starting from and including the first occurrence of needle to the end of haystack.
+        // This function is case-sensitive.
+        // Returns the portion of string, or FALSE if needle is not found.
+
+        $email  = 'name@example.com';
+        $domain = strstr($email, '@');
+        // result - @example.com
+
+        $user = strstr($email, '@', true); // As of PHP 5.3.0
+        // result - name
+
+        // string stristr( string $haystack , mixed $needle [, bool $before_needle = false ] )
+        // Returns all of haystack starting from and including the first occurrence of needle to the end.
+        // This function case-insensitive.
+        // Returns the matched substring. If needle is not found, returns FALSE.
+
+        $email = 'USER@EXAMPLE.com';
+        $result = stristr($email, 'e'); // outputs ER@EXAMPLE.com
+        $result = stristr($email, 'e', true); // As of PHP 5.3.0, outputs US
+    }
+
     
 }
