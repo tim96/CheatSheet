@@ -154,4 +154,28 @@ class StringUtils
         $string = implode('hello', array());
         // result - '';
     }
+
+    // Example how to generate random string
+    protected function generateRandomString()
+    {
+        // int mt_rand( void )
+        // mt_rand — Generate a better random value
+        // A random integer value between min (or 0) and max (or mt_getrandmax(), inclusive), or FALSE if max is less than min.
+
+        $length = 32;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        if (!is_int($length) || $length < 0) {
+            return false;
+        }
+
+        $characters_length = strlen($characters) - 1;
+        $string = '';
+
+        for ($i = $length; $i > 0; $i--) {
+            $string .= $characters[mt_rand(0, $characters_length)];
+        }
+
+        return $string;
+    }
 }
