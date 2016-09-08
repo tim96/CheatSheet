@@ -48,4 +48,35 @@ class StringUtils
 
         $username = substr($_GET['username'], 0, 8);
     }
+
+    // Replace a substring
+    public function replaceSubstring()
+    {
+        // Everything from position $start to the end of $old_string
+        // $new_string = substr_replace($old_string, $new_substring, $start);
+
+        // $length characters, starting at position $start, become $new_substring
+        // $new_string = substr_replace($old_string, $new_substring, $start, $length);
+
+        $new_string = substr_replace('My pet is a blue dog.', 'fish.', 12);
+        $new_string = substr_replace('My pet is a blue dog.', 'green', 12, 4);
+        // My pet is a fish.
+        // My pet is a green dog.
+
+        // If $start is negative, the new substring is placed by counting $start characters from
+        // the end of $old_string, not from the beginning:
+        $new_string = substr_replace('My pet is a blue dog.','fish.', -9);
+        $new_string = substr_replace('My pet is a blue dog.','green', -9, 4);
+        // My pet is a fish.
+        // My pet is a green dog.
+
+        // If $start and $length are 0, the new substring is inserted at the start of $old_string:
+        $new_string = substr_replace('My pet is a blue dog.','Title: ',0,0);
+        // Title: My pet is a blue dog
+
+        // Displaying long text with an ellipsis
+        // printf('<a href="more-text.php?id=%d">%s</a>', $ob->id, substr_replace($ob->message, ' ...', 25));
+    }
+
+    
 }
