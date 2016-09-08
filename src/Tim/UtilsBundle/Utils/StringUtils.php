@@ -112,5 +112,46 @@ class StringUtils
         $result = stristr($email, 'e', true); // As of PHP 5.3.0, outputs US
     }
 
-    
+    // Reverse the words or the bytes in a string
+    protected function reverseTheWords()
+    {
+        // string strrev( string $string )
+        // Returns string, reversed.
+
+        $result = strrev('Hello world!');
+        // result - "!dlrow olleH"
+    }
+
+    protected function convertStringToArray()
+    {
+        // array explode( string $delimiter , string $string [, int $limit = PHP_INT_MAX ] )
+        // Returns an array of strings, each of which is a substring of string formed by splitting
+        // it on boundaries formed by the string delimiter.
+
+        $string = 'Hello world';
+        $words = explode(' ', $string);
+        // result - array('0' => 'Hello', '1' => 'world');
+
+        $str = 'one|two|three|four';
+        $words = explode('|', $str, 2);
+        // result - array('0' => 'one', '1' => 'two|three|four');
+
+        $words = explode('|', $str, -1);
+        // result - array('0' => 'one', '1' => 'two', '2' => 'three');
+    }
+
+    protected function convertArrayToString()
+    {
+        // string implode( string $glue , array $pieces )
+        // Join array elements with a glue string.
+        // Returns a string containing a string representation of all the array elements in the same order,
+        // with the glue string between each element.
+
+        $array = array('lastname', 'email', 'phone');
+        $string = implode(',', $array);
+        // result - 'lastname,email,phone';
+
+        $string = implode('hello', array());
+        // result - '';
+    }
 }
