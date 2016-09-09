@@ -76,6 +76,11 @@ class StringUtils
 
         // Displaying long text with an ellipsis
         // printf('<a href="more-text.php?id=%d">%s</a>', $ob->id, substr_replace($ob->message, ' ...', 25));
+
+        // Example how to replace tabs to spaces
+        $message = 'Message with tabs';
+        $tabbed = str_replace(' ' , "\t", $message);
+        $spaced = str_replace("\t", ' ' , $message);
     }
 
     // Process each byte in a string individually
@@ -178,4 +183,43 @@ class StringUtils
 
         return $string;
     }
+
+
+    protected function splitString()
+    {
+        // array str_split ( string $string [, int $split_length = 1 ] )
+        // Converts a string to an array.
+        // If the optional split_length parameter is specified, the returned array will be broken down into chunks
+        // with each being split_length in length, otherwise each chunk will be one character in length.
+
+        $str = 'Hello Friend';
+
+        $result = str_split($str);
+        $result = str_split($str, 3);
+//        Array
+//        (
+//            [0] => H
+//            [1] => e
+//            [2] => l
+//            [3] => l
+//            [4] => o
+//            [5] =>
+//            [6] => F
+//            [7] => r
+//            [8] => i
+//            [9] => e
+//            [10] => n
+//            [11] => d
+//        )
+//
+//        Array
+//        (
+//            [0] => Hel
+//            [1] => lo
+//            [2] => Fri
+//            [3] => end
+//        )
+    }
+
+
 }
