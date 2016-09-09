@@ -221,5 +221,24 @@ class StringUtils
 //        )
     }
 
+    // Example how to capitalize, lowercase, or otherwise modify the case of letters in a string
+    protected function workWithLettersInString()
+    {
+        // string ucfirst ( string $str )
+        // Returns a string with the first character of str capitalized, if that character is alphabetic.
 
+        // string ucwords ( string $str [, string $delimiters = " \t\r\n\f\v" ] )
+        // Returns a string with the first character of each word in str capitalized, if that character is alphabetic.
+
+        $result = ucfirst('how do you do today?'); // How do you do today?
+        $result = ucwords('the prince of wales'); // The Prince Of Wales
+
+        // string strtolower ( string $string )
+        // Returns string with all alphabetic characters converted to lowercase.
+
+        // string strtoupper ( string $string )
+        // Returns string with all alphabetic characters converted to uppercase.
+        $result = strtoupper("i'm not yelling!"); // I'M NOT YELLING!
+        $result = strtolower('<A HREF="one.php">one</A>'); // <a href="one.php">one</a>
+    }
 }
