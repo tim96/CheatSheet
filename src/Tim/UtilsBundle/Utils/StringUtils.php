@@ -241,4 +241,25 @@ class StringUtils
         $result = strtoupper("i'm not yelling!"); // I'M NOT YELLING!
         $result = strtolower('<A HREF="one.php">one</A>'); // <a href="one.php">one</a>
     }
+
+    protected function trimString()
+    {
+        // string trim ( string $str [, string $character_mask = " \t\n\r\0\x0B" ] )
+        // This function returns a string with whitespace stripped from the beginning and end of str.
+
+        // string ltrim ( string $str [, string $character_mask ] )
+        // Strip whitespace (or other characters) from the beginning of a string.
+
+        // string rtrim ( string $str [, string $character_mask ] )
+        // This function returns a string with whitespace (or other characters) stripped from the end of str.
+
+        $text = "\t\tThese are a few words :) ...  ";
+        $result = trim($text);
+        // "These are a few words :) ..."
+
+        // The trim() functions can also remove user-specified characters from strings. Pass the
+        // characters you want to remove as a second argument.
+        $result = ltrim('10 PRINT A$', '0..9'); // PRINT A$
+        $result = rtrim('SELECT * FROM turtles;', ';'); // SELECT * FROM turtles
+    }
 }
