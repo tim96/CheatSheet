@@ -295,5 +295,25 @@ class StringUtils
         // ob_end_clean();
     }
 
-    
+    protected function readFromCSV()
+    {
+        // array fgetcsv ( resource $handle [, int $length = 0 [, string $delimiter = "," [, string $enclosure = '"' [, string $escape = "\" ]]]] )
+        // Similar to fgets() except that fgetcsv() parses the line it reads for fields in CSV format and returns an array containing the fields read.
+        // fgetcsv — Gets line from file pointer and parse for CSV fields
+        // Returns an indexed array containing the fields read.
+        // fgetcsv() returns NULL if an invalid handle is supplied or FALSE on other errors, including end of file.
+
+        $filename = 'file.csv';
+        $fp = fopen($filename,'r') or die("Can't open $filename");
+        print "<table>\n";
+        while(($csv_line = fgetcsv($fp)) !== false) {
+            print '<tr>';
+            for ($i = 0, $j = count($csv_line); $i < $j; $i++) {
+                print '<td>'.htmlentities($csv_line[$i]).'</td>';
+            }
+            print "</tr>\n";
+        }
+        print "</table>\n";
+        fclose($fp) or die("Can't close $filename");
+    }
 }
