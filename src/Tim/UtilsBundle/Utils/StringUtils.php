@@ -262,4 +262,38 @@ class StringUtils
         $result = ltrim('10 PRINT A$', '0..9'); // PRINT A$
         $result = rtrim('SELECT * FROM turtles;', ';'); // SELECT * FROM turtles
     }
+
+    protected function workWithCSV()
+    {
+        // int fputcsv ( resource $handle , array $fields [, string $delimiter = "," [, string $enclosure = '"' [, string $escape_char = "\" ]]] )
+        // fputcsv — Format line as CSV and write to file pointer
+        // fputcsv() formats a line (passed as a fields array) as CSV and write it (terminated by a newline) to the specified file handle.
+        // Returns the length of the written string or FALSE on failure.
+
+        $list = array (
+            array('aaa', 'bbb', 'ccc', 'dddd'),
+            array('123', '456', '789'),
+            array('"aaa"', '"bbb"')
+        );
+
+        $filename = 'file.csv';
+        // To print the CSV-formatted data instead of writing it to a file, use the special output stream php://output
+        // $filename = fopen('php://output','w');
+        // ob_start();
+
+        $fp = fopen($filename, 'w') or die("Can't open $filename");
+
+        foreach ($list as $fields) {
+            if (fputcsv($fp, $fields) === false) {
+                die("Can't write CSV line");
+            }
+        }
+
+        fclose($fp) or die("Can't close $filename");
+
+        // $output = ob_get_contents();
+        // ob_end_clean();
+    }
+
+    
 }
