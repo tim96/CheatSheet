@@ -317,7 +317,7 @@ class StringUtils
         fclose($fp) or die("Can't close $filename");
     }
 
-    // Example how to pack daa into binary format
+    // Example how to pack data into binary format
     protected function packData()
     {
         // string pack ( string $format [, mixed $args [, mixed $... ]] )
@@ -357,5 +357,35 @@ class StringUtils
         // use substr() to ensure that the field values aren’t too long and str_pad() to ensure that the field values aren’t too short.
         // into fixed-width record with .-padded fields.
         $title = str_pad(substr($input, 0, 25), 25, '.');
+    }
+
+    // Example how to unpack data into binary format
+    protected function unpackData()
+    {
+        // array unpack ( string $format , string $data )
+        // Unpacks from a binary string into an array according to the given format.
+        // Returns an associative array containing unpacked elements of binary string.
+
+        $result = array();
+        $data = 'data';
+        $formatString = 'format_string';
+        for ($i = 0, $j = count($data); $i < $j; $i++) {
+            $result[$i] = unpack($formatString, $data[$i]);
+        }
+
+        $binarydata = "\x04\x00\xa0\x00";
+        $result = unpack("cchars/nint", $binarydata);
+//        (
+//            [chars] => 4
+//            [int] => 160
+//        )
+
+        $binarydata = "\x04\x00\xa0\x00";
+        $result = unpack("c2chars/nint", $binarydata);
+//        (
+//            [chars1] => 4
+//            [chars2] => 0
+//            [int] => 40960
+//        )
     }
 }
