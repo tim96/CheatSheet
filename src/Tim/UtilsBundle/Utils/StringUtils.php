@@ -338,4 +338,24 @@ class StringUtils
         $result = pack("nvc*", 0x1234, 0x5678, 65, 66);
         // The resulting binary string will be 6 bytes long and contain the byte sequence 0x12, 0x34, 0x78, 0x56, 0x41, 0x42.
     }
+
+    protected function paddingString()
+    {
+        // Pad a string to a certain length with another string
+        // string str_pad ( string $input , int $pad_length [, string $pad_string = " " [, int $pad_type = STR_PAD_RIGHT ]] )
+        // This functions returns the input string padded on the left, the right, or both sides to the specified padding
+        // length. If the optional argument pad_string is not supplied, the input is padded with spaces, otherwise
+        // it is padded with characters from pad_string up to the limit.
+
+        $input = 'Alien';
+        $result = str_pad($input, 10);                      // produces "Alien     "
+        $result = str_pad($input, 10, "-=", STR_PAD_LEFT);  // produces "-=-=-Alien"
+        $result = str_pad($input, 10, "_", STR_PAD_BOTH);   // produces "__Alien___"
+        $result = str_pad($input,  6, "___");               // produces "Alien_"
+        $result = str_pad($input,  3, "*");                 // produces "Alien"
+
+        // use substr() to ensure that the field values aren’t too long and str_pad() to ensure that the field values aren’t too short.
+        // into fixed-width record with .-padded fields.
+        $title = str_pad(substr($input, 0, 25), 25, '.');
+    }
 }
