@@ -208,4 +208,18 @@ class NumberUtils
         // $result =  mt_rand(5, 15);
         // $result =  mt_rand(5, 15);
     }
+
+    // Calculate log
+    // $log = log(100);
+    // $log2 = log(10, 2);
+
+    // Calculate log 10
+    // $log10 = log10(100);
+
+    // Calculate exponent
+    // $exp = exp(2);
+    // $exp = pow( 2, M_E);
+    // $pow1 = pow( 2, 10); // 1024
+
+
 }
