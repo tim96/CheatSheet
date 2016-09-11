@@ -188,4 +188,24 @@ class NumberUtils
             printf("%d squared is %d\n", $n, $square);
         }
     }
+
+    protected function generateNumbers()
+    {
+        // int mt_rand( void )
+        // mt_rand — Generate a better random value
+        // A random integer value between min (or 0) and max (or mt_getrandmax(), inclusive), or FALSE if max is less than min.
+
+        // $result =  mt_rand(5, 15);
+        // $result =  mt_rand();
+
+        // You want to make the random number generate predictable numbers so you can guarantee repeatable behavior.
+        // void mt_srand ([ int $seed ] )
+        // mt_srand — Seed the better random number generator
+
+        // Because a specific value was passed to mt_srand(), we can be
+        // sure the same values will get picked each time:
+        // mt_srand(34534)
+        // $result =  mt_rand(5, 15);
+        // $result =  mt_rand(5, 15);
+    }
 }
