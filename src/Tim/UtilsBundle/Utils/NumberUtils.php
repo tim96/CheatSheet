@@ -82,4 +82,40 @@ class NumberUtils
         // be the smallest amount of difference you care about between two numbers. Then use
         // abs() to get the absolute value of the difference
     }
+
+    protected function roundNumbers()
+    {
+        // round — Rounds a float
+        // float round ( float $val [, int $precision = 0 [, int $mode = PHP_ROUND_HALF_UP ]] )
+        // Returns the rounded value of val to specified precision (number of digits after the decimal point). precision can also be negative or zero (default).
+        // Note: PHP doesn't handle strings like "12,300.2" correctly by default. See converting from strings.
+
+        $result = round(3.4);         // 3
+        $result = round(3.5);         // 4
+        $result = round(3.6);         // 4
+        $result = round(3.6, 0);      // 4
+        $result = round(1.95583, 2);  // 1.96
+        $result = round(1241757, -3); // 1242000
+        $result = round(5.045, 2);    // 5.05
+        $result = round(5.055, 2);    // 5.06
+
+        // ceil — Round fractions up
+        // float ceil ( float $value )
+        // Returns the next highest integer value by rounding up value if necessary.
+
+        $result = ceil(4.3);    // 5
+        $result = ceil(9.999);  // 10
+        $result = ceil(-3.14);  // -3
+
+        // floor — Round fractions down
+        // mixed floor ( float $value )
+        // Returns the next lowest integer value (as float) by rounding down value if necessary.
+        // value rounded to the next lowest integer. The return value of floor() is still of type float because the
+        // value range of float is usually bigger than that of integer. This function returns FALSE in case of
+        // an error (e.g. passing an array).
+
+        $result = floor(4.3);   // 4
+        $result = floor(9.999); // 9
+        $result = floor(-3.14); // -4
+    }
 }
