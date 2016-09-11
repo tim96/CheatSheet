@@ -316,4 +316,26 @@ class StringUtils
         print "</table>\n";
         fclose($fp) or die("Can't close $filename");
     }
+
+    // Example how to pack daa into binary format
+    protected function packData()
+    {
+        // string pack ( string $format [, mixed $args [, mixed $... ]] )
+        // Pack given arguments into a binary string according to format.
+        // Returns a binary string containing data.
+
+        $books = array( array('Elmer Gantry', 'Sinclair Lewis', 1927),
+            array('The Scarlatti Inheritance','Robert Ludlum', 1971),
+            array('The Parsifal Mosaic','William Styron', 1979) );
+
+        // The format string A25A14A4 tells pack() to transform its subsequent arguments into a
+        // 25-character space-padded string, a 14-character space-padded string, and a 4-
+        // character space-padded string.
+        foreach ($books as $book) {
+            $result = pack('A25A15A4', $book[0], $book[1], $book[2]) . "\n";
+        }
+
+        $result = pack("nvc*", 0x1234, 0x5678, 65, 66);
+        // The resulting binary string will be 6 bytes long and contain the byte sequence 0x12, 0x34, 0x78, 0x56, 0x41, 0x42.
+    }
 }
