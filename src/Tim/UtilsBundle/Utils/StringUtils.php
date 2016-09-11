@@ -388,4 +388,36 @@ class StringUtils
 //            [int] => 40960
 //        )
     }
+
+    protected function pregSplitExample()
+    {
+        // Split string by a regular expression
+        // array preg_split ( string $pattern , string $subject [, int $limit = -1 [, int $flags = 0 ]] )
+        // Returns an array containing substrings of subject split along boundaries matched by pattern, or FALSE on failure.
+
+        // split the phrase by any number of commas or space characters,
+        // which include " ", \r, \t, \n and \f
+        $result = preg_split("/[\s,]+/", "hypertext language, programming");
+//        Array
+//        (
+//            [0] => hypertext
+//            [1] => language
+//            [2] => programming
+//        )
+
+        // With preg_split(), you have more flexibility. Instead of a string literal as a separator,
+        // it uses a Perl-compatible regular expression engine.
+        $math = "3 + 2 / 7 - 9";
+        $result = preg_split('/ *([+\-\/*]) */', $math, -1, PREG_SPLIT_DELIM_CAPTURE);
+//        Array
+//        (
+//            [0] => 3
+//            [1] => +
+//            [2] => 2
+//            [3] => /
+//            [4] => 7
+//            [5] => -
+//            [6] => 9
+//        )
+    }
 }
