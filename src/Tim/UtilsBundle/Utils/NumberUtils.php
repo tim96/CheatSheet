@@ -54,4 +54,32 @@ class NumberUtils
         // is_real
         // is_scalar
     }
+
+    protected function compareFloatValues()
+    {
+        // Absolute value
+        // number abs ( mixed $number )
+        // Returns the absolute value of number.
+
+//        $result = abs(-4.2); // 4.2 (double/float)
+//        $result = abs(5);    // 5 (integer)
+//        $result = abs(-5);   // 5 (integer)
+
+        $delta = 0.00001;
+        $a = 1.00000001;
+        $b = 1.00000000;
+        if (abs($a - $b) < $delta) {
+            $result = '$a and $b are equal enough.';
+        }
+
+        // Floating-point numbers are represented in binary form with only a finite number of
+        // bits for the mantissa and the exponent. You get overflows when you exceed those bits.
+        // As a result, sometimes PHP (just like some other languages) doesn’t believe that two
+        // equal numbers are actually equal because they may differ toward the very end
+
+        // To avoid this problem, instead of checking if $a == $b, make sure the first number is
+        // within a very small amount ($delta) of the second one. The size of your delta should
+        // be the smallest amount of difference you care about between two numbers. Then use
+        // abs() to get the absolute value of the difference
+    }
 }
