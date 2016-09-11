@@ -118,4 +118,74 @@ class NumberUtils
         $result = floor(9.999); // 9
         $result = floor(-3.14); // -4
     }
+
+    protected function rangeExample()
+    {
+        // range — Create an array containing a range of elements
+        // array range ( mixed $start , mixed $end [, number $step = 1 ] )
+        // Returns an array of elements from start to end, inclusive.
+
+        // array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+        foreach (range(0, 12) as $number) { }
+
+        // array(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
+        foreach (range(0, 100, 10) as $number) { }
+
+        // array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i');
+        foreach (range('a', 'i') as $letter) { }
+
+        // how to create range array:
+        $result = array_combine(range(11,14),range(1,4));
+//        Array
+//        (
+//            [11] => 1
+//            [12] => 2
+//            [13] => 3
+//            [14] => 4
+//        )
+
+        // A generator function looks just like a normal function, except that instead of returning a value, a generator
+        // yields as many values as it needs to.
+
+        // When a generator function is called, it returns an object that can be iterated over. When you iterate over
+        // that object (for instance, via a foreach loop), PHP will call the generator function each time it needs a
+        // value, then saves the state of the generator when the generator yields a value so that it can be resumed
+        // when the next value is required.
+
+        // Once there are no more values to be yielded, then the generator function can simply exit, and the calling
+        // code continues just as if an array has run out of values.
+
+        function gen_one_to_three() {
+            for ($i = 1; $i <= 3; $i++) {
+                // Note that $i is preserved between yields.
+                yield $i;
+            }
+        }
+
+        $generator = gen_one_to_three();
+        foreach ($generator as $value) {
+            echo "$value\n";
+        }
+
+//        result:
+//        1
+//        2
+//        3
+
+        function squares($start, $stop) {
+            if ($start < $stop) {
+                for ($i = $start; $i <= $stop; $i++) {
+                    yield $i => $i * $i;
+                }
+            }
+            else {
+                for ($i = $stop; $i >= $start; $i--) {
+                    yield $i => $i * $i;
+                }
+            }
+        }
+        foreach (squares(3, 15) as $n => $square) {
+            printf("%d squared is %d\n", $n, $square);
+        }
+    }
 }
