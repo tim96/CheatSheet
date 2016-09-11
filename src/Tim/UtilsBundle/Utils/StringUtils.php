@@ -420,4 +420,35 @@ class StringUtils
 //            [6] => 9
 //        )
     }
+
+    // Wraps a string to a given number of characters
+    // string wordwrap ( string $str [, int $width = 75 [, string $break = "\n" [, bool $cut = false ]]] )
+    // Wraps a string to a given number of characters using a string break character.
+    // $text = "The quick brown fox jumped over the lazy dog.";
+    // $newtext = wordwrap($text, 20, "<br />\n");
+
+    protected function downloadCSV()
+    {
+        $sales_data = array();
+
+        // Open filehandle for fputcsv()
+        $output = fopen('php://output','w') or die("Can't open php://output");
+        $total = 0;
+
+        // Tell browser to expect a CSV file
+        header('Content-Type: application/csv');
+        header('Content-Disposition: attachment; filename="sales.csv"');
+
+        // Print header row
+        fputcsv($output,array('Region','Start Date','End Date','Amount'));
+
+        // Print each data row and increment $total
+        foreach ($sales_data as $sales_line) {
+            fputcsv($output, $sales_line);
+            $total += $sales_line[3];
+        }
+
+        fputcsv($output,array('All Regions','--','--',$total));
+        fclose($output) or die("Can't close php://output");
+    }
 }
