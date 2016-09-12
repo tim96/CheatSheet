@@ -275,5 +275,41 @@ class NumberUtils
         // $cosine = cos(deg2rad($degree));
     }
 
-    
+    protected function convertBetweenBases()
+    {
+        // convert a number from one base to another
+        // base_convert — Convert a number between arbitrary bases
+        // string base_convert ( string $number , int $frombase , int $tobase )
+        $hexadecimal = 'a37334';
+        $resul = base_convert($hexadecimal, 16, 2); // 101000110111001100110100
+
+        // hexadecimal number (base 16)
+        $hex = 'a1';
+        // convert from base 16 to base 10
+        // $decimal is '161'
+        $decimal = base_convert($hex, 16, 10);
+
+        // Another functions for conversions to and from base 10 and the most commonly used other bases of 2, 8, and 16
+        // They’re bindec() and decbin(), octdec() and decoct(), and hexdec() and dechex():
+        $a = bindec(11011); // convert from base 2 to base 10
+        $b = octdec(33); // convert from base 8 to base 10
+        $c = hexdec('1b'); // convert from base 16 to base 10
+        $d = decbin(27); // convert from base 10 to base 2
+        $e = decoct(27); // convert from base 10 to base 8
+        $f = dechex(27); // convert from base 10 to base 16
+
+        // Another alternative is to use the printf() family of functions, which allows you to
+        // convert decimal numbers to binary, octal, and hexadecimal numbers with a wide range
+        // of formatting, such as leading zeros and a choice between upper- and lowercase letters
+        // for hexadecimal numbers.
+
+        // Return a formatted string. Returns a string produced according to the formatting string format.
+        // string sprintf ( string $format [, mixed $args [, mixed $... ]] )
+
+        $red = 0;
+        $green = 102;
+        $blue = 204;
+        // $color is '#0066CC'
+        $color = sprintf('#%02X%02X%02X', $red, $green, $blue);
+    }
 }
