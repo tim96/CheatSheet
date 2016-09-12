@@ -257,4 +257,23 @@ class NumberUtils
         $france = new \NumberFormatter("fr-FR", \NumberFormatter::CURRENCY);
         $formatted2 = $france->format($number);
     }
+
+    protected function calcTrigonometricFunctions()
+    {
+        // Calculate trigonometric functions
+        // sin, cos, tan, asin, acos, atan()
+        // These functions assume all angles are in radians, not degrees
+        // $result = cos(2 * M_PI);
+        // $result = atan(M_PI / 4);
+        // $cotangent = 1 / tan($n);
+
+        // Use deg2rad() and rad2deg() on your input and output:
+        // float deg2rad ( float $number )
+        // Converts the number in degrees to the radian equivalent
+        // float rad2deg ( float $number )
+        // Converts the radian number to the equivalent number in degrees
+        // $cosine = cos(deg2rad($degree));
+    }
+
+    
 }
