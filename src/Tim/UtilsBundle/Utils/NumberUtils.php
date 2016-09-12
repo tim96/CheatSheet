@@ -221,5 +221,40 @@ class NumberUtils
     // $exp = pow( 2, M_E);
     // $pow1 = pow( 2, 10); // 1024
 
+    protected function numberFormat()
+    {
+        // number_format — Format a number with grouped thousands
+        // string number_format ( float $number [, int $decimals = 0 ] )
+        // string number_format ( float $number , int $decimals = 0 , string $dec_point = "." , string $thousands_sep = "," )
+        // This function accepts either one, two, or four parameters (not three):
+        // Return a formatted version of number.
 
+        $number = 1234.56;
+        $english_format_number = number_format($number);
+        // 1,235
+
+        $nombre_format_francais = number_format($number, 2, ',', ' ');
+        // 1 234,56
+
+        $number = 31415.92653; // your number
+        list($int, $dec) = explode('.', $number);
+        // $formatted is 31,415.92653
+        $formatted = number_format($number, strlen($dec));
+
+        // The NumberFormatter class
+        // Programs store and operate on numbers using a locale-independent binary representation. When displaying
+        // or printing a number it is converted to a locale-specific string. For example, the number
+        // 12345.67 is "12,345.67" in the US, "12 345,67" in France and "12.345,67" in Germany.
+
+        $number = 1234.56;
+        // US uses $ , and .
+        // $formatted1 is $1,234.56
+        $usa = new \NumberFormatter("en-US", \NumberFormatter::CURRENCY);
+        $formatted1 = $usa->format($number);
+
+        // France uses , and €
+        // $formatted2 is 1 234,56 €
+        $france = new \NumberFormatter("fr-FR", \NumberFormatter::CURRENCY);
+        $formatted2 = $france->format($number);
+    }
 }
