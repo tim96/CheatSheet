@@ -168,9 +168,6 @@ class PhpIniRequirement extends Requirement
  */
 class RequirementCollection implements IteratorAggregate
 {
-    /**
-     * @var Requirement[]
-     */
     private $requirements = array();
 
     /**
@@ -268,7 +265,7 @@ class RequirementCollection implements IteratorAggregate
     /**
      * Returns both requirements and recommendations.
      *
-     * @return Requirement[]
+     * @return array Array of Requirement instances
      */
     public function all()
     {
@@ -278,7 +275,7 @@ class RequirementCollection implements IteratorAggregate
     /**
      * Returns all mandatory requirements.
      *
-     * @return Requirement[]
+     * @return array Array of Requirement instances
      */
     public function getRequirements()
     {
@@ -295,7 +292,7 @@ class RequirementCollection implements IteratorAggregate
     /**
      * Returns the mandatory requirements that were not met.
      *
-     * @return Requirement[]
+     * @return array Array of Requirement instances
      */
     public function getFailedRequirements()
     {
@@ -312,7 +309,7 @@ class RequirementCollection implements IteratorAggregate
     /**
      * Returns all optional recommendations.
      *
-     * @return Requirement[]
+     * @return array Array of Requirement instances
      */
     public function getRecommendations()
     {
@@ -329,7 +326,7 @@ class RequirementCollection implements IteratorAggregate
     /**
      * Returns the recommendations that were not met.
      *
-     * @return Requirement[]
+     * @return array Array of Requirement instances
      */
     public function getFailedRecommendations()
     {
@@ -450,12 +447,6 @@ class SymfonyRequirements extends RequirementCollection
         }
 
         $this->addRequirement(
-            function_exists('iconv'),
-            'iconv() must be available',
-            'Install and enable the <strong>iconv</strong> extension.'
-        );
-
-        $this->addRequirement(
             function_exists('json_encode'),
             'json_encode() must be available',
             'Install and enable the <strong>JSON</strong> extension.'
@@ -555,10 +546,10 @@ class SymfonyRequirements extends RequirementCollection
             require_once __DIR__.'/../vendor/autoload.php';
 
             try {
-                $r = new ReflectionClass('Sensio\Bundle\DistributionBundle\SensioDistributionBundle');
+                $r = new \ReflectionClass('Sensio\Bundle\DistributionBundle\SensioDistributionBundle');
 
                 $contents = file_get_contents(dirname($r->getFileName()).'/Resources/skeleton/app/SymfonyRequirements.php');
-            } catch (ReflectionException $e) {
+            } catch (\ReflectionException $e) {
                 $contents = '';
             }
             $this->addRecommendation(
@@ -647,7 +638,7 @@ class SymfonyRequirements extends RequirementCollection
         }
 
         $this->addRecommendation(
-            extension_loaded('intl'),
+            class_exists('Locale'),
             'intl extension should be available',
             'Install and enable the <strong>intl</strong> extension (used for validators).'
         );
@@ -711,9 +702,9 @@ class SymfonyRequirements extends RequirementCollection
 
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             $this->addRecommendation(
-                $this->getRealpathCacheSize() > 5 * 1024 * 1024,
-                'realpath_cache_size should be above 5242880 in php.ini',
-                'Setting "<strong>realpath_cache_size</strong>" to e.g. "<strong>5242880</strong>" or "<strong>5000k</strong>" in php.ini<a href="#phpini">*</a> may improve performance on Windows significantly in some cases.'
+                $this->getRealpathCacheSize() > 1000,
+                'realpath_cache_size should be above 1024 in php.ini',
+                'Set "<strong>realpath_cache_size</strong>" to e.g. "<strong>1024</strong>" in php.ini<a href="#phpini">*</a> to improve performance on windows.'
             );
         }
 

@@ -25,6 +25,7 @@
         "sensio/distribution-bundle": "4.*@dev",
         "sensio/framework-extra-bundle": "3.*@dev",
         "sensio/generator-bundle": "3.*@dev",
+        "sensiolabs/security-checker": "2.*@dev",
 
         "jms/serializer-bundle": "1.*@dev",
         "friendsofsymfony/rest-bundle": "1.8.*@dev",
