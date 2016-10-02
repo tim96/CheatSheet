@@ -10,4 +10,14 @@ namespace Tim\ExampleBundle\Repository;
  */
 class BoatRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getListByIds($ids)
+    {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb->andWhere('b.id IN (:ids)')
+            ->setParameter('ids', $ids)
+        ;
+
+        return $qb;
+    }
 }
