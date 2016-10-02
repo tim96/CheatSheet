@@ -64,6 +64,11 @@ class Boat
         $this->description = null;
     }
 
+    public function __toString()
+    {
+        return $this->id ? (string)$this->id : '';
+    }
+
     /**
      * Get id
      *
