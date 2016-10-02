@@ -15,6 +15,11 @@ class Performance
         return microtime(true);
     }
 
+    public static function current()
+    {
+        return microtime(true);
+    }
+
     public static function result($timeStart)
     {
         return microtime(true) - $timeStart;
@@ -34,6 +39,11 @@ class Performance
     public static function getMemoryLimit()
     {
         return ini_get('memory_limit');
+    }
+
+    public static function setMemoryLimit($limit)
+    {
+        ini_set('memory_limit', $limit);
     }
 
     public static function convertMemory($size)
