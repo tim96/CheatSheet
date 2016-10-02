@@ -1,3 +1,5 @@
+#run: php app/console hautelook_alice:doctrine:fixtures:load
+
 Tim\ExampleBundle\Entity\Planet:
     planet_{1..10}:
         planetName: <word()>

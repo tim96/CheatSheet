@@ -1,0 +1,10 @@
+#run: php app/console hautelook_alice:doctrine:fixtures:load
+
+Tim\ExampleBundle\Entity\BoatTest:
+#    dummy_{1..200000}:
+    dummy_{1..15000}:
+        title: <text(125)>
+        description: <text(255)>
+        number: <numberBetween(0, 200)>
+        createdAt: <dateTimeBetween('-712 days', 'now')>
+        updatedAt: <dateTime()>

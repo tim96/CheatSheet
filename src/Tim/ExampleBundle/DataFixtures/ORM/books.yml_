@@ -1,3 +1,5 @@
+#run: php app/console hautelook_alice:doctrine:fixtures:load
+
 Tim\ExampleBundle\Entity\Book:
 #    dummy_{1..20000}:
     dummy_{1..20}:
