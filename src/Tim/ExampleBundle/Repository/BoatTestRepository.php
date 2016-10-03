@@ -22,4 +22,15 @@ class BoatTestRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb;
     }
+
+    public function getListByNumbersVariant2($ids)
+    {
+        $qb = $this->createQueryBuilder('bt');
+
+        $qb->andWhere('bt.number IN (?1)')
+            ->setParameter('1', $ids, DB::PARAM_INT_ARRAY)
+        ;
+
+        return $qb;
+    }
 }

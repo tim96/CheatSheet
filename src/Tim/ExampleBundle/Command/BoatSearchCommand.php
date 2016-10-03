@@ -48,7 +48,8 @@ class BoatSearchCommand extends ContainerAwareCommand
 
         // $records = $this->variant1($em);
         // $records = $this->variant2($em);
-        $records = $this->variant3($em);
+        // $records = $this->variant3($em);
+        $records = $this->variant4($em);
         $output->writeln('Count records: ' . count($records));
 
         $timeEnd = Performance::current();
@@ -125,6 +126,32 @@ class BoatSearchCommand extends ContainerAwareCommand
         // Doctrine\DBAL\Connection::executeUpdate(), NOT with the binding methods of a prepared statement.
         //$stmt->bindValue(1, $ids, DB::PARAM_INT_ARRAY);
         // $stmt->execute();
+
+        $stmt = $conn->executeQuery($sql,
+            array($ids),
+            array(DB::PARAM_INT_ARRAY));
+
+        // return $stmt->fetchAssoc();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * @param EntityManager $em
+     *
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    protected function variant4($em)
+    {
+        $conn = $em->getConnection();
+
+        $ids = $this->generateIds();
+
+        // to slow
+        $boatRepository = $em->getRepository('TimExampleBundle:BoatTest');
+        $query = $boatRepository->getListByNumbersVariant2($ids)->getQuery();
+
+        $sql = $query->getSQL();
 
         $stmt = $conn->executeQuery($sql,
             array($ids),
