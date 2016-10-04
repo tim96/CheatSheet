@@ -14,8 +14,6 @@
 web/web.config
 web/.ttf
 web/_glyphicons-halflings-regular_1.ttf
-web/css/
-web/js/
 web/Resources/
 composer.lock
 *.php~
