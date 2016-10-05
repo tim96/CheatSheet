@@ -48,3 +48,21 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+
+
+/** custom reset css **/
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after { clear: both; }
+
+.left { float: left; }
+.right { float: right; }
+
+a, a:hover { text-decoration: none; }
+
+* { box-sizing: border-box; }
