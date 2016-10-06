@@ -1,0 +1,467 @@
+/** styles **/
+.container {
+    width: 940px;
+    margin: 0 auto;
+}
+
+#header {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.logo {
+    float: left;
+}
+
+.nav {
+    float: right;
+    padding-top: 5px;
+}
+
+#home {
+    height: 700px;
+    padding-top: 270px;
+    text-align: center;
+    color: #fff;
+    /** Выравнивание картинки по центу и от нижнего края **/
+    background: #222 url(/img/ex-1/home-bg.jpg) no-repeat center bottom;
+    /** Картинка растягивается по всей ширине экрана **/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.nav li {
+    float: left;
+    margin-right: 40px;
+}
+
+/** Убираем отступ от последнего элемента в меню **/
+.nav li:last-child {
+    margin-right: 0;
+}
+
+.nav a {
+    text-transform: uppercase;
+    font: 14px Arial, sans-serif;
+    color: #fff;
+}
+
+.nav a:hover {
+    color: #f1c736;
+}
+
+#home h3 {
+    /** Второй параметр 40px отвечает за line-height **/
+    font: 40px/40px Arial, sans-serif;
+    margin-bottom: 40px;
+}
+
+#home h1 {
+    font: 75px/75px Arial, sans-serif;
+    /** Преобразует все символы в элементе в заглавные буквы **/
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 20px 30px;
+    text-transform: uppercase;
+    font: bold 24px/24px Arial, sans-serif;
+    background: #fed136;
+    cursor: pointer;
+    color: #fff;
+    /** Создает закругленные уголки **/
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+       /*-o-border-radius: 4px;*/
+            border-radius: 4px;
+}
+
+.btn:hover {
+    background: #daae17;
+    color: #fff;
+}
+
+.box {
+    padding: 120px 0;
+}
+
+#services {
+    text-align: center;
+}
+
+h2.title {
+    text-transform: uppercase;
+    font: bold 40px/40px Arial, sans-serif;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+h5.title {
+    font: bold 18px/18px Arial, sans-serif;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.descr {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.services-item {
+    float: left;
+    width: 33.33%;
+    padding: 90px 10px 0;
+}
+
+.services-item p {
+    font-size: 18px;
+    line-height: 24px;
+    color: #777;
+}
+
+.commerce {
+    background: url(/img/ex-1/commerce.png) no-repeat center top;
+}
+
+.responsive {
+    background: url(/img/ex-1/responsive.png) no-repeat center top;
+}
+
+.security {
+    background: url(/img/ex-1/security.png) no-repeat center top;
+}
+
+.services-wrap {
+    padding-top: 70px;
+}
+
+#portfolio {
+    text-align: center;
+    background: #f7f7f7;
+}
+
+.portfolio-item {
+    width: 31%;
+    float: left;
+    margin-right: 3.5%;
+    margin-bottom: 50px;
+    background: #fff;
+}
+
+/** Стиль для псевдо элемента. 3n - значит что применяется к каждому третьему элементу. 3 - применяется только к 3 элементу **/
+.portfolio-item:nth-child(3n) {
+    margin-right: 0;
+}
+
+.p-item-footer {
+    padding: 25px 20px;
+}
+
+.p-item-footer h5.title {
+    margin-bottom: 4px;
+}
+
+/** Убираем нижние отступы так как они не нужны **/
+/** nth-last-child - считает последние элементы **/
+/** послдений элемент **/
+.portfolio-item:nth-last-child(1),
+    /** предпоследний элемент **/
+.portfolio-item:nth-last-child(2),
+.portfolio-item:nth-last-child(3) {
+    margin-bottom: 0;
+}
+
+.portfolio-wrap {
+    padding-top: 70px;
+}
+
+.about-wrap {
+    padding-top: 70px;
+}
+
+#about  {
+    text-align: center;
+}
+
+.about-text {
+    width: 35%;
+    /*outline: 1px solid red;*/
+}
+
+.about-img {
+    width: 30%;
+    /** Удобно чтобы отслеживать границы блоков **/
+    /*outline: 1px solid red;*/
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.about-text h5 {
+    line-height: 24px;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 24px;
+    color: #777;
+}
+
+.about-img img {
+    width: 177px;
+    height: 177px;
+    border: 7px solid #f1f1f1;
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+       /*-o-border-radius: 50%;*/
+            border-radius: 50%;
+}
+
+.about-img:after {
+    content: " ";
+    display: block;
+    margin: 0 auto;
+    height: 94px;
+    width: 3px;
+    background: #f1f1f1;
+}
+
+.about-text h5 span {
+    text-transform: uppercase;
+}
+
+.about-link {
+    display: block;
+    margin: 0 auto;
+    width: 177px;
+    height: 177px;
+    border: 7px solid #f1f1f1;
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+       /*-o-border-radius: 50%;*/
+            border-radius: 50%;
+    background: #fed136;
+    font: bold 18px/30px Arial, sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    padding-top: 30px;
+    text-shadow: 0 1px rgba(0, 0, 0, 3);
+}
+
+#team {
+    text-align: center;
+}
+
+.team-item img {
+    border: 7px solid #f1f1f1;
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+       /*-o-border-radius: 50%;*/
+            border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-wrap {
+    padding-top: 70px;
+}
+
+.cat {
+    font: 14px/14px Arial, sans-serif;
+    color: #777;
+}
+
+.social {
+    margin-top: 10px;
+}
+
+.social a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 3px;
+    border: 3px solid #222;
+    background: url(../../img/ex-1/social-sprite.png) no-repeat;
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+       /*-o-border-radius: 50%;*/
+            border-radius: 50%;
+}
+
+.team-item {
+    float: left;
+    width: 33%;
+    padding: 0 10px;
+}
+
+.social a.black {
+    background-color: #222;
+}
+
+.social a.ic-tw {
+    background-position: 0 0;
+}
+.social a.ic-tw:hover {
+    background-position: 0 -40px;
+    border-color: #00aced;
+    background-color: #00aced;
+}
+.social a.ic-tw.black {
+    background-position: 0 -40px;
+}
+
+.social a.ic-in {
+    background-position: -80px 0;
+}
+
+.social a.ic-in:hover {
+    background-position: -80px -40px;
+    border-color: #cb2028;
+    background-color: #cb2028;
+}
+.social a.ic-in.black {
+    background-position: -80px -40px;
+}
+
+.social a.ic-fc {
+    background-position: -40px 0;
+}
+.social a.ic-fc:hover {
+    background-position: -40px -40px;
+    border-color: #3b5998;
+    background-color: #3b5998;
+}
+.social a.ic-fc.black {
+    background-position: -40px -40px;
+}
+
+.social a.ic-gp {
+    background-position: -120px 0;
+}
+.social a.ic-gp:hover {
+    background-position: -120px -40px;
+    border-color: #d95232;
+    background-color: #d95232;
+}
+.social a.ic-gp.black {
+    background-position: -120px -40px;
+}
+
+.team-info {
+    margin-top: 45px;
+}
+
+#brand {
+    text-align: center;
+    padding: 60px 0;
+}
+
+#brand a {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+#brand a:last-child {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+#brand img {
+    vertical-align: middle;
+}
+
+#contact {
+    text-align: center;
+    background: #222 url(../../img/ex-1/maps-bg.png) no-repeat right bottom;
+}
+
+#contact h2.title {
+    color: #fff;
+}
+
+#message {
+    padding-top: 70px;
+}
+
+#message .left,
+#message .right {
+    width: 48%;
+}
+
+#message input[type="text"],
+#message textarea {
+    width: 100%;
+    background: #fff;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+       /*-o-border-radius: 4px;*/
+            border-radius: 4px;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    font: bold 14px/14px Arial, san-serif;
+    color: #222;
+}
+
+#message input[type="text"] {
+    height: 50px;
+    border: 1px solid #ccc;
+}
+
+#message textarea {
+    border: none;
+    height: 210px;
+    resize: none;
+}
+
+/** Для форматирования плейсхолдера **/
+::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font: bold 14px/14px Arial, san-serif;
+    color: #bbb;
+}
+
+/** Для форматирования плейсхолдера **/
+::-moz-placeholder {
+    text-transform: uppercase;
+    font: bold 14px/14px Arial, san-serif;
+    color: #bbb;
+}
+
+#copyright {
+    padding: 25px 0;
+}
+
+#copyright .social {
+    margin-top: 0;
+    margin-left: 365px;
+}
+
+#copyright p {
+    font: 14px/14px Arial, sans-serif;
+    margin-top: 13px;
+    color: #555;
+}
+
+
+
+
+
+
+
+
+
+
