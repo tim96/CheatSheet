@@ -1,0 +1,171 @@
+
+html {
+    height: 100%;
+    font-size: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font: 14px/18px Arial, Tahoma, sans-serif;
+    background: #eee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {color: #0098e1;}
+a:hover {text-decoration: none;}
+
+a:active,
+a:hover {outline: 0;}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+
+/* ==== Общие стили ====*/
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {clear: both;}
+
+.left {float:left;}
+.right {float:right;}
+
+
+#wrapper {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.header {padding: 20px 0;}
+
+.logo {
+    float: left;
+    height: 60px;
+    width: 150px;
+    padding-top: 20px;
+    text-align: center;
+    background: #F97558;
+}
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+.nav {
+    height: 60px;
+    margin-left: 170px;
+    background: #B4B4B4;
+}
+
+.slider {
+    height: 250px;
+    margin-bottom: 20px;
+    background: #46DEE6;
+}
+.main {margin-bottom: 20px;}
+
+.sidebar {
+    width: 200px;
+    padding: 15px;
+    background: yellow;
+}
+
+.sidebar li {
+    list-style: none;
+    border-bottom: 1px solid #aaa;
+}
+.sidebar li:last-child {border-bottom: none;}
+
+.sidebar li a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #555;
+    background: orange;
+}
+.sidebar li a:hover {
+    color: #fff;
+    background: rgb(211, 138, 4);
+}
+
+
+.content {
+    margin-left: 220px;
+    padding: 15px;
+    background: #777;
+}
+
+.post {
+    float: left;
+    width: 33.33%;
+    padding: 0 10px;
+    color: #fff;
+}
+.post .img {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.post img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+.post h5 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer {
+    padding: 15px;
+    background: #000;
+    color: #fff;
+}
+
+/* Ноутбуки и т.д. */
+@media (max-width: 992px) {
+    .post {
+        width: 50%;
+        margin-bottom: 10px;
+    }
+}
+/* Планшеты */
+@media (max-width: 768px) {
+    #wrapper {padding: 0;}
+    .header {padding-top: 0;}
+    .logo, .nav {height: 40px}
+    .logo {padding-top: 10px;}
+    .sidebar {
+        width: auto;
+        float: none;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .sidebar ul, .sidebar ul li {display: inline-block;}
+    .content {margin-left: 0;}
+}
+/* Смартфоны */
+@media (max-width: 480px) {
+    .post {
+        float: none;
+        width: auto;
+        padding: 10px;
+        background: #fff;
+        color: #444;
+    }
+    .slider {height: 150px;}
+}
