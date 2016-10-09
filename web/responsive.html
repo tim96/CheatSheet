@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Responsive</title>
+
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="text/javascript" ></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var touch = $('#touch-menu');
+            var menu = $('.nav');
+
+            $(touch).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+
+            $(window).resize(function(){
+                var wid = $(window).width();
+                if(wid > 760 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="#" id="touch-menu">Меню</a>
+        <nav>
+            <ul class="nav clearfix">
+                <li><a href="#">Текст_1</a></li>
+                <li><a href="#">Текст_2</a></li>
+                <li><a href="#">Текст_3</a></li>
+                <li><a href="#">Текст_4</a></li>
+                <li><a href="#">Текст_5</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
