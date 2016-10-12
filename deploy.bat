@@ -1,4 +1,7 @@
 
+# Run composer with unlimited memory limit
+# php -d memory_limit=-1 composer.phar update
+
 php composer.phar self-update
 php composer.phar update
 php composer.phar dump-autoload --optimize
