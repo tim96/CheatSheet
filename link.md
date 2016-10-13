@@ -125,3 +125,5 @@ https://packagist.org/packages/hautelook/alice-bundle
 42. Symfony2 Bndle for integrate new relic
 https://github.com/ekino/EkinoNewRelicBundle
 
+43. Highly opinionated mocking framework for PHP 5.3+
+https://github.com/phpspec/prophecy
