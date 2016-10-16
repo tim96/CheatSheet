@@ -127,3 +127,15 @@ https://github.com/ekino/EkinoNewRelicBundle
 
 43. Highly opinionated mocking framework for PHP 5.3+
 https://github.com/phpspec/prophecy
+
+44. The first and only fault-tolerant PHP framework for distributed applications. 
+https://github.com/kraken-php/framework
+
+45. Parus is a Content Management System application powered by Yii 2.
+https://github.com/rokorolov/parus
+
+46. The Console component eases the creation of beautiful and testable command line interfaces.
+https://github.com/symfony/console
+
+47. Utility class for timing things, factored out of PHPUnit into a stand-alone component.
+https://github.com/sebastianbergmann/php-timer
