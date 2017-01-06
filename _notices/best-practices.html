@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best-practices</title>
+</head>
+<body>
+    <div class="container">
+        Use the Symfony Installer to create new Symfony-based projects.<br/>
+        Create only one bundle called AppBundle for your application logic. (Implementing a single AppBundle bundle in your projects will make your code more concise and easier to understand.)<br/>
+        Define the infrastructure-related configuration options in the app/config/parameters.yml file.<br/>
+        Define all your application's parameters in the app/config/parameters.yml.dist file.<br/>
+        Define the application behavior related configuration options in the app/config/config.yml file.<br/>
+        Use constants to define configuration options that rarely change.<br/>
+        Don't define a semantic dependency injection configuration for your bundles.<br/>
+        The name of your application's services should be as short as possible, but unique enough that you can search your project for the service if you ever need to.<br/>
+        Use the YAML format to define your own services.<br/>
+        Don't define parameters for the classes of your services.<br/>
+        Use annotations to define the mapping information of the Doctrine entities.<br/>
+
+        As fixtures support is not enabled by default in Symfony, you should execute the following command to install the Doctrine fixtures bundle:<br/>
+        composer require "doctrine/doctrine-fixtures-bundle"
+        $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+
+        Using php-cs-fixer for coding standard:
+        php php-cs-fixer.phar fix /path/to/project
+        php php-cs-fixer.phar fix /path/to/project --level=symfony
+
+        Make your controller extend the FrameworkBundle base controller and use annotations to configure routing, caching and security whenever possible.<br/>
+        Don't use the @Template annotation to configure the template used by the controller.<br/>
+        Use Twig templating format for your templates.<br/>
+        Store all your application's templates in app/Resources/views/ directory.<br/>
+        Use lowercased snake_case for directory and template names.<br/>
+        Define your Twig extensions in the AppBundle/Twig/ directory and configure them using the app/config/services.yml file.<br/>
+
+        Define your forms as PHP classes.<br/>
+        Put the form type classes in the AppBundle\Form namespace, unless you use other custom form classes like data transformers.<br/>
+        Add buttons in the templates, not in the form classes or the controllers.<br/>
+
+        Use the XLIFF format for your translation files.<br/>
+        Store the translation files in the app/Resources/translations/ directory.<br/>
+
+        Unless you have two legitimately different authentication systems and users (e.g. form login for the main site and a token system for your API only), we recommend having only one firewall entry with the anonymous key enabled.<br/>
+        Use the bcrypt encoder for encoding your users' passwords.<br/>
+        - For protecting broad URL patterns, use access_control;<br/>
+        - Whenever possible, use the @Security annotation;<br/>
+        - Check security directly on the security.authorization_checker service whenever you have a more complex situation.<br/>
+        For fine-grained restrictions, define a custom security voter;<br/>
+
+        For controlling access on a controller-by-controller basis, use the @Security annotation whenever possible. It's easy to read and is placed consistently above each action.<br/>
+        Using Expressions for Complex Security Restrictions: @Security("user.getEmail() == post.getAuthorEmail()")<br/>
+
+        Store your assets in the web/ directory.<br/>
+
+        Unit Tests. However, the most popular tools are PhpUnit and PhpSpec.<br/>
+        Define a functional test that at least checks if your application pages are successfully loading.<br/>
+
+
+    </div>
+</body>
+</html>
